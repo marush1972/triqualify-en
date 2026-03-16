@@ -24,6 +24,9 @@ footer a{color:#888}
 .tab.active{border-bottom-color:var(--brand);color:var(--brand);font-weight:500}
 .tab.disabled{color:#ccc;cursor:default}
 .card{background:white;border-radius:var(--rl);padding:1.5rem;margin-bottom:1rem;border:.5px solid #e5e5e0}
+.card-title{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:white;background:var(--brand);margin:-1.5rem -1.5rem 1.25rem -1.5rem;padding:8px 1.5rem;border-radius:var(--rl) var(--rl) 0 0}
+.card-title.blue{background:#2C5F8A}
+.card-title span{opacity:.75;font-weight:400;margin-left:6px;text-transform:none;letter-spacing:0;font-size:11px}
 .sec{margin-bottom:1.25rem}
 .sec label{display:block;font-size:13px;color:#666;margin-bottom:6px}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -105,7 +108,10 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
     <div class="tab disabled">Challenge (coming soon)</div>
   </div>
 
+  <!-- SECTION 1: Reference race -->
   <div class="card">
+    <div class="card-title">Step 1 — Your reference race <span>Describe the race where you achieved your reference time</span></div>
+
     <div class="row2">
       <div class="sec"><label>Gender</label>
         <select id="gender"><option value="M">Male</option><option value="F">Female</option></select>
@@ -122,7 +128,7 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
       </div>
     </div>
 
-    <div class="sec"><label>Your reference race finish time (HH:MM:SS)</label>
+    <div class="sec"><label>Finish time (HH:MM:SS)</label>
       <div class="ti">
         <input type="text" id="th" value="09" maxlength="2">
         <span class="tsep">:</span>
@@ -133,19 +139,7 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
     </div>
 
     <div class="div"></div>
-    <div class="segh"><span class="si ia">A</span> Your athlete profile</div>
-    <div class="sec"><label>Where are your strengths?</label>
-      <div class="tg" id="g-profile">
-        <div class="tog active" data-v="balanced">Balanced</div>
-        <div class="tog" data-v="biker">Strong cyclist</div>
-        <div class="tog" data-v="runner">Strong runner</div>
-        <div class="tog" data-v="swimmer">Strong swimmer</div>
-      </div>
-      <div class="hint">Strong cyclists benefit from hilly bike courses. Strong runners benefit from hot races where others slow down more on the run.</div>
-    </div>
-
-    <div class="div"></div>
-    <div class="segh"><span class="si is">S</span> Swim — reference race</div>
+    <div class="segh"><span class="si is">S</span> Swim</div>
     <div class="sec"><label>Wetsuit</label>
       <div class="tg" id="g-swim">
         <div class="tog active" data-v="wetsuit">Wetsuit allowed</div>
@@ -154,15 +148,15 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
     </div>
 
     <div class="div"></div>
-    <div class="segh"><span class="si ib">B</span> Bike — reference race</div>
-    <div class="sec"><label>Bike course profile</label>
+    <div class="segh"><span class="si ib">B</span> Bike</div>
+    <div class="sec"><label>Course profile</label>
       <div class="tg" id="g-bike">
         <div class="tog active" data-v="flat">Flat</div>
-        <div class="tog" data-v="hilly">Hilly (~1,500m elevation gain)</div>
-        <div class="tog" data-v="vhilly">Very hilly (2,500m+ elevation gain)</div>
+        <div class="tog" data-v="hilly">Hilly (~1,500m gain)</div>
+        <div class="tog" data-v="vhilly">Very hilly (2,500m+)</div>
       </div>
     </div>
-    <div class="sec"><label>Wind on bike</label>
+    <div class="sec"><label>Wind</label>
       <div class="tg" id="g-wind">
         <div class="tog active" data-v="none">No wind</div>
         <div class="tog" data-v="moderate">Moderate wind</div>
@@ -171,29 +165,45 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
     </div>
 
     <div class="div"></div>
-    <div class="segh"><span class="si ir">R</span> Run — reference race</div>
-    <div class="sec"><label>Run course profile</label>
+    <div class="segh"><span class="si ir">R</span> Run</div>
+    <div class="sec"><label>Course profile</label>
       <div class="tg" id="g-run">
         <div class="tog active" data-v="flat">Flat</div>
-        <div class="tog" data-v="hilly">Hilly (~300m elevation gain)</div>
-        <div class="tog" data-v="vhilly">Very hilly (600m+ elevation gain)</div>
+        <div class="tog" data-v="hilly">Hilly (~300m gain)</div>
+        <div class="tog" data-v="vhilly">Very hilly (600m+)</div>
       </div>
     </div>
 
     <div class="div"></div>
-    <div class="segh"><span class="si iw">W</span> Weather — reference race</div>
+    <div class="segh"><span class="si iw">W</span> Weather</div>
     <div class="sec"><label>Air temperature</label>
       <div class="tg" id="g-heat">
         <div class="tog active" data-v="normal">Normal (up to 28°C / 82°F)</div>
         <div class="tog" data-v="hot">Hot (29–34°C / 84–93°F)</div>
-        <div class="tog" data-v="extreme">Extreme heat (35°C+ / 95°F+)</div>
+        <div class="tog" data-v="extreme">Extreme (35°C+ / 95°F+)</div>
       </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: About you -->
+  <div class="card" style="border-color:#2C5F8A33">
+    <div class="card-title blue">Step 2 — About you <span>Used to fine-tune race recommendations</span></div>
+
+    <div class="segh"><span class="si ia">A</span> Your strengths</div>
+    <div class="sec"><label>Athlete profile</label>
+      <div class="tg" id="g-profile">
+        <div class="tog active" data-v="balanced">Balanced</div>
+        <div class="tog" data-v="biker">Strong cyclist</div>
+        <div class="tog" data-v="runner">Strong runner</div>
+        <div class="tog" data-v="swimmer">Strong swimmer</div>
+      </div>
+      <div class="hint">Strong cyclist → gains more on hilly bike courses. Strong runner → loses less in heat and hilly runs. Strong swimmer → gains more on no-wetsuit swims.</div>
     </div>
 
     <div class="div"></div>
     <div class="sec"><label>Preferred race continent</label>
       <div class="tg" id="g-cont">
-        <div class="tog active" data-v="all">All</div>
+        <div class="tog active" data-v="all">All continents</div>
         <div class="tog" data-v="europe">Europe</div>
         <div class="tog" data-v="namerica">North America</div>
         <div class="tog" data-v="oceania">Oceania</div>
