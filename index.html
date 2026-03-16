@@ -8,82 +8,81 @@
 <style>
 :root{--brand:#1D9E75;--brand-dark:#0F6E56;--brand-light:#E1F5EE;--r:8px;--rl:12px}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6;color:#1a1a1a;background:#f8f8f6}
-.wrap{max-width:720px;margin:0 auto;padding:0 1rem}
-header{background:white;border-bottom:1px solid #e5e5e0;padding:1rem 0;position:sticky;top:0;z-index:10}
+body{font-family:system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.5;color:#1a1a1a;background:#f8f8f6}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+header{background:white;border-bottom:1px solid #e5e5e0;padding:.85rem 0;position:sticky;top:0;z-index:10}
 .hdr{display:flex;align-items:center;gap:12px}
-.logo{width:36px;height:36px;background:var(--brand);border-radius:var(--r);display:flex;align-items:center;justify-content:center}
-.logo svg{width:20px;height:20px;fill:white}
-.brand{font-size:20px;font-weight:500}.brand span{color:var(--brand)}
-.tagline{font-size:13px;color:#666;margin-top:1px}
-main{padding:2rem 0}
-footer{border-top:1px solid #e5e5e0;padding:2rem 0;color:#888;font-size:13px;text-align:center}
+.logo{width:34px;height:34px;background:var(--brand);border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo svg{width:18px;height:18px;fill:white}
+.brand{font-size:19px;font-weight:500}.brand span{color:var(--brand)}
+.tagline{font-size:12px;color:#888;margin-top:1px}
+main{padding:1.5rem 0}
+footer{border-top:1px solid #e5e5e0;padding:1.5rem 0;color:#888;font-size:12px;text-align:center}
 footer a{color:#888}
-.tabs{display:flex;border-bottom:1px solid #e5e5e0;margin-bottom:1.5rem;background:white;border-radius:var(--rl) var(--rl) 0 0;overflow:hidden}
-.tab{padding:10px 18px;font-size:14px;cursor:pointer;border-bottom:2px solid transparent;color:#888;transition:all .15s}
+.tabs{display:flex;border-bottom:1px solid #e5e5e0;margin-bottom:1.25rem;background:white;border-radius:var(--rl) var(--rl) 0 0;overflow:hidden}
+.tab{padding:9px 16px;font-size:13px;cursor:pointer;border-bottom:2px solid transparent;color:#888;transition:all .15s}
 .tab.active{border-bottom-color:var(--brand);color:var(--brand);font-weight:500}
 .tab.disabled{color:#ccc;cursor:default}
-.card{background:white;border-radius:var(--rl);padding:1.5rem;margin-bottom:1rem;border:.5px solid #e5e5e0}
-.card-title{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:white;background:var(--brand);margin:-1.5rem -1.5rem 1.25rem -1.5rem;padding:8px 1.5rem;border-radius:var(--rl) var(--rl) 0 0}
+.card{background:white;border-radius:var(--rl);padding:1.25rem;margin-bottom:.75rem;border:.5px solid #e5e5e0}
+.card-title{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:white;background:var(--brand);margin:-1.25rem -1.25rem 1rem -1.25rem;padding:7px 1.25rem;border-radius:var(--rl) var(--rl) 0 0;display:flex;align-items:center;gap:8px}
 .card-title.blue{background:#2C5F8A}
-.card-title span{opacity:.75;font-weight:400;margin-left:6px;text-transform:none;letter-spacing:0;font-size:11px}
-.sec{margin-bottom:1.25rem}
-.sec label{display:block;font-size:13px;color:#666;margin-bottom:6px}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-select,input[type=text]{width:100%;padding:8px 10px;border:.5px solid #d5d5d0;border-radius:var(--r);background:white;color:#1a1a1a;font-size:14px;outline:none;font-family:inherit}
-select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,158,117,.15)}
-.ti{display:flex;gap:6px;align-items:center}
-.ti input{text-align:center;width:56px}
-.tsep{color:#999;font-size:16px;font-weight:500}
-.tg{display:flex;gap:6px;flex-wrap:wrap}
-.tog{padding:5px 12px;border:.5px solid #d5d5d0;border-radius:20px;font-size:12px;cursor:pointer;color:#666;background:white;transition:all .15s;font-family:inherit}
+.card-title span{opacity:.7;font-weight:400;text-transform:none;letter-spacing:0;font-size:11px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 1.5rem}
+.fgrid .sec{margin-bottom:.9rem}
+.fgrid .full{grid-column:1/-1}
+.sec{margin-bottom:.9rem}
+.sec label{display:block;font-size:12px;color:#888;margin-bottom:5px;font-weight:500}
+select,input[type=text]{width:100%;padding:7px 10px;border:.5px solid #d5d5d0;border-radius:var(--r);background:white;color:#1a1a1a;font-size:13px;outline:none;font-family:inherit}
+select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,158,117,.12)}
+.ti{display:flex;gap:5px;align-items:center}
+.ti input{text-align:center;width:52px}
+.tsep{color:#bbb;font-size:15px;font-weight:500}
+.tg{display:flex;gap:5px;flex-wrap:wrap}
+.tog{padding:4px 11px;border:.5px solid #d5d5d0;border-radius:20px;font-size:12px;cursor:pointer;color:#666;background:white;transition:all .15s;font-family:inherit;line-height:1.4}
 .tog.active{background:var(--brand-light);border-color:var(--brand);color:#0F6E56;font-weight:500}
-.hint{font-size:12px;color:#888;margin-top:5px;line-height:1.5}
-.div{border-top:.5px solid #e5e5e0;margin:1rem 0}
-.segh{font-size:14px;font-weight:500;color:#1a1a1a;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
-.si{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
+.hint{font-size:11px;color:#aaa;margin-top:4px;line-height:1.4}
+.sh{font-size:12px;font-weight:600;color:#555;margin-bottom:.6rem;padding-bottom:5px;border-bottom:.5px solid #f0f0ec;display:flex;align-items:center;gap:6px}
+.si{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0}
 .is{background:#E6F1FB;color:#185FA5}.ib{background:#FAEEDA;color:#854F0B}.ir{background:#EAF3DE;color:#3B6D11}
 .iw{background:#EEEDFE;color:#534AB7}.ia{background:#FBEAF0;color:#993556}
-.btn{width:100%;padding:12px;background:var(--brand);color:white;border:none;border-radius:var(--r);font-size:15px;font-weight:500;cursor:pointer;margin-top:.5rem;transition:background .15s;font-family:inherit}
+.btn{width:100%;padding:11px;background:var(--brand);color:white;border:none;border-radius:var(--r);font-size:14px;font-weight:600;cursor:pointer;margin-top:.25rem;transition:background .15s;font-family:inherit}
 .btn:hover{background:var(--brand-dark)}
-.rh{background:#f4f4f0;border-radius:var(--r);padding:14px;margin-bottom:1.25rem}
-.rt{font-size:15px;font-weight:500;margin-bottom:6px}
-.rs{font-size:13px;color:#666;line-height:1.7}
-.sr{display:flex;gap:6px;margin-top:10px;padding-top:10px;border-top:.5px solid #d5d5d0;flex-wrap:wrap}
-.sb{flex:1;min-width:64px;text-align:center;background:white;border:.5px solid #d5d5d0;border-radius:var(--r);padding:8px 4px}
-.sbl{font-size:10px;color:#888}.sbv{font-size:12px;font-weight:500;margin-top:2px}
-.rc{border:.5px solid #e5e5e0;border-radius:var(--rl);padding:14px 16px;margin-bottom:10px;background:white}
+.rh{background:white;border-radius:var(--rl);border:.5px solid #e5e5e0;padding:14px 16px;margin-bottom:10px}
+.rt{font-size:14px;font-weight:600;margin-bottom:4px}
+.rs{font-size:12px;color:#666;line-height:1.6}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:10px}
+.rc{border:.5px solid #e5e5e0;border-radius:var(--rl);padding:13px 15px;background:white}
 .rc.top{border-left:3px solid var(--brand)}
-.rtop{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
-.rn{font-size:14px;font-weight:500}.rn a{color:inherit;text-decoration:none}.rn a:hover{color:var(--brand)}
-.rd{font-size:12px;color:#888;margin-top:2px}
-.rch{font-size:12px;font-weight:500;padding:3px 10px;border-radius:12px;white-space:nowrap}
+.rtop{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:7px}
+.rn{font-size:13px;font-weight:600}.rn a{color:inherit;text-decoration:none}.rn a:hover{color:var(--brand)}
+.rd{font-size:11px;color:#aaa;margin-top:1px}
+.rch{font-size:11px;font-weight:600;padding:3px 9px;border-radius:10px;white-space:nowrap}
 .ch-h{background:#E1F5EE;color:#0F6E56}.ch-m{background:#FAEEDA;color:#854F0B}.ch-l{background:#FCEBEB;color:#A32D2D}
-.rbadges{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
-.b{font-size:11px;padding:2px 8px;border-radius:10px;background:#f0f0ec;color:#666}
+.rbadges{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px}
+.b{font-size:10px;padding:2px 7px;border-radius:9px;background:#f0f0ec;color:#777}
 .bw{background:#E6F1FB;color:#185FA5}.bh{background:#FAECE7;color:#993C1D}.bhi{background:#F1EFE8;color:#5F5E5A}
 .bf{background:#EAF3DE;color:#3B6D11}.bs{background:#EEEDFE;color:#534AB7}
-.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
-.stb{background:#f4f4f0;border-radius:var(--r);padding:8px 10px}
-.stl{font-size:11px;color:#888;line-height:1.3}.stv{font-size:15px;font-weight:500;margin-top:3px}.sts{font-size:11px;margin-top:2px}
+.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px}
+.stb{background:#f8f8f6;border-radius:6px;padding:7px 9px}
+.stl{font-size:10px;color:#aaa;line-height:1.3}.stv{font-size:14px;font-weight:600;margin-top:2px}.sts{font-size:10px;margin-top:2px}
 .rg{color:#0F6E56}.rm{color:#854F0B}.rl{color:#A32D2D}
-.cb{background:#f4f4f0;border-radius:var(--r);padding:10px 12px}
-.cr{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:5px 0}
-.cr+.cr{border-top:.5px solid #d5d5d0}
-.cl{color:#888;flex-shrink:0;margin-right:8px}.cv{font-weight:500;text-align:right}.adj{font-size:11px;color:#888;margin-top:1px}
-.verd{display:flex;align-items:center;gap:8px}
-.vi{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:white;flex-shrink:0}
+.cb{background:#f8f8f6;border-radius:var(--r);padding:9px 11px}
+.cr{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:4px 0}
+.cr+.cr{border-top:.5px solid #ececea}
+.cl{color:#aaa;flex-shrink:0;margin-right:8px}.cv{font-weight:500;text-align:right}.adj{font-size:10px;color:#bbb;margin-top:1px}
+.verd{display:flex;align-items:center;gap:6px}
+.vi{width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:white;flex-shrink:0}
 .vig{background:#1D9E75}.vir{background:#E24B4A}.via{background:#EF9F27}
-.vtg{font-weight:500;color:#0F6E56;font-size:13px}.vtr{font-weight:500;color:#A32D2D;font-size:13px}.vta{font-weight:500;color:#854F0B;font-size:13px}
-.fb{margin-top:10px;padding-top:10px;border-top:.5px solid #d5d5d0}
-.fbl{font-size:12px;color:#888;margin-bottom:6px}
-.fbbg{height:10px;background:#d5d5d0;border-radius:5px;overflow:hidden}
-.fbf{height:100%;border-radius:5px}
+.vtg{font-weight:600;color:#0F6E56;font-size:12px}.vtr{font-weight:600;color:#A32D2D;font-size:12px}.vta{font-weight:600;color:#854F0B;font-size:12px}
+.fb{margin-top:8px;padding-top:8px;border-top:.5px solid #ececea}
+.fbl{font-size:11px;color:#aaa;margin-bottom:5px}
+.fbbg{height:8px;background:#e5e5e0;border-radius:4px;overflow:hidden}
+.fbf{height:100%;border-radius:4px}
 .fg{background:#1D9E75}.fa{background:#EF9F27}.fr{background:#E24B4A}
-.fbn{display:flex;justify-content:space-between;font-size:11px;color:#888;margin-top:4px}
-.fv{font-size:12px;margin-top:6px;line-height:1.5;padding:8px 10px;border-radius:var(--r)}
+.fbn{display:flex;justify-content:space-between;font-size:10px;color:#bbb;margin-top:3px}
+.fv{font-size:11px;margin-top:5px;line-height:1.5;padding:7px 9px;border-radius:6px}
 .fvg{background:#E1F5EE;color:#0F6E56}.fva{background:#FAEEDA;color:#854F0B}.fvr{background:#FCEBEB;color:#A32D2D}
-@media(max-width:480px){.sg{grid-template-columns:1fr 1fr}.row2{grid-template-columns:1fr}}
+@media(max-width:700px){.fgrid{grid-template-columns:1fr}.results-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -102,21 +101,24 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
 
 <main>
 <div class="wrap">
+
   <div class="tabs">
     <div class="tab active">IRONMAN Full</div>
     <div class="tab disabled">IRONMAN 70.3 (coming soon)</div>
     <div class="tab disabled">Challenge (coming soon)</div>
   </div>
 
-  <!-- SECTION 1: Reference race -->
+  <!-- STEP 1 -->
   <div class="card">
-    <div class="card-title">Step 1 — Your reference race <span>Describe the race where you achieved your reference time</span></div>
+    <div class="card-title">Step 1 — Your reference race <span>Describe the race where you set your reference time</span></div>
+    <div class="fgrid">
 
-    <div class="row2">
-      <div class="sec"><label>Gender</label>
+      <div class="sec">
+        <label>Gender</label>
         <select id="gender"><option value="M">Male</option><option value="F">Female</option></select>
       </div>
-      <div class="sec"><label>Age group</label>
+      <div class="sec">
+        <label>Age group</label>
         <select id="ag">
           <option value="18-24">18–24</option><option value="25-29">25–29</option>
           <option value="30-34">30–34</option><option value="35-39">35–39</option>
@@ -126,102 +128,107 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
           <option value="70-74">70–74</option><option value="75-79">75–79</option>
         </select>
       </div>
-    </div>
 
-    <div class="sec"><label>Finish time (HH:MM:SS)</label>
-      <div class="ti">
-        <input type="text" id="th" value="09" maxlength="2">
-        <span class="tsep">:</span>
-        <input type="text" id="tm" value="45" maxlength="2">
-        <span class="tsep">:</span>
-        <input type="text" id="ts" value="00" maxlength="2">
+      <div class="sec full">
+        <label>Finish time (HH : MM : SS)</label>
+        <div class="ti">
+          <input type="text" id="th" value="09" maxlength="2">
+          <span class="tsep">:</span>
+          <input type="text" id="tm" value="45" maxlength="2">
+          <span class="tsep">:</span>
+          <input type="text" id="ts" value="00" maxlength="2">
+        </div>
       </div>
-    </div>
 
-    <div class="div"></div>
-    <div class="segh"><span class="si is">S</span> Swim</div>
-    <div class="sec"><label>Wetsuit</label>
-      <div class="tg" id="g-swim">
-        <div class="tog active" data-v="wetsuit">Wetsuit allowed</div>
-        <div class="tog" data-v="nowetsuit">No wetsuit</div>
+      <div class="sec">
+        <div class="sh"><span class="si is">S</span> Swim</div>
+        <label>Wetsuit</label>
+        <div class="tg" id="g-swim">
+          <div class="tog active" data-v="wetsuit">Wetsuit allowed</div>
+          <div class="tog" data-v="nowetsuit">No wetsuit</div>
+        </div>
       </div>
-    </div>
+      <div class="sec">
+        <div class="sh"><span class="si iw">W</span> Weather</div>
+        <label>Air temperature</label>
+        <div class="tg" id="g-heat">
+          <div class="tog active" data-v="normal">Normal (≤28°C / 82°F)</div>
+          <div class="tog" data-v="hot">Hot (29–34°C)</div>
+          <div class="tog" data-v="extreme">Extreme (35°C+)</div>
+        </div>
+      </div>
 
-    <div class="div"></div>
-    <div class="segh"><span class="si ib">B</span> Bike</div>
-    <div class="sec"><label>Course profile</label>
-      <div class="tg" id="g-bike">
-        <div class="tog active" data-v="flat">Flat</div>
-        <div class="tog" data-v="hilly">Hilly (~1,500m gain)</div>
-        <div class="tog" data-v="vhilly">Very hilly (2,500m+)</div>
+      <div class="sec">
+        <div class="sh"><span class="si ib">B</span> Bike</div>
+        <label>Course profile</label>
+        <div class="tg" id="g-bike">
+          <div class="tog active" data-v="flat">Flat</div>
+          <div class="tog" data-v="hilly">Hilly (~1,500m)</div>
+          <div class="tog" data-v="vhilly">Very hilly (2,500m+)</div>
+        </div>
+        <label style="margin-top:8px">Wind</label>
+        <div class="tg" id="g-wind">
+          <div class="tog active" data-v="none">No wind</div>
+          <div class="tog" data-v="moderate">Moderate</div>
+          <div class="tog" data-v="strong">Strong</div>
+        </div>
       </div>
-    </div>
-    <div class="sec"><label>Wind</label>
-      <div class="tg" id="g-wind">
-        <div class="tog active" data-v="none">No wind</div>
-        <div class="tog" data-v="moderate">Moderate wind</div>
-        <div class="tog" data-v="strong">Strong wind / waves</div>
+      <div class="sec">
+        <div class="sh"><span class="si ir">R</span> Run</div>
+        <label>Course profile</label>
+        <div class="tg" id="g-run">
+          <div class="tog active" data-v="flat">Flat</div>
+          <div class="tog" data-v="hilly">Hilly (~300m)</div>
+          <div class="tog" data-v="vhilly">Very hilly (600m+)</div>
+        </div>
       </div>
-    </div>
 
-    <div class="div"></div>
-    <div class="segh"><span class="si ir">R</span> Run</div>
-    <div class="sec"><label>Course profile</label>
-      <div class="tg" id="g-run">
-        <div class="tog active" data-v="flat">Flat</div>
-        <div class="tog" data-v="hilly">Hilly (~300m gain)</div>
-        <div class="tog" data-v="vhilly">Very hilly (600m+)</div>
-      </div>
-    </div>
-
-    <div class="div"></div>
-    <div class="segh"><span class="si iw">W</span> Weather</div>
-    <div class="sec"><label>Air temperature</label>
-      <div class="tg" id="g-heat">
-        <div class="tog active" data-v="normal">Normal (up to 28°C / 82°F)</div>
-        <div class="tog" data-v="hot">Hot (29–34°C / 84–93°F)</div>
-        <div class="tog" data-v="extreme">Extreme (35°C+ / 95°F+)</div>
-      </div>
     </div>
   </div>
 
-  <!-- SECTION 2: About you -->
-  <div class="card" style="border-color:#2C5F8A33">
+  <!-- STEP 2 -->
+  <div class="card" style="border-color:#2C5F8A44">
     <div class="card-title blue">Step 2 — About you <span>Used to fine-tune race recommendations</span></div>
+    <div class="fgrid">
 
-    <div class="segh"><span class="si ia">A</span> Your strengths</div>
-    <div class="sec"><label>Athlete profile</label>
-      <div class="tg" id="g-profile">
-        <div class="tog active" data-v="balanced">Balanced</div>
-        <div class="tog" data-v="biker">Strong cyclist</div>
-        <div class="tog" data-v="runner">Strong runner</div>
-        <div class="tog" data-v="swimmer">Strong swimmer</div>
+      <div class="sec">
+        <div class="sh"><span class="si ia">A</span> Your strengths</div>
+        <label>Athlete profile</label>
+        <div class="tg" id="g-profile">
+          <div class="tog active" data-v="balanced">Balanced</div>
+          <div class="tog" data-v="biker">Strong cyclist</div>
+          <div class="tog" data-v="runner">Strong runner</div>
+          <div class="tog" data-v="swimmer">Strong swimmer</div>
+        </div>
+        <div class="hint">Strong cyclist → gains more on hilly bike courses. Strong runner → loses less in heat and hilly runs. Strong swimmer → gains on no-wetsuit swims.</div>
       </div>
-      <div class="hint">Strong cyclist → gains more on hilly bike courses. Strong runner → loses less in heat and hilly runs. Strong swimmer → gains more on no-wetsuit swims.</div>
-    </div>
 
-    <div class="div"></div>
-    <div class="sec"><label>Preferred race continent</label>
-      <div class="tg" id="g-cont">
-        <div class="tog active" data-v="all">All continents</div>
-        <div class="tog" data-v="europe">Europe</div>
-        <div class="tog" data-v="namerica">North America</div>
-        <div class="tog" data-v="oceania">Oceania</div>
-        <div class="tog" data-v="africa">Africa</div>
+      <div class="sec">
+        <div class="sh">🌍 Continent</div>
+        <label>Preferred race region</label>
+        <div class="tg" id="g-cont">
+          <div class="tog active" data-v="all">All</div>
+          <div class="tog" data-v="europe">Europe</div>
+          <div class="tog" data-v="namerica">N. America</div>
+          <div class="tog" data-v="oceania">Oceania</div>
+          <div class="tog" data-v="africa">Africa</div>
+        </div>
       </div>
-    </div>
 
-    <button class="btn" id="calcBtn">Find my best qualifying races</button>
+    </div>
+    <button class="btn" id="calcBtn">Find my best qualifying races →</button>
   </div>
 
-  <div id="results" style="display:none"></div>
+  <!-- RESULTS -->
+  <div id="results"></div>
+
 </div>
 </main>
 
 <footer>
   <div class="wrap">
-    <p>TriQualify.com is an unofficial tool. All data are estimates based on historical results.</p>
-    <p style="margin-top:6px">Kona Standard coefficients and cutoff times may change each season. Always verify current requirements at <a href="https://www.ironman.com" target="_blank" rel="noopener">ironman.com</a>.</p>
+    <p>TriQualify.com is an unofficial tool. All data are estimates based on historical results and are provided for informational purposes only.</p>
+    <p style="margin-top:5px">Kona Standard coefficients and cutoff times may change each season. Always verify current requirements at <a href="https://www.ironman.com" target="_blank" rel="noopener">ironman.com</a>.</p>
   </div>
 </footer>
 
@@ -244,11 +251,9 @@ const RACES=[
   {id:15,name:"IRONMAN South Africa (Champ.)",date:"April 2026",country:"South Africa",continent:"africa",url:"https://www.ironman.com/im-south-africa",slots:75,starters:1600,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"strong",flagship:true,cutoffMin:515,fieldPct:13},
   {id:16,name:"IRONMAN Cozumel (Latin Am. Champ.)",date:"November 2026",country:"Mexico",continent:"namerica",url:"https://www.ironman.com/im-cozumel",slots:100,starters:2000,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",flagship:true,cutoffMin:500,fieldPct:9},
 ];
-
 const KS={M:{"18-24":1.000,"25-29":0.999,"30-34":1.000,"35-39":0.993,"40-44":0.968,"45-49":0.939,"50-54":0.898,"55-59":0.853,"60-64":0.796,"65-69":0.738,"70-74":0.678,"75-79":0.613},F:{"18-24":0.873,"25-29":0.889,"30-34":0.898,"35-39":0.892,"40-44":0.871,"45-49":0.843,"50-54":0.804,"55-59":0.748,"60-64":0.689,"65-69":0.625,"70-74":0.568,"75-79":0.509}};
 const C={bike:{flat:1,hilly:1.05,vhilly:1.085},run:{flat:1,hilly:1.025,vhilly:1.045},noWetsuit:1.008,heat:{normal:1,hot:1.015,extreme:1.025},wind:{none:1,moderate:1.008,strong:1.015}};
 const PB={balanced:{b:1,r:1},biker:{b:.6,r:1},runner:{b:1,r:.6},swimmer:{b:1,r:1}};
-
 const st={profile:"balanced",swim:"wetsuit",bike:"flat",wind:"none",run:"flat",heat:"normal",cont:"all"};
 const gMap={"g-profile":"profile","g-swim":"swim","g-bike":"bike","g-wind":"wind","g-run":"run","g-heat":"heat","g-cont":"cont"};
 
@@ -265,22 +270,19 @@ document.querySelectorAll('.tg').forEach(g=>{
 function fmt(s){s=Math.round(s);return`${String(Math.floor(s/3600)).padStart(2,'0')}:${String(Math.floor(s%3600/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;}
 
 function toNeutral(sec){
-  let t=sec;
-  t/=C.bike[st.bike];t/=C.run[st.run];
+  let t=sec;t/=C.bike[st.bike];t/=C.run[st.run];
   if(st.swim==='nowetsuit')t/=C.noWetsuit;
   t/=C.heat[st.heat];t/=C.wind[st.wind];
   return t;
 }
 
 function toRace(n,r){
-  const p=PB[st.profile];
-  let t=n;
+  const p=PB[st.profile];let t=n;
   t*=1+(C.bike[r.bike]-1)*p.b;
   t*=1+(C.run[r.run]-1)*p.r;
   t*=1+(C.heat[r.heat]-1)*p.r;
   if(!r.wetsuit)t*=C.noWetsuit;
-  t*=C.wind[r.wind];
-  return t;
+  t*=C.wind[r.wind];return t;
 }
 
 function adjText(r){
@@ -303,11 +305,14 @@ document.getElementById('calcBtn').addEventListener('click',()=>{
   const s=parseInt(document.getElementById('ts').value)||0;
   const raw=h*3600+m*60+s;
   if(raw<28800||raw>72000){alert('Please enter a finish time between 8:00:00 and 20:00:00');return;}
-
   const gender=document.getElementById('gender').value;
   const ag=document.getElementById('ag').value;
   const factor=KS[gender][ag];
   const neutral=toNeutral(raw);
+  const pL={balanced:'Balanced',biker:'Strong cyclist',runner:'Strong runner',swimmer:'Strong swimmer'};
+  const wL={none:'no wind',moderate:'moderate wind',strong:'strong wind'};
+  const hL={normal:'normal temp.',hot:'hot',extreme:'extreme heat'};
+  const bL2={flat:'Flat',hilly:'Hilly',vhilly:'Very hilly'};
 
   let list=RACES.filter(r=>st.cont==='all'||r.continent===st.cont);
   list=list.map(r=>{
@@ -322,23 +327,10 @@ document.getElementById('calcBtn').addEventListener('click',()=>{
     return{...r,proj,projAG,cutSec,diff,agS,ratio,agSlots,qual};
   }).sort((a,b)=>a.diff-b.diff).slice(0,5);
 
-  const pL={balanced:'Balanced',biker:'Strong cyclist',runner:'Strong runner',swimmer:'Strong swimmer'};
-  const wL={none:'no wind',moderate:'moderate wind',strong:'strong wind'};
-  const hL={normal:'normal temp.',hot:'hot',extreme:'extreme heat'};
-  const bL2={flat:'Flat',hilly:'Hilly',vhilly:'Very hilly'};
-
   let html=`<div class="rh">
-    <div class="rt">Your calculation</div>
-    <div class="rs">Reference time: <strong>${fmt(raw)}</strong> · Profile: <strong>${pL[st.profile]}</strong><br>
-    Age group: <strong>${gender==='M'?'Male':'Female'} ${ag}</strong> · Coefficient: <strong>${factor.toFixed(3)}</strong></div>
-    <div class="sr">
-      <div class="sb"><div class="sbl">Bike</div><div class="sbv">${bL2[st.bike]}</div></div>
-      <div class="sb"><div class="sbl">Run</div><div class="sbv">${bL2[st.run]}</div></div>
-      <div class="sb"><div class="sbl">Swim</div><div class="sbv">${st.swim==='wetsuit'?'Wetsuit':'No wetsuit'}</div></div>
-      <div class="sb"><div class="sbl">Wind</div><div class="sbv">${wL[st.wind]}</div></div>
-      <div class="sb"><div class="sbl">Temp.</div><div class="sbv">${hL[st.heat]}</div></div>
-    </div>
-  </div>`;
+    <div class="rt">Results — ${gender==='M'?'Male':'Female'} ${ag} · ${fmt(raw)} · ${pL[st.profile]}</div>
+    <div class="rs">Age-grading coefficient: <strong>${factor.toFixed(3)}</strong> · Reference: ${bL2[st.bike]} bike · ${bL2[st.run]} run · ${st.swim==='wetsuit'?'wetsuit':'no wetsuit'} · ${wL[st.wind]} · ${hL[st.heat]}</div>
+  </div><div class="results-grid">`;
 
   list.forEach((r,i)=>{
     const under=r.diff<0,tight=r.diff>=-5&&r.diff<0;
@@ -347,21 +339,20 @@ document.getElementById('calcBtn').addEventListener('click',()=>{
     const chL=r.diff<-15?'Strong chance':r.diff<0?'Realistic chance':'Not there yet';
     const viC=tight?'via':under?'vig':'vir';
     const vtC=tight?'vta':under?'vtg':'vtr';
-    const vTxt=under?`${abs} min under cutoff${tight?' — tight, depends on field':''}`:`${abs} min over cutoff — you need to go faster`;
+    const vTxt=under?`${abs} min under cutoff${tight?' — tight':''}`:`${abs} min over cutoff`;
     const rC=r.ratio>=4?'rg':r.ratio>=2.5?'rm':'rl';
-    const rL2=r.ratio>=4?'High slot ratio':r.ratio>=2.5?'Average slot ratio':'Low slot ratio';
-    const cvs=r.qual<=r.agSlots?`<span class="rg">enough slots for all who meet standard</span>`:`<span class="rl">more will meet standard than available slots</span>`;
+    const rL2=r.ratio>=4?'High slot ratio':r.ratio>=2.5?'Average':'Low slot ratio';
+    const cvs=r.qual<=r.agSlots?`<span class="rg">slots likely available</span>`:`<span class="rl">more qualifiers than slots</span>`;
     const barC=r.fieldPct<=12?'fg':r.fieldPct<=20?'fa':'fr';
     let cv,cc;
     if(under){
-      if(r.qual<=r.agSlots){cv=`Est. ~${r.qual} athletes in your age group will meet the standard, with ~${r.agSlots} slots available — likely everyone who qualifies gets a slot.`;cc='fvg';}
-      else{cv=`Est. ~${r.qual} athletes in your age group will meet the standard, but only ~${r.agSlots} slots available — meeting the standard alone may not be enough.`;cc='fva';}
-    }else{cv=`You need to lower your age-graded time by ${abs} min. Est. ~${r.qual} athletes in your age group will meet the standard.`;cc='fvr';}
-
-    const bL3={flat:'Bike: flat',hilly:'Bike: hilly',vhilly:'Bike: very hilly'};
-    const rL3={flat:'Run: flat',hilly:'Run: hilly',vhilly:'Run: very hilly'};
+      if(r.qual<=r.agSlots){cv=`~${r.qual} athletes in your AG est. to meet standard · ~${r.agSlots} slots — likely everyone who qualifies gets a slot.`;cc='fvg';}
+      else{cv=`~${r.qual} in your AG est. to meet standard · only ~${r.agSlots} slots — competition even after meeting standard.`;cc='fva';}
+    }else{cv=`Need to lower age-graded time by ${abs} min. ~${r.qual} athletes in your AG est. to meet standard.`;cc='fvr';}
+    const bL3={flat:'Bike: flat',hilly:'Bike: hilly',vhilly:'Bike: v.hilly'};
+    const rL3={flat:'Run: flat',hilly:'Run: hilly',vhilly:'Run: v.hilly'};
     let badges=[];
-    if(r.flagship)badges.push(`<span class="b bs">Continental Champ.</span>`);
+    if(r.flagship)badges.push(`<span class="b bs">Champ.</span>`);
     badges.push(r.wetsuit?`<span class="b bw">Wetsuit</span>`:`<span class="b bh">No wetsuit</span>`);
     if(r.heat==='hot')badges.push(`<span class="b bh">Hot</span>`);
     if(r.heat==='extreme')badges.push(`<span class="b bh">Extreme heat</span>`);
@@ -378,35 +369,35 @@ document.getElementById('calcBtn').addEventListener('click',()=>{
       </div>
       <div class="rbadges">${badges.join('')}</div>
       <div class="sg">
-        <div class="stb"><div class="stl">Kona slots total</div>
-          <div class="stv">${r.slots} <span style="font-size:12px;font-weight:400;color:#888">/ ${r.ratio.toFixed(1)}%</span></div>
+        <div class="stb"><div class="stl">Kona slots / ratio</div>
+          <div class="stv">${r.slots}<span style="font-size:11px;font-weight:400;color:#aaa"> / ${r.ratio.toFixed(1)}%</span></div>
           <div class="sts ${rC}">${rL2}</div></div>
-        <div class="stb"><div class="stl">Starters / your age group</div>
-          <div class="stv">${r.starters.toLocaleString()} <span style="font-size:12px;font-weight:400;color:#888">/ ~${r.agS}</span></div>
-          <div class="sts" style="color:#888">~${r.agSlots} slots for your age group</div></div>
-        <div class="stb"><div class="stl">Your age group — meets standard</div>
-          <div class="stv">~${r.qual} <span style="font-size:12px;font-weight:400;color:#888">athletes</span></div>
+        <div class="stb"><div class="stl">Starters / your AG</div>
+          <div class="stv">${r.starters.toLocaleString()}<span style="font-size:11px;font-weight:400;color:#aaa"> / ~${r.agS}</span></div>
+          <div class="sts" style="color:#aaa">~${r.agSlots} AG slots</div></div>
+        <div class="stb"><div class="stl">AG meets standard</div>
+          <div class="stv">~${r.qual}<span style="font-size:11px;font-weight:400;color:#aaa"> ath.</span></div>
           <div class="sts">${cvs}</div></div>
       </div>
       <div class="cb">
-        <div class="cr"><span class="cl">Your projected finish time</span>
+        <div class="cr"><span class="cl">Projected finish</span>
           <div><div class="cv">${fmt(r.proj)}</div><div class="adj">${adjText(r)}</div></div></div>
-        <div class="cr"><span class="cl">Your age-graded time</span><span class="cv">${fmt(r.projAG)}</span></div>
+        <div class="cr"><span class="cl">Age-graded time</span><span class="cv">${fmt(r.projAG)}</span></div>
         <div class="cr"><span class="cl">Kona Standard cutoff</span><span class="cv">${fmt(r.cutSec)}</span></div>
         <div class="cr"><span class="cl">Verdict</span>
           <div class="verd"><div class="vi ${viC}">${under?'✓':'✗'}</div><span class="${vtC}">${vTxt}</span></div></div>
         <div class="fb">
-          <div class="fbl">Estimated % of field meeting Kona Standard at this race</div>
+          <div class="fbl">Est. % of field meeting Kona Standard</div>
           <div class="fbbg"><div class="fbf ${barC}" style="width:${Math.min(100,r.fieldPct)}%"></div></div>
-          <div class="fbn"><span>0% (nobody)</span><span style="color:#1D9E75">~${r.fieldPct}% meet standard</span><span>100% (everyone)</span></div>
+          <div class="fbn"><span>0%</span><span style="color:#1D9E75">~${r.fieldPct}%</span><span>100%</span></div>
           <div class="fv ${cc}">${cv}</div>
         </div>
       </div>
     </div>`;
   });
 
+  html+='</div>';
   const el=document.getElementById('results');
-  el.style.display='block';
   el.innerHTML=html;
   el.scrollIntoView({behavior:'smooth',block:'start'});
 });
