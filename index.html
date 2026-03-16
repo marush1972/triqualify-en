@@ -375,13 +375,14 @@ document.getElementById('calcBtn').addEventListener('click',()=>{
     const slotsG=gender==='M'?r.slotsM:r.slotsF;
     const startersG=gender==='M'?Math.round(r.starters*0.85):Math.round(r.starters*0.15);
     const fieldPct=gender==='M'?r.fieldPctM:r.fieldPctF;
+    const qualifiedCount=Math.round(startersG*fieldPct/100);
     const cutSec=cutoffMin*60;
     const diff=(projAG-cutSec)/60;
-    const ratio=(slotsG/r.starters*100);
+    const ratio=(slotsG/startersG*100);
     const compLevel=ratio>6?'Very High':ratio>4?'High':ratio>2.5?'Medium':'Low';
     const compClass=ratio>6?'rg':ratio>4?'rg':ratio>2.5?'rm':'rl';
     const compHint=ratio>6?'Many slots for your gender':ratio>4?'Good availability':ratio>2.5?'Average competition':'Highly competitive';
-    return{...r,proj,projAG,cutSec,diff,slotsG,startersG,fieldPct,ratio:ratio.toFixed(1),compLevel,compClass,compHint};
+    return{...r,proj,projAG,cutSec,diff,slotsG,startersG,fieldPct,qualifiedCount,ratio:ratio.toFixed(1),compLevel,compClass,compHint};
   }).sort((a,b)=>a.diff-b.diff).slice(0,5);
 
   let html=`<div class="rh">
@@ -422,7 +423,7 @@ document.getElementById('calcBtn').addEventListener('click',()=>{
         <div class="stb">
           <div class="stl">Kona slots (${gender==='M'?'men':'women'})</div>
           <div class="stv">${r.slotsG}</div>
-          <div class="sts" style="color:#aaa">${r.ratio}% of field</div>
+          <div class="sts" style="color:#aaa">${r.ratio}% of starters</div>
         </div>
         <div class="stb">
           <div class="stl">Starters (${gender==='M'?'men':'women'})</div>
@@ -430,18 +431,24 @@ document.getElementById('calcBtn').addEventListener('click',()=>{
           <div class="sts" style="color:#aaa">2025 data</div>
         </div>
         <div class="stb">
-          <div class="stl">Slot competition</div>
-          <div class="stv ${rC}">${rL2}</div>
-          <div class="sts" style="color:#aaa">${r.compHint}</div>
+          <div class="stl">Met standard in 2025</div>
+          <div class="stv ${r.qualifiedCount<=r.slotsG?'rg':'rm'}">~${r.qualifiedCount}</div>
+          <div class="sts" style="color:#aaa">${r.fieldPct}% of ${gender==='M'?'men':'women'}</div>
         </div>
       </div>
       <div class="cb">
         <div class="cr"><span class="cl">Projected finish</span>
           <div><div class="cv">${fmt(r.proj)}</div><div class="adj">${adjText(r)}</div></div></div>
         <div class="cr"><span class="cl">Age-graded time</span><span class="cv">${fmt(r.projAG)}</span></div>
-        <div class="cr"><span class="cl">Kona Standard cutoff</span><span class="cv">${fmt(r.cutSec)}</span></div>
+        <div class="cr"><span class="cl">Kona Standard cutoff (2025)</span><span class="cv">${fmt(r.cutSec)}</span></div>
         <div class="cr"><span class="cl">Verdict</span>
           <div class="verd"><div class="vi ${viC}">${under?'✓':'✗'}</div><span class="${vtC}">${vTxt}</span></div></div>
+        <div class="cr"><span class="cl">Slot competition</span>
+          <div class="verd">
+            <span class="${rC}" style="font-weight:600;font-size:12px">${rL2}</span>
+            <span style="font-size:11px;color:#aaa;margin-left:4px">— ${r.qualifiedCount<=r.slotsG?`${r.qualifiedCount} met standard, ${r.slotsG} slots — likely everyone qualifies`:`${r.qualifiedCount} met standard for ${r.slotsG} slots — rolldown likely`}</span>
+          </div>
+        </div>
       </div>
     </div>`;
   });
