@@ -240,6 +240,7 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
           <div class="tog" data-v="namerica">N. America</div>
           <div class="tog" data-v="oceania">Oceania</div>
           <div class="tog" data-v="africa">Africa</div>
+          <div class="tog" data-v="asia">Asia</div>
         </div>
       </div>
 
@@ -262,22 +263,46 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
 
 <script>
 const RACES=[
-  {id:1,name:"IRONMAN Hamburg",date:"June 7, 2026",country:"Germany",continent:"europe",url:"https://www.ironman.com/im-hamburg",slots:60,starters:2800,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:true,cutoffMin:535,fieldPct:18},
-  {id:2,name:"IRONMAN Frankfurt (European Champ.)",date:"June 28, 2026",country:"Germany",continent:"europe",url:"https://www.ironman.com/im-frankfurt",slots:60,starters:2200,bike:"hilly",run:"flat",heat:"hot",wetsuit:false,wind:"none",flagship:true,cutoffMin:510,fieldPct:12},
-  {id:3,name:"IRONMAN France Nice",date:"June 28, 2026",country:"France",continent:"europe",url:"https://www.ironman.com/im-france",slots:45,starters:1800,bike:"vhilly",run:"hilly",heat:"hot",wetsuit:false,wind:"moderate",flagship:false,cutoffMin:525,fieldPct:8},
-  {id:4,name:"IRONMAN Vitoria-Gasteiz",date:"July 12, 2026",country:"Spain",continent:"europe",url:"https://www.ironman.com/im-vitoria",slots:40,starters:1500,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMin:530,fieldPct:14},
-  {id:5,name:"IRONMAN Kalmar",date:"August 15, 2026",country:"Sweden",continent:"europe",url:"https://www.ironman.com/im-kalmar",slots:40,starters:1600,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",flagship:false,cutoffMin:538,fieldPct:20},
-  {id:6,name:"IRONMAN Copenhagen",date:"August 16, 2026",country:"Denmark",continent:"europe",url:"https://www.ironman.com/im-copenhagen",slots:45,starters:2000,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMin:532,fieldPct:17},
-  {id:7,name:"IRONMAN Vichy",date:"August 23, 2026",country:"France",continent:"europe",url:"https://www.ironman.com/im-vichy",slots:35,starters:1400,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",flagship:false,cutoffMin:536,fieldPct:15},
-  {id:8,name:"IRONMAN Barcelona",date:"October 2026",country:"Spain",continent:"europe",url:"https://www.ironman.com/im-barcelona",slots:40,starters:3000,bike:"flat",run:"flat",heat:"normal",wetsuit:false,wind:"moderate",flagship:false,cutoffMin:540,fieldPct:22},
-  {id:9,name:"IRONMAN Texas (N. Am. Champ.)",date:"April 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-texas",slots:75,starters:2500,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",flagship:true,cutoffMin:505,fieldPct:10},
-  {id:10,name:"IRONMAN Tulsa",date:"June 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-tulsa",slots:40,starters:1200,bike:"hilly",run:"hilly",heat:"hot",wetsuit:false,wind:"none",flagship:false,cutoffMin:542,fieldPct:16},
-  {id:11,name:"IRONMAN Lake Placid",date:"July 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-lake-placid",slots:40,starters:1800,bike:"vhilly",run:"hilly",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMin:548,fieldPct:18},
-  {id:12,name:"IRONMAN Mont-Tremblant",date:"August 2026",country:"Canada",continent:"namerica",url:"https://www.ironman.com/im-mont-tremblant",slots:40,starters:1600,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMin:538,fieldPct:16},
-  {id:13,name:"IRONMAN Western Australia (Champ.)",date:"December 2026",country:"Australia",continent:"oceania",url:"https://www.ironman.com/im-western-australia",slots:75,starters:1800,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"strong",flagship:true,cutoffMin:508,fieldPct:11},
-  {id:14,name:"IRONMAN New Zealand",date:"March 2026",country:"New Zealand",continent:"oceania",url:"https://www.ironman.com/im-new-zealand",slots:45,starters:1500,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",flagship:false,cutoffMin:528,fieldPct:15},
-  {id:15,name:"IRONMAN South Africa (Champ.)",date:"April 2026",country:"South Africa",continent:"africa",url:"https://www.ironman.com/im-south-africa",slots:75,starters:1600,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"strong",flagship:true,cutoffMin:515,fieldPct:13},
-  {id:16,name:"IRONMAN Cozumel (Latin Am. Champ.)",date:"November 2026",country:"Mexico",continent:"namerica",url:"https://www.ironman.com/im-cozumel",slots:100,starters:2000,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",flagship:true,cutoffMin:500,fieldPct:9},
+// ── EUROPE ──
+{id:1,name:"IRONMAN Hamburg",date:"June 2026",country:"Germany",continent:"europe",url:"https://www.ironman.com/im-hamburg",starters:2315,slotsM:85,slotsF:65,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:545,cutoffMinF:638,fieldPctM:4.3,fieldPctF:19.6},
+{id:2,name:"IRONMAN Frankfurt (European Champ.)",date:"June 2026",country:"Germany",continent:"europe",url:"https://www.ironman.com/im-frankfurt",starters:2144,slotsM:85,slotsF:64,bike:"hilly",run:"flat",heat:"hot",wetsuit:false,wind:"none",flagship:true,cutoffMinM:565,cutoffMinF:669,fieldPctM:4.6,fieldPctF:21.1},
+{id:3,name:"IRONMAN France Nice",date:"June 2026",country:"France",continent:"europe",url:"https://www.ironman.com/im-france",starters:1443,slotsM:65,slotsF:35,bike:"vhilly",run:"hilly",heat:"hot",wetsuit:false,wind:"moderate",flagship:false,cutoffMinM:650,cutoffMinF:766,fieldPctM:5.0,fieldPctF:26.1},
+{id:4,name:"IRONMAN Vitoria-Gasteiz",date:"July 2026",country:"Spain",continent:"europe",url:"https://www.ironman.com/im-vitoria",starters:1439,slotsM:65,slotsF:35,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:549,cutoffMinF:663,fieldPctM:5.2,fieldPctF:18.4},
+{id:5,name:"IRONMAN Kalmar",date:"August 2026",country:"Sweden",continent:"europe",url:"https://www.ironman.com/im-kalmar",starters:2005,slotsM:27,slotsF:13,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",flagship:false,cutoffMinM:529,cutoffMinF:602,fieldPctM:1.7,fieldPctF:3.4},
+{id:6,name:"IRONMAN Copenhagen",date:"August 2026",country:"Denmark",continent:"europe",url:"https://www.ironman.com/im-copenhagen",starters:2399,slotsM:26,slotsF:14,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:511,cutoffMinF:577,fieldPctM:1.3,fieldPctF:3.1},
+{id:7,name:"IRONMAN Barcelona",date:"October 2026",country:"Spain",continent:"europe",url:"https://www.ironman.com/im-barcelona",starters:2429,slotsM:41,slotsF:14,bike:"flat",run:"flat",heat:"normal",wetsuit:false,wind:"moderate",flagship:false,cutoffMinM:519,cutoffMinF:624,fieldPctM:2.0,fieldPctF:4.2},
+{id:9,name:"IRONMAN Austria",date:"July 2026",country:"Austria",continent:"europe",url:"https://www.ironman.com/im-austria",starters:2217,slotsM:84,slotsF:44,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:585,cutoffMinF:702,fieldPctM:4.4,fieldPctF:13.5},
+{id:10,name:"IRONMAN Lanzarote",date:"May 2026",country:"Spain",continent:"europe",url:"https://www.ironman.com/im-lanzarote",starters:843,slotsM:65,slotsF:35,bike:"vhilly",run:"flat",heat:"hot",wetsuit:true,wind:"strong",flagship:false,cutoffMinM:628,cutoffMinF:812,fieldPctM:8.6,fieldPctF:39.8},
+{id:11,name:"IRONMAN Leeds",date:"June 2026",country:"United Kingdom",continent:"europe",url:"https://www.ironman.com/im-leeds",starters:1299,slotsM:65,slotsF:35,bike:"hilly",run:"hilly",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:657,cutoffMinF:776,fieldPctM:5.8,fieldPctF:20.7},
+{id:12,name:"IRONMAN Les Sables d'Olonne",date:"June 2026",country:"France",continent:"europe",url:"https://www.ironman.com/im-les-sables",starters:2526,slotsM:85,slotsF:34,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",flagship:false,cutoffMinM:543,cutoffMinF:619,fieldPctM:3.8,fieldPctF:12.4},
+{id:13,name:"IRONMAN Wales",date:"September 2026",country:"United Kingdom",continent:"europe",url:"https://www.ironman.com/im-wales",starters:1637,slotsM:29,slotsF:11,bike:"vhilly",run:"hilly",heat:"normal",wetsuit:true,wind:"moderate",flagship:false,cutoffMinM:615,cutoffMinF:731,fieldPctM:2.0,fieldPctF:7.1},
+{id:14,name:"IRONMAN Switzerland (Thun)",date:"June 2026",country:"Switzerland",continent:"europe",url:"https://www.ironman.com/im-switzerland",starters:1425,slotsM:28,slotsF:12,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:544,cutoffMinF:610,fieldPctM:2.3,fieldPctF:5.4},
+{id:15,name:"IRONMAN Tallinn",date:"August 2026",country:"Estonia",continent:"europe",url:"https://www.ironman.com/im-tallinn",starters:1087,slotsM:27,slotsF:13,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:529,cutoffMinF:620,fieldPctM:3.0,fieldPctF:7.5},
+{id:16,name:"IRONMAN Portugal Cascais",date:"October 2026",country:"Portugal",continent:"europe",url:"https://www.ironman.com/im-portugal",starters:1393,slotsM:28,slotsF:12,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",flagship:false,cutoffMinM:538,cutoffMinF:667,fieldPctM:2.2,fieldPctF:9.0},
+{id:17,name:"IRONMAN Italy (Cervia)",date:"September 2026",country:"Italy",continent:"europe",url:"https://www.ironman.com/im-italy",starters:2217,slotsM:29,slotsF:11,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",flagship:false,cutoffMinM:516,cutoffMinF:662,fieldPctM:1.5,fieldPctF:4.0},
+// ── NORTH AMERICA ──
+{id:18,name:"IRONMAN Texas (N. Am. Champ.)",date:"April 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-texas",starters:1694,slotsM:100,slotsF:74,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",flagship:true,cutoffMinM:638,cutoffMinF:671,fieldPctM:8.3,fieldPctF:15.2},
+{id:19,name:"IRONMAN Lake Placid",date:"July 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-lake-placid",starters:1873,slotsM:64,slotsF:35,bike:"vhilly",run:"hilly",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:612,cutoffMinF:667,fieldPctM:4.4,fieldPctF:8.1},
+{id:20,name:"IRONMAN Maryland",date:"September 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-maryland",starters:1153,slotsM:38,slotsF:17,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",flagship:false,cutoffMinM:568,cutoffMinF:694,fieldPctM:4.1,fieldPctF:7.7},
+{id:21,name:"IRONMAN Chattanooga",date:"September 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-chattanooga",starters:1298,slotsM:37,slotsF:18,bike:"hilly",run:"flat",heat:"hot",wetsuit:true,wind:"none",flagship:false,cutoffMinM:559,cutoffMinF:662,fieldPctM:3.6,fieldPctF:6.4},
+{id:22,name:"IRONMAN Wisconsin",date:"September 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-wisconsin",starters:1313,slotsM:26,slotsF:14,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:561,cutoffMinF:687,fieldPctM:2.5,fieldPctF:5.0},
+{id:23,name:"IRONMAN California",date:"October 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-california",starters:2310,slotsM:38,slotsF:17,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",flagship:false,cutoffMinM:510,cutoffMinF:657,fieldPctM:2.0,fieldPctF:3.8},
+{id:24,name:"IRONMAN Florida",date:"November 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-florida",starters:1453,slotsM:39,slotsF:16,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:577,cutoffMinF:644,fieldPctM:3.2,fieldPctF:6.6},
+{id:25,name:"IRONMAN Arizona",date:"November 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-arizona",starters:1611,slotsM:25,slotsF:15,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:531,cutoffMinF:692,fieldPctM:1.9,fieldPctF:4.6},
+{id:26,name:"IRONMAN Ottawa (Canada)",date:"August 2026",country:"Canada",continent:"namerica",url:"https://www.ironman.com/im-canada-ottawa",starters:1894,slotsM:64,slotsF:35,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:595,cutoffMinF:652,fieldPctM:4.8,fieldPctF:6.2},
+{id:27,name:"IRONMAN Cozumel (Latin Am. Champ.)",date:"November 2026",country:"Mexico",continent:"namerica",url:"https://www.ironman.com/im-cozumel",starters:1402,slotsM:75,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",flagship:true,cutoffMinM:566,cutoffMinF:666,fieldPctM:6.5,fieldPctF:10.2},
+{id:28,name:"IRONMAN Brazil",date:"May 2026",country:"Brazil",continent:"namerica",url:"https://www.ironman.com/im-brazil",starters:1755,slotsM:64,slotsF:40,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",flagship:false,cutoffMinM:616,cutoffMinF:779,fieldPctM:4.1,fieldPctF:19.3},
+// ── OCEANIA ──
+{id:29,name:"IRONMAN Western Australia (Champ.)",date:"December 2026",country:"Australia",continent:"oceania",url:"https://www.ironman.com/im-western-australia",starters:1088,slotsM:54,slotsF:21,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"strong",flagship:true,cutoffMinM:555,cutoffMinF:631,fieldPctM:6.2,fieldPctF:9.6},
+{id:30,name:"IRONMAN Cairns",date:"June 2026",country:"Australia",continent:"oceania",url:"https://www.ironman.com/im-cairns",starters:876,slotsM:64,slotsF:39,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",flagship:false,cutoffMinM:601,cutoffMinF:714,fieldPctM:9.0,fieldPctF:23.9},
+{id:31,name:"IRONMAN New Zealand",date:"March 2026",country:"New Zealand",continent:"oceania",url:"https://www.ironman.com/im-new-zealand",starters:958,slotsM:38,slotsF:17,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",flagship:false,cutoffMinM:635,cutoffMinF:647,fieldPctM:5.1,fieldPctF:8.2},
+// ── AFRICA ──
+{id:32,name:"IRONMAN South Africa (Champ.)",date:"April 2026",country:"South Africa",continent:"africa",url:"https://www.ironman.com/im-south-africa",starters:639,slotsM:85,slotsF:50,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"strong",flagship:true,cutoffMinM:696,cutoffMinF:800,fieldPctM:16.5,fieldPctF:40.0},
+// ── ASIA ──
+{id:33,name:"IRONMAN Japan",date:"August 2026",country:"Japan",continent:"asia",url:"https://www.ironman.com/im-japan",starters:1041,slotsM:28,slotsF:12,bike:"hilly",run:"flat",heat:"hot",wetsuit:true,wind:"none",flagship:false,cutoffMinM:609,cutoffMinF:714,fieldPctM:3.0,fieldPctF:12.9},
+{id:34,name:"IRONMAN Taiwan",date:"November 2026",country:"Taiwan",continent:"asia",url:"https://www.ironman.com/im-taiwan",starters:666,slotsM:65,slotsF:35,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",flagship:false,cutoffMinM:646,cutoffMinF:736,fieldPctM:12.0,fieldPctF:27.8},
+{id:35,name:"IRONMAN Gurye (Korea)",date:"September 2026",country:"South Korea",continent:"asia",url:"https://www.ironman.com/im-korea",starters:893,slotsM:29,slotsF:11,bike:"hilly",run:"hilly",heat:"hot",wetsuit:true,wind:"none",flagship:false,cutoffMinM:576,cutoffMinF:673,fieldPctM:3.6,fieldPctF:11.3},
+{id:36,name:"IRONMAN Malaysia",date:"February 2026",country:"Malaysia",continent:"asia",url:"https://www.ironman.com/im-malaysia",starters:607,slotsM:29,slotsF:11,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",flagship:false,cutoffMinM:598,cutoffMinF:771,fieldPctM:5.3,fieldPctF:20.0},
 ];
 const KS={M:{"18-24":1.000,"25-29":0.999,"30-34":1.000,"35-39":0.993,"40-44":0.968,"45-49":0.939,"50-54":0.898,"55-59":0.853,"60-64":0.796,"65-69":0.738,"70-74":0.678,"75-79":0.613},F:{"18-24":0.873,"25-29":0.889,"30-34":0.898,"35-39":0.892,"40-44":0.871,"45-49":0.843,"50-54":0.804,"55-59":0.748,"60-64":0.689,"65-69":0.625,"70-74":0.568,"75-79":0.509}};
 const C={bike:{flat:1,hilly:1.05,vhilly:1.085},run:{flat:1,hilly:1.025,vhilly:1.045},noWetsuit:1.008,heat:{normal:1,hot:1.015,extreme:1.025},wind:{none:1,moderate:1.008,strong:1.015}};
@@ -346,13 +371,17 @@ document.getElementById('calcBtn').addEventListener('click',()=>{
   list=list.map(r=>{
     const proj=toRace(neutral,r);
     const projAG=proj*factor;
-    const cutSec=r.cutoffMin*60;
+    const cutoffMin=gender==='M'?r.cutoffMinM:r.cutoffMinF;
+    const slotsG=gender==='M'?r.slotsM:r.slotsF;
+    const startersG=gender==='M'?Math.round(r.starters*0.85):Math.round(r.starters*0.15);
+    const fieldPct=gender==='M'?r.fieldPctM:r.fieldPctF;
+    const cutSec=cutoffMin*60;
     const diff=(projAG-cutSec)/60;
-    const agS=Math.round(r.starters/12);
-    const ratio=r.slots/r.starters*100;
-    const agSlots=Math.max(1,Math.round(r.slots*agS/r.starters));
-    const qual=Math.round(agS*r.fieldPct/100);
-    return{...r,proj,projAG,cutSec,diff,agS,ratio,agSlots,qual};
+    const ratio=(slotsG/r.starters*100);
+    const compLevel=ratio>6?'Very High':ratio>4?'High':ratio>2.5?'Medium':'Low';
+    const compClass=ratio>6?'rg':ratio>4?'rg':ratio>2.5?'rm':'rl';
+    const compHint=ratio>6?'Many slots for your gender':ratio>4?'Good availability':ratio>2.5?'Average competition':'Highly competitive';
+    return{...r,proj,projAG,cutSec,diff,slotsG,startersG,fieldPct,ratio:ratio.toFixed(1),compLevel,compClass,compHint};
   }).sort((a,b)=>a.diff-b.diff).slice(0,5);
 
   let html=`<div class="rh">
@@ -368,15 +397,8 @@ document.getElementById('calcBtn').addEventListener('click',()=>{
     const viC=tight?'via':under?'vig':'vir';
     const vtC=tight?'vta':under?'vtg':'vtr';
     const vTxt=under?`${abs} min under cutoff${tight?' — tight':''}`:`${abs} min over cutoff`;
-    const rC=r.ratio>=4?'rg':r.ratio>=2.5?'rm':'rl';
-    const rL2=r.ratio>=4?'High slot ratio':r.ratio>=2.5?'Average':'Low slot ratio';
-    const cvs=r.qual<=r.agSlots?`<span class="rg">slots likely available</span>`:`<span class="rl">more qualifiers than slots</span>`;
-    const barC=r.fieldPct<=12?'fg':r.fieldPct<=20?'fa':'fr';
-    let cv,cc;
-    if(under){
-      if(r.qual<=r.agSlots){cv=`~${r.qual} athletes in your AG est. to meet standard · ~${r.agSlots} slots — likely everyone who qualifies gets a slot.`;cc='fvg';}
-      else{cv=`~${r.qual} in your AG est. to meet standard · only ~${r.agSlots} slots — competition even after meeting standard.`;cc='fva';}
-    }else{cv=`Need to lower age-graded time by ${abs} min. ~${r.qual} athletes in your AG est. to meet standard.`;cc='fvr';}
+    const rC=r.compClass;
+    const rL2=r.compLevel;
     const bL3={flat:'Bike: flat',hilly:'Bike: hilly',vhilly:'Bike: v.hilly'};
     const rL3={flat:'Run: flat',hilly:'Run: hilly',vhilly:'Run: v.hilly'};
     let badges=[];
@@ -396,16 +418,22 @@ document.getElementById('calcBtn').addEventListener('click',()=>{
         <span class="rch ${chC}">${chL}</span>
       </div>
       <div class="rbadges">${badges.join('')}</div>
-      <div class="sg">
-        <div class="stb"><div class="stl">Kona slots / ratio</div>
-          <div class="stv">${r.slots}<span style="font-size:11px;font-weight:400;color:#aaa"> / ${r.ratio.toFixed(1)}%</span></div>
-          <div class="sts ${rC}">${rL2}</div></div>
-        <div class="stb"><div class="stl">Starters / your AG</div>
-          <div class="stv">${r.starters.toLocaleString()}<span style="font-size:11px;font-weight:400;color:#aaa"> / ~${r.agS}</span></div>
-          <div class="sts" style="color:#aaa">~${r.agSlots} AG slots</div></div>
-        <div class="stb"><div class="stl">AG meets standard</div>
-          <div class="stv">~${r.qual}<span style="font-size:11px;font-weight:400;color:#aaa"> ath.</span></div>
-          <div class="sts">${cvs}</div></div>
+      <div class="sg" style="grid-template-columns:1fr 1fr 1fr">
+        <div class="stb">
+          <div class="stl">Kona slots (${gender==='M'?'men':'women'})</div>
+          <div class="stv">${r.slotsG}</div>
+          <div class="sts" style="color:#aaa">${r.ratio}% of field</div>
+        </div>
+        <div class="stb">
+          <div class="stl">Starters (${gender==='M'?'men':'women'})</div>
+          <div class="stv">${r.startersG.toLocaleString()}</div>
+          <div class="sts" style="color:#aaa">2025 data</div>
+        </div>
+        <div class="stb">
+          <div class="stl">Slot competition</div>
+          <div class="stv ${rC}">${rL2}</div>
+          <div class="sts" style="color:#aaa">${r.compHint}</div>
+        </div>
       </div>
       <div class="cb">
         <div class="cr"><span class="cl">Projected finish</span>
@@ -414,12 +442,6 @@ document.getElementById('calcBtn').addEventListener('click',()=>{
         <div class="cr"><span class="cl">Kona Standard cutoff</span><span class="cv">${fmt(r.cutSec)}</span></div>
         <div class="cr"><span class="cl">Verdict</span>
           <div class="verd"><div class="vi ${viC}">${under?'✓':'✗'}</div><span class="${vtC}">${vTxt}</span></div></div>
-        <div class="fb">
-          <div class="fbl">Est. % of field meeting Kona Standard</div>
-          <div class="fbbg"><div class="fbf ${barC}" style="width:${Math.min(100,r.fieldPct)}%"></div></div>
-          <div class="fbn"><span>0%</span><span style="color:#1D9E75">~${r.fieldPct}%</span><span>100%</span></div>
-          <div class="fv ${cc}">${cv}</div>
-        </div>
       </div>
     </div>`;
   });
