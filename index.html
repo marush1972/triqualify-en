@@ -8,44 +8,44 @@
 <style>
 :root{--brand:#1D9E75;--brand-dark:#0F6E56;--brand-light:#E1F5EE;--r:8px;--rl:12px}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.5;color:#1a1a1a;background:#f8f8f6}
+body{font-family:system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.5;color:#1a1a1a;background:#f8f8f6}
 .wrap{max-width:1100px;margin:0 auto;padding:0 1.5rem}
 header{background:white;border-bottom:1px solid #e5e5e0;padding:.85rem 0;position:sticky;top:0;z-index:10}
 .hdr{display:flex;align-items:center;gap:12px}
 .logo{width:34px;height:34px;background:var(--brand);border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .logo svg{width:18px;height:18px;fill:white}
-.brand{font-size:19px;font-weight:500}.brand span{color:var(--brand)}
-.tagline{font-size:12px;color:#888;margin-top:1px}
+.brand{font-size:21px;font-weight:500}.brand span{color:var(--brand)}
+.tagline{font-size:13px;color:#888;margin-top:1px}
 main{padding:1.5rem 0}
 footer{border-top:1px solid #e5e5e0;padding:1.5rem 0;color:#888;font-size:12px;text-align:center}
 footer a{color:#888}
 .tabs{display:flex;border-bottom:1px solid #e5e5e0;margin-bottom:1.25rem;background:white;border-radius:var(--rl) var(--rl) 0 0;overflow:hidden}
-.tab{padding:9px 16px;font-size:13px;cursor:pointer;border-bottom:2px solid transparent;color:#888;transition:all .15s}
+.tab{padding:10px 16px;font-size:14px;cursor:pointer;border-bottom:2px solid transparent;color:#888;transition:all .15s}
 .tab.active{border-bottom-color:var(--brand);color:var(--brand);font-weight:500}
 .tab.disabled{color:#ccc;cursor:default}
 .card{background:white;border-radius:var(--rl);padding:1.25rem;margin-bottom:.75rem;border:.5px solid #e5e5e0}
-.card-title{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:white;background:var(--brand);margin:-1.25rem -1.25rem 1rem -1.25rem;padding:7px 1.25rem;border-radius:var(--rl) var(--rl) 0 0;display:flex;align-items:center;gap:8px}
+.card-title{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:white;background:var(--brand);margin:-1.25rem -1.25rem 1rem -1.25rem;padding:8px 1.25rem;border-radius:var(--rl) var(--rl) 0 0;display:flex;align-items:center;gap:8px}
 .card-title.blue{background:#2C5F8A}
-.card-title span{opacity:.7;font-weight:400;text-transform:none;letter-spacing:0;font-size:11px}
+.card-title span{opacity:.7;font-weight:400;text-transform:none;letter-spacing:0;font-size:12px}
 .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 1.5rem}
 .fgrid .sec{margin-bottom:.9rem}
 .fgrid .full{grid-column:1/-1}
 .sec{margin-bottom:.9rem}
-.sec label{display:block;font-size:12px;color:#888;margin-bottom:5px;font-weight:500}
-select,input[type=text]{width:100%;padding:7px 10px;border:.5px solid #d5d5d0;border-radius:var(--r);background:white;color:#1a1a1a;font-size:13px;outline:none;font-family:inherit}
+.sec label{display:block;font-size:13px;color:#888;margin-bottom:5px;font-weight:500}
+select,input[type=text]{width:100%;padding:8px 10px;border:.5px solid #d5d5d0;border-radius:var(--r);background:white;color:#1a1a1a;font-size:14px;outline:none;font-family:inherit}
 select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,158,117,.12)}
 .ti{display:flex;gap:5px;align-items:center}
 .ti input{text-align:center;width:52px}
 .tsep{color:#bbb;font-size:15px;font-weight:500}
 .tg{display:flex;gap:5px;flex-wrap:wrap}
-.tog{padding:4px 11px;border:.5px solid #d5d5d0;border-radius:20px;font-size:12px;cursor:pointer;color:#666;background:white;transition:all .15s;font-family:inherit;line-height:1.4}
+.tog{padding:5px 12px;border:.5px solid #d5d5d0;border-radius:20px;font-size:13px;cursor:pointer;color:#666;background:white;transition:all .15s;font-family:inherit;line-height:1.4}
 .tog.active{background:var(--brand-light);border-color:var(--brand);color:#0F6E56;font-weight:500}
-.hint{font-size:11px;color:#aaa;margin-top:4px;line-height:1.4}
-.sh{font-size:12px;font-weight:600;color:#555;margin-bottom:.6rem;padding-bottom:5px;border-bottom:.5px solid #f0f0ec;display:flex;align-items:center;gap:6px}
+.hint{font-size:12px;color:#aaa;margin-top:4px;line-height:1.4}
+.sh{font-size:13px;font-weight:600;color:#555;margin-bottom:.6rem;padding-bottom:5px;border-bottom:.5px solid #f0f0ec;display:flex;align-items:center;gap:6px}
 .si{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0}
 .is{background:#E6F1FB;color:#185FA5}.ib{background:#FAEEDA;color:#854F0B}.ir{background:#EAF3DE;color:#3B6D11}
 .iw{background:#EEEDFE;color:#534AB7}.ia{background:#FBEAF0;color:#993556}
-.btn{width:100%;padding:11px;background:var(--brand);color:white;border:none;border-radius:var(--r);font-size:14px;font-weight:600;cursor:pointer;margin-top:.25rem;transition:background .15s;font-family:inherit}
+.btn{width:100%;padding:12px;background:var(--brand);color:white;border:none;border-radius:var(--r);font-size:15px;font-weight:600;cursor:pointer;margin-top:.25rem;transition:background .15s;font-family:inherit}
 .btn:hover{background:var(--brand-dark)}
 .rh{background:white;border-radius:var(--rl);border:.5px solid #e5e5e0;padding:14px 16px;margin-bottom:10px}
 .rt{font-size:14px;font-weight:600;margin-bottom:4px}
@@ -149,12 +149,12 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
         </div>
       </div>
       <div class="sec">
-        <div class="sh"><span class="si iw">W</span> Weather</div>
-        <label>Air temperature</label>
-        <div class="tg" id="g-heat">
-          <div class="tog active" data-v="normal">Normal (≤28°C / 82°F)</div>
-          <div class="tog" data-v="hot">Hot (29–34°C)</div>
-          <div class="tog" data-v="extreme">Extreme (35°C+)</div>
+        <div class="sh"><span class="si ir">R</span> Run</div>
+        <label>Course profile</label>
+        <div class="tg" id="g-run">
+          <div class="tog active" data-v="flat">Flat</div>
+          <div class="tog" data-v="hilly">Hilly (~300m)</div>
+          <div class="tog" data-v="vhilly">Very hilly (600m+)</div>
         </div>
       </div>
 
@@ -174,12 +174,12 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
         </div>
       </div>
       <div class="sec">
-        <div class="sh"><span class="si ir">R</span> Run</div>
-        <label>Course profile</label>
-        <div class="tg" id="g-run">
-          <div class="tog active" data-v="flat">Flat</div>
-          <div class="tog" data-v="hilly">Hilly (~300m)</div>
-          <div class="tog" data-v="vhilly">Very hilly (600m+)</div>
+        <div class="sh"><span class="si iw">W</span> Weather</div>
+        <label>Air temperature</label>
+        <div class="tg" id="g-heat">
+          <div class="tog active" data-v="normal">Normal (≤28°C / 82°F)</div>
+          <div class="tog" data-v="hot">Hot (29–34°C)</div>
+          <div class="tog" data-v="extreme">Extreme (35°C+)</div>
         </div>
       </div>
 
