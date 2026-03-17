@@ -25,6 +25,10 @@ footer a{color:#888}
 .tab{padding:10px 16px;font-size:14px;cursor:pointer;border-bottom:2px solid transparent;color:#888;transition:all .15s}
 .tab.active{border-bottom-color:var(--brand);color:var(--brand);font-weight:500}
 .tab.disabled{color:#ccc;cursor:default}
+.ms-banner{background:linear-gradient(135deg,#1a3a5c,#185FA5);color:white;padding:9px 1.5rem;font-size:12px;display:flex;gap:2rem;flex-wrap:wrap;justify-content:center}
+.ms-banner a:hover{text-decoration:underline;opacity:.9}
+.ms-banner span{display:flex;align-items:center;gap:5px}
+.pane{display:none}.pane.active{display:block}
 .card{background:white;border-radius:var(--rl);padding:1.25rem;margin-bottom:.75rem;border:.5px solid #e5e5e0}
 .card-title{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:white;background:var(--brand);margin:-1.25rem -1.25rem 1rem -1.25rem;padding:8px 1.25rem;border-radius:var(--rl) var(--rl) 0 0;display:flex;align-items:center;gap:8px}
 .card-title.blue{background:var(--blue)}
@@ -127,16 +131,28 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
   </div>
 </header>
 
+<div id="ms-banner-full" class="ms-banner">
+  <a href="https://www.ironman.com/im-world-championship" target="_blank" rel="noopener" style="color:white;text-decoration:none;display:flex;align-items:center;gap:8px">
+    🏁 <strong>IRONMAN World Championship 2026</strong> — Kona, Hawaii · October 10 &nbsp;→
+  </a>
+</div>
+<div id="ms-banner-703" class="ms-banner" style="display:none">
+  <a href="https://www.ironman.com/im703-world-championship" target="_blank" rel="noopener" style="color:white;text-decoration:none;display:flex;align-items:center;gap:8px">
+    🏁 <strong>IRONMAN 70.3 World Championship 2026</strong> — Nice, France · Sep 12–13 &nbsp;→
+  </a>
+</div>
+
 <main>
 <div class="wrap">
 
   <div class="tabs">
-    <div class="tab active">IRONMAN Full</div>
-    <div class="tab disabled">IRONMAN 70.3 (coming soon)</div>
+    <div class="tab active" onclick="switchTab('full')">IRONMAN Full</div>
+    <div class="tab" onclick="switchTab('703')">IRONMAN 70.3</div>
     <div class="tab disabled">Challenge (coming soon)</div>
   </div>
 
-  <!-- STEP 1 -->
+  <!-- ══ IRONMAN FULL PANE ══ -->
+  <div id="pane-full" class="pane active">
   <div class="card blue-card" style="border-color:#185FA544">
     <div class="card-title blue">Step 1 — Your reference race <span>Describe the race where you set your reference time</span></div>
     <div class="fgrid">
@@ -248,8 +264,130 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
     <button class="btn" id="calcBtn">Find my best qualifying races →</button>
   </div>
 
-  <!-- RESULTS -->
+  <!-- RESULTS FULL -->
   <div id="results"></div>
+
+  </div><!-- end pane-full -->
+
+  <!-- ══ IRONMAN 70.3 PANE ══ -->
+  <div id="pane-703" class="pane">
+
+  <!-- STEP 1 70.3 -->
+  <div class="card blue-card" style="border-color:#185FA544">
+    <div class="card-title blue">Step 1 — Your reference race <span>Describe the 70.3 race where you set your reference time</span></div>
+    <div class="fgrid">
+
+      <div class="sec">
+        <label>Gender</label>
+        <select id="gender703"><option value="M">Male</option><option value="F">Female</option></select>
+      </div>
+      <div class="sec">
+        <label>Age group</label>
+        <select id="ag703">
+          <option value="18-24">18–24</option><option value="25-29">25–29</option>
+          <option value="30-34">30–34</option><option value="35-39">35–39</option>
+          <option value="40-44" selected>40–44</option><option value="45-49">45–49</option>
+          <option value="50-54">50–54</option><option value="55-59">55–59</option>
+          <option value="60-64">60–64</option><option value="65-69">65–69</option>
+          <option value="70-74">70–74</option><option value="75-79">75–79</option>
+        </select>
+      </div>
+
+      <div class="sec full">
+        <label>Finish time (HH : MM : SS)</label>
+        <div class="ti">
+          <input type="text" id="th703" value="05" maxlength="2">
+          <span class="tsep">:</span>
+          <input type="text" id="tm703" value="30" maxlength="2">
+          <span class="tsep">:</span>
+          <input type="text" id="ts703" value="00" maxlength="2">
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sh"><span class="si is">S</span> Swim</div>
+        <label>Wetsuit</label>
+        <div class="tg" id="g703-swim">
+          <div class="tog active" data-v="wetsuit">Wetsuit allowed</div>
+          <div class="tog" data-v="nowetsuit">No wetsuit</div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sh"><span class="si ir">R</span> Run</div>
+        <label>Course profile</label>
+        <div class="tg" id="g703-run">
+          <div class="tog active" data-v="flat">Flat</div>
+          <div class="tog" data-v="hilly">Hilly (~150m)</div>
+          <div class="tog" data-v="vhilly">Very hilly (300m+)</div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sh"><span class="si ib">B</span> Bike</div>
+        <label>Course profile</label>
+        <div class="tg" id="g703-bike">
+          <div class="tog active" data-v="flat">Flat</div>
+          <div class="tog" data-v="hilly">Hilly (~750m)</div>
+          <div class="tog" data-v="vhilly">Very hilly (1,200m+)</div>
+        </div>
+        <label style="margin-top:8px">Wind</label>
+        <div class="tg" id="g703-wind">
+          <div class="tog active" data-v="none">No wind</div>
+          <div class="tog" data-v="moderate">Moderate</div>
+          <div class="tog" data-v="strong">Strong</div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sh"><span class="si iw">W</span> Weather</div>
+        <label>Air temperature</label>
+        <div class="tg" id="g703-heat">
+          <div class="tog active" data-v="normal">Normal (≤28°C / 82°F)</div>
+          <div class="tog" data-v="hot">Hot (29–34°C)</div>
+          <div class="tog" data-v="extreme">Extreme (35°C+)</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STEP 2 70.3 -->
+  <div class="card" style="border-color:#1D9E7544">
+    <div class="card-title">Step 2 — About you <span>Used to fine-tune race recommendations</span></div>
+    <div class="fgrid">
+
+      <div class="sec">
+        <div class="sh"><span class="si ia">A</span> Your strengths</div>
+        <label>Athlete profile</label>
+        <div class="tg" id="g703-profile">
+          <div class="tog active" data-v="balanced">Balanced</div>
+          <div class="tog" data-v="biker">Strong cyclist</div>
+          <div class="tog" data-v="runner">Strong runner</div>
+          <div class="tog" data-v="swimmer">Strong swimmer</div>
+        </div>
+        <div class="hint">Strong cyclist → gains on hilly bike. Strong runner → loses less in heat. Strong swimmer → gains without wetsuit.</div>
+      </div>
+
+      <div class="sec">
+        <div class="sh">🌍 Continent</div>
+        <label>Preferred race region</label>
+        <div class="tg" id="g703-cont">
+          <div class="tog active" data-v="all">All</div>
+          <div class="tog" data-v="europe">Europe</div>
+          <div class="tog" data-v="namerica">N. America</div>
+          <div class="tog" data-v="oceania">Oceania</div>
+          <div class="tog" data-v="africa">Africa</div>
+          <div class="tog" data-v="asia">Asia</div>
+        </div>
+      </div>
+
+    </div>
+    <button class="btn" id="calcBtn703">Find my best 70.3 qualifying races →</button>
+  </div>
+
+  <!-- RESULTS 70.3 -->
+  <div id="results703"></div>
+
+  </div><!-- end pane-703 -->
 
 </div>
 </main>
@@ -457,6 +595,287 @@ document.getElementById('calcBtn').addEventListener('click',()=>{
   const el=document.getElementById('results');
   el.innerHTML=html;
   el.scrollIntoView({behavior:'smooth',block:'start'});
+});
+
+// ══ TAB SWITCHING ══
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach((t,i)=>{
+    t.classList.toggle('active', (tab==='full'&&i===0)||(tab==='703'&&i===1));
+  });
+  document.getElementById('pane-full').classList.toggle('active', tab==='full');
+  document.getElementById('pane-703').classList.toggle('active', tab==='703');
+  document.getElementById('ms-banner-full').style.display = tab==='full'?'':'none';
+  document.getElementById('ms-banner-703').style.display = tab==='703'?'':'none';
+  document.getElementById('results').innerHTML='';
+  document.getElementById('results703').innerHTML='';
+}
+
+// ══ 70.3 KONA STANDARD COEFFICIENTS ══
+// Based on IRONMAN 70.3 Standard (top 20% of last 5 WC editions)
+const KS703={
+  M:{"18-24":1.000,"25-29":0.998,"30-34":0.999,"35-39":0.991,"40-44":0.963,"45-49":0.930,"50-54":0.887,"55-59":0.838,"60-64":0.778,"65-69":0.717,"70-74":0.655,"75-79":0.590},
+  F:{"18-24":0.868,"25-29":0.883,"30-34":0.891,"35-39":0.885,"40-44":0.863,"45-49":0.834,"50-54":0.793,"55-59":0.735,"60-64":0.674,"65-69":0.610,"70-74":0.552,"75-79":0.493}
+};
+
+// ══ 70.3 RACES DATA ══
+const RACES703=[
+{id:1,name:"IRONMAN 70.3 Aix-en-Provence",country:"France",continent:"europe",url:"https://www.ironman.com/im703-aix-en-provence",starters:2140,slotsM:38,slotsF:11,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:261,cutoffMinF:297,fieldPctM:2.1,fieldPctF:3.6},
+{id:2,name:"IRONMAN 70.3 Belgrade",country:"Serbia",continent:"europe",url:"https://www.ironman.com/im703-belgrade",starters:552,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:287,cutoffMinF:360,fieldPctM:7.4,fieldPctF:43.8},
+{id:3,name:"IRONMAN 70.3 Bolton",country:"United Kingdom",continent:"europe",url:"https://www.ironman.com/im703-bolton",starters:1090,slotsM:37,slotsF:13,bike:"hilly",run:"hilly",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:266,cutoffMinF:321,fieldPctM:4.2,fieldPctF:6.2},
+{id:4,name:"IRONMAN 70.3 Duisburg",country:"Germany",continent:"europe",url:"https://www.ironman.com/im703-duisburg",starters:2021,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:247,cutoffMinF:289,fieldPctM:2.2,fieldPctF:8.3},
+{id:5,name:"IRONMAN 70.3 Elsinore",country:"Denmark",continent:"europe",url:"https://www.ironman.com/im703-elsinore",starters:1795,slotsM:35,slotsF:15,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:255,cutoffMinF:293,fieldPctM:2.6,fieldPctF:3.3},
+{id:6,name:"IRONMAN 70.3 Erkner (Berlin)",country:"Germany",continent:"europe",url:"https://www.ironman.com/im703-berlin",starters:1561,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:255,cutoffMinF:300,fieldPctM:2.5,fieldPctF:8.9},
+{id:7,name:"IRONMAN 70.3 Greece",country:"Greece",continent:"europe",url:"https://www.ironman.com/im703-greece",starters:687,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"moderate",cutoffMinM:257,cutoffMinF:321,fieldPctM:5.4,fieldPctF:22.9},
+{id:8,name:"IRONMAN 70.3 Hradec Králové",country:"Czech Republic",continent:"europe",url:"https://www.ironman.com/im703-hradec-kralove",starters:1309,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:260,cutoffMinF:292,fieldPctM:2.8,fieldPctF:12.8},
+{id:9,name:"IRONMAN 70.3 Italy Emilia-Romagna",country:"Italy",continent:"europe",url:"https://www.ironman.com/im703-emilia-romagna",starters:2026,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:285,cutoffMinF:304,fieldPctM:2.2,fieldPctF:8.2},
+{id:10,name:"IRONMAN 70.3 Jönköping",country:"Sweden",continent:"europe",url:"https://www.ironman.com/im703-jonkoping",starters:1702,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:241,cutoffMinF:310,fieldPctM:2.7,fieldPctF:8.2},
+{id:11,name:"IRONMAN 70.3 Knokke-Heist",country:"Belgium",continent:"europe",url:"https://www.ironman.com/im703-knokke-heist",starters:1816,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",cutoffMinM:246,cutoffMinF:303,fieldPctM:2.0,fieldPctF:10.2},
+{id:12,name:"IRONMAN 70.3 Kraichgau",country:"Germany",continent:"europe",url:"https://www.ironman.com/im703-kraichgau",starters:2051,slotsM:36,slotsF:13,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:260,cutoffMinF:303,fieldPctM:2.1,fieldPctF:3.5},
+{id:13,name:"IRONMAN 70.3 Kraków",country:"Poland",continent:"europe",url:"https://www.ironman.com/im703-krakow",starters:1588,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:272,cutoffMinF:300,fieldPctM:2.2,fieldPctF:12.1},
+{id:14,name:"IRONMAN 70.3 Luxembourg",country:"Luxembourg",continent:"europe",url:"https://www.ironman.com/im703-luxembourg",starters:2390,slotsM:30,slotsF:30,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:275,cutoffMinF:298,fieldPctM:1.5,fieldPctF:6.8},
+{id:15,name:"IRONMAN 70.3 Mallorca",country:"Spain",continent:"europe",url:"https://www.ironman.com/im703-mallorca",starters:2771,slotsM:40,slotsF:40,bike:"hilly",run:"flat",heat:"hot",wetsuit:true,wind:"moderate",cutoffMinM:269,cutoffMinF:314,fieldPctM:1.8,fieldPctF:8.2},
+{id:16,name:"IRONMAN 70.3 Nice (European Champ.)",country:"France",continent:"europe",url:"https://www.ironman.com/im703-nice",starters:1913,slotsM:38,slotsF:12,bike:"vhilly",run:"hilly",heat:"hot",wetsuit:false,wind:"moderate",cutoffMinM:291,cutoffMinF:333,fieldPctM:2.4,fieldPctF:3.6},
+{id:17,name:"IRONMAN 70.3 Poreč",country:"Croatia",continent:"europe",url:"https://www.ironman.com/im703-porec",starters:1293,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:255,cutoffMinF:301,fieldPctM:2.8,fieldPctF:12.9},
+{id:18,name:"IRONMAN 70.3 Portugal Cascais",country:"Portugal",continent:"europe",url:"https://www.ironman.com/im703-portugal",starters:2332,slotsM:35,slotsF:35,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",cutoffMinM:256,cutoffMinF:332,fieldPctM:1.8,fieldPctF:8.6},
+{id:19,name:"IRONMAN 70.3 Poznań",country:"Poland",continent:"europe",url:"https://www.ironman.com/im703-poznan",starters:1021,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:238,cutoffMinF:293,fieldPctM:3.6,fieldPctF:16.0},
+{id:20,name:"IRONMAN 70.3 Swansea",country:"United Kingdom",continent:"europe",url:"https://www.ironman.com/im703-swansea",starters:1404,slotsM:35,slotsF:35,bike:"hilly",run:"hilly",heat:"normal",wetsuit:true,wind:"moderate",cutoffMinM:272,cutoffMinF:352,fieldPctM:3.2,fieldPctF:11.7},
+{id:21,name:"IRONMAN 70.3 Switzerland",country:"Switzerland",continent:"europe",url:"https://www.ironman.com/im703-switzerland",starters:1895,slotsM:38,slotsF:12,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:256,cutoffMinF:299,fieldPctM:2.5,fieldPctF:3.1},
+{id:22,name:"IRONMAN 70.3 Tallinn",country:"Estonia",continent:"europe",url:"https://www.ironman.com/im703-tallinn",starters:1132,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:286,cutoffMinF:299,fieldPctM:4.4,fieldPctF:10.4},
+{id:23,name:"IRONMAN 70.3 Tours",country:"France",continent:"europe",url:"https://www.ironman.com/im703-tours",starters:2164,slotsM:36,slotsF:14,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:265,cutoffMinF:304,fieldPctM:2.1,fieldPctF:3.4},
+{id:24,name:"IRONMAN 70.3 Turkey",country:"Turkey",continent:"europe",url:"https://www.ironman.com/im703-turkey",starters:1151,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"moderate",cutoffMinM:262,cutoffMinF:292,fieldPctM:3.1,fieldPctF:15.8},
+{id:25,name:"IRONMAN 70.3 Valencia",country:"Spain",continent:"europe",url:"https://www.ironman.com/im703-valencia",starters:2077,slotsM:47,slotsF:13,bike:"flat",run:"flat",heat:"normal",wetsuit:false,wind:"moderate",cutoffMinM:257,cutoffMinF:305,fieldPctM:2.7,fieldPctF:4.0},
+{id:26,name:"IRONMAN 70.3 Venice-Jesolo",country:"Italy",continent:"europe",url:"https://www.ironman.com/im703-venice",starters:2229,slotsM:37,slotsF:12,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:248,cutoffMinF:291,fieldPctM:2.0,fieldPctF:3.1},
+{id:27,name:"IRONMAN 70.3 Vichy",country:"France",continent:"europe",url:"https://www.ironman.com/im703-vichy",starters:2067,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:253,cutoffMinF:310,fieldPctM:2.1,fieldPctF:9.7},
+{id:28,name:"IRONMAN 70.3 Warsaw",country:"Poland",continent:"europe",url:"https://www.ironman.com/im703-warsaw",starters:1602,slotsM:35,slotsF:10,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:253,cutoffMinF:270,fieldPctM:2.6,fieldPctF:3.6},
+{id:29,name:"IRONMAN 70.3 Weymouth",country:"United Kingdom",continent:"europe",url:"https://www.ironman.com/im703-weymouth",starters:1504,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",cutoffMinM:239,cutoffMinF:272,fieldPctM:2.7,fieldPctF:7.9},
+{id:30,name:"IRONMAN 70.3 Westfriesland",country:"Netherlands",continent:"europe",url:"https://www.ironman.com/im703-westfriesland",starters:1573,slotsM:36,slotsF:14,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",cutoffMinM:255,cutoffMinF:302,fieldPctM:2.9,fieldPctF:4.0},
+{id:31,name:"IRONMAN 70.3 Zell am See-Kaprun",country:"Austria",continent:"europe",url:"https://www.ironman.com/im703-zell-am-see",starters:1775,slotsM:35,slotsF:35,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:271,cutoffMinF:318,fieldPctM:2.5,fieldPctF:9.2},
+{id:32,name:"IRONMAN 70.3 Augusta",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-augusta",starters:2073,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:259,cutoffMinF:304,fieldPctM:2.4,fieldPctF:5.9},
+{id:33,name:"IRONMAN 70.3 Boise",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-boise",starters:1347,slotsM:35,slotsF:35,bike:"hilly",run:"hilly",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:279,cutoffMinF:306,fieldPctM:3.6,fieldPctF:9.3},
+{id:34,name:"IRONMAN 70.3 Boulder",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-boulder",starters:1575,slotsM:34,slotsF:16,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:273,cutoffMinF:309,fieldPctM:2.9,fieldPctF:3.8},
+{id:35,name:"IRONMAN 70.3 Calgary",country:"Canada",continent:"namerica",url:"https://www.ironman.com/im703-calgary",starters:244,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:265,cutoffMinF:312,fieldPctM:15.3,fieldPctF:62.5},
+{id:36,name:"IRONMAN 70.3 Chattanooga",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-chattanooga",starters:2600,slotsM:29,slotsF:16,bike:"hilly",run:"flat",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:225,cutoffMinF:247,fieldPctM:1.5,fieldPctF:2.2},
+{id:37,name:"IRONMAN 70.3 Dallas",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-dallas",starters:1675,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:254,cutoffMinF:279,fieldPctM:2.5,fieldPctF:6.3},
+{id:38,name:"IRONMAN 70.3 Des Moines",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-des-moines",starters:1003,slotsM:30,slotsF:15,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:269,cutoffMinF:301,fieldPctM:4.2,fieldPctF:5.1},
+{id:39,name:"IRONMAN 70.3 Eagleman",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-eagleman",starters:1891,slotsM:29,slotsF:15,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:254,cutoffMinF:290,fieldPctM:2.1,fieldPctF:2.8},
+{id:40,name:"IRONMAN 70.3 Florida",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-florida",starters:880,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:257,cutoffMinF:320,fieldPctM:5.0,fieldPctF:19.3},
+{id:41,name:"IRONMAN 70.3 Gulf Coast",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-gulf-coast",starters:1244,slotsM:30,slotsF:14,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:236,cutoffMinF:273,fieldPctM:3.2,fieldPctF:4.8},
+{id:42,name:"IRONMAN 70.3 Happy Valley",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-happy-valley",starters:778,slotsM:35,slotsF:15,bike:"hilly",run:"hilly",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:290,cutoffMinF:323,fieldPctM:6.1,fieldPctF:7.4},
+{id:43,name:"IRONMAN 70.3 Hawaii",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-hawaii",starters:872,slotsM:29,slotsF:16,bike:"hilly",run:"hilly",heat:"hot",wetsuit:false,wind:"moderate",cutoffMinM:283,cutoffMinF:354,fieldPctM:4.6,fieldPctF:6.8},
+{id:44,name:"IRONMAN 70.3 La Quinta",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-la-quinta",starters:2133,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:258,cutoffMinF:300,fieldPctM:2.2,fieldPctF:6.5},
+{id:45,name:"IRONMAN 70.3 Louisville",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-louisville",starters:907,slotsM:30,slotsF:30,bike:"hilly",run:"flat",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:262,cutoffMinF:302,fieldPctM:4.7,fieldPctF:11.2},
+{id:46,name:"IRONMAN 70.3 Maine",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-maine",starters:1817,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:250,cutoffMinF:304,fieldPctM:2.4,fieldPctF:5.5},
+{id:47,name:"IRONMAN 70.3 Michigan",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-michigan",starters:1518,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:295,cutoffMinF:292,fieldPctM:2.7,fieldPctF:7.1},
+{id:48,name:"IRONMAN 70.3 Mont-Tremblant",country:"Canada",continent:"namerica",url:"https://www.ironman.com/im703-mont-tremblant",starters:2526,slotsM:32,slotsF:17,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:266,cutoffMinF:308,fieldPctM:1.8,fieldPctF:2.4},
+{id:49,name:"IRONMAN 70.3 Muncie",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-muncie",starters:699,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:312,cutoffMinF:320,fieldPctM:6.0,fieldPctF:15.1},
+{id:50,name:"IRONMAN 70.3 Muskoka",country:"Canada",continent:"namerica",url:"https://www.ironman.com/im703-muskoka",starters:1273,slotsM:30,slotsF:30,bike:"hilly",run:"hilly",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:276,cutoffMinF:310,fieldPctM:3.1,fieldPctF:9.8},
+{id:51,name:"IRONMAN 70.3 Musselman",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-musselman",starters:1334,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:269,cutoffMinF:310,fieldPctM:4.0,fieldPctF:7.7},
+{id:52,name:"IRONMAN 70.3 New York",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-new-york",starters:2162,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:283,cutoffMinF:298,fieldPctM:2.1,fieldPctF:7.0},
+{id:53,name:"IRONMAN 70.3 North Carolina",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-nc",starters:2545,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:269,cutoffMinF:363,fieldPctM:2.0,fieldPctF:4.7},
+{id:54,name:"IRONMAN 70.3 Oceanside",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-oceanside",starters:2330,slotsM:36,slotsF:14,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",cutoffMinM:269,cutoffMinF:309,fieldPctM:1.9,fieldPctF:3.0},
+{id:55,name:"IRONMAN 70.3 Ohio",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-ohio",starters:993,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:258,cutoffMinF:306,fieldPctM:5.0,fieldPctF:11.8},
+{id:56,name:"IRONMAN 70.3 Oregon",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-oregon",starters:2134,slotsM:35,slotsF:35,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:250,cutoffMinF:295,fieldPctM:2.7,fieldPctF:4.3},
+{id:57,name:"IRONMAN 70.3 Rockford",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-rockford",starters:1645,slotsM:29,slotsF:16,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:312,cutoffMinF:328,fieldPctM:2.6,fieldPctF:3.1},
+{id:58,name:"IRONMAN 70.3 Santa Cruz",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-santa-cruz",starters:2128,slotsM:30,slotsF:30,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",cutoffMinM:257,cutoffMinF:305,fieldPctM:1.9,fieldPctF:5.5},
+{id:59,name:"IRONMAN 70.3 St. George",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-st-george",starters:1964,slotsM:54,slotsF:21,bike:"hilly",run:"hilly",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:302,cutoffMinF:308,fieldPctM:3.6,fieldPctF:4.5},
+{id:60,name:"IRONMAN 70.3 Texas",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-texas",starters:1447,slotsM:35,slotsF:15,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:224,cutoffMinF:266,fieldPctM:3.2,fieldPctF:4.4},
+{id:61,name:"IRONMAN 70.3 Waco",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-waco",starters:1713,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:296,cutoffMinF:321,fieldPctM:2.7,fieldPctF:8.8},
+{id:62,name:"IRONMAN 70.3 Washington Tri-Cities",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-washington",starters:1633,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:254,cutoffMinF:308,fieldPctM:2.7,fieldPctF:5.7},
+{id:63,name:"IRONMAN 70.3 Western Massachusetts",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-western-massachusetts",starters:1057,slotsM:29,slotsF:16,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:231,cutoffMinF:270,fieldPctM:3.7,fieldPctF:6.0},
+{id:64,name:"IRONMAN 70.3 Wisconsin",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-wisconsin",starters:1506,slotsM:35,slotsF:35,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:265,cutoffMinF:295,fieldPctM:3.5,fieldPctF:6.9},
+{id:65,name:"IRONMAN 70.3 Cozumel",country:"Mexico",continent:"namerica",url:"https://www.ironman.com/im703-cozumel",starters:1548,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:284,cutoffMinF:307,fieldPctM:2.6,fieldPctF:7.4},
+{id:66,name:"IRONMAN 70.3 Monterrey",country:"Mexico",continent:"namerica",url:"https://www.ironman.com/im703-monterrey",starters:1256,slotsM:31,slotsF:14,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:289,cutoffMinF:292,fieldPctM:3.1,fieldPctF:5.2},
+{id:67,name:"IRONMAN 70.3 Campeche",country:"Mexico",continent:"namerica",url:"https://www.ironman.com/im703-campeche",starters:344,slotsM:30,slotsF:14,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:298,cutoffMinF:335,fieldPctM:11.3,fieldPctF:17.7},
+{id:68,name:"IRONMAN 70.3 Acapulco",country:"Mexico",continent:"namerica",url:"https://www.ironman.com/im703-acapulco",starters:346,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:313,cutoffMinF:372,fieldPctM:8.7,fieldPctF:43.1},
+{id:69,name:"IRONMAN 70.3 Riviera Nayarit",country:"Mexico",continent:"namerica",url:"https://www.ironman.com/im703-riviera-nayarit",starters:985,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:296,cutoffMinF:329,fieldPctM:3.2,fieldPctF:12.3},
+{id:70,name:"IRONMAN 70.3 Panama",country:"Panama",continent:"namerica",url:"https://www.ironman.com/im703-panama",starters:1021,slotsM:29,slotsF:14,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:290,cutoffMinF:308,fieldPctM:3.9,fieldPctF:5.0},
+{id:71,name:"IRONMAN 70.3 San Juan",country:"Puerto Rico",continent:"namerica",url:"https://www.ironman.com/im703-san-juan",starters:991,slotsM:32,slotsF:13,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:243,cutoffMinF:300,fieldPctM:4.0,fieldPctF:6.5},
+{id:72,name:"IRONMAN 70.3 Puerto Rico",country:"Puerto Rico",continent:"namerica",url:"https://www.ironman.com/im703-puerto-rico",starters:783,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:275,cutoffMinF:316,fieldPctM:4.2,fieldPctF:13.4},
+{id:73,name:"IRONMAN 70.3 Cap Cana",country:"Dominican Rep.",continent:"namerica",url:"https://www.ironman.com/im703-cap-cana",starters:568,slotsM:32,slotsF:13,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:298,cutoffMinF:336,fieldPctM:7.3,fieldPctF:10.2},
+{id:74,name:"IRONMAN 70.3 Buenos Aires",country:"Argentina",continent:"namerica",url:"https://www.ironman.com/im703-buenos-aires",starters:1042,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",cutoffMinM:255,cutoffMinF:299,fieldPctM:2.8,fieldPctF:17.0},
+{id:75,name:"IRONMAN 70.3 Valdivia",country:"Chile",continent:"namerica",url:"https://www.ironman.com/im703-valdivia",starters:1438,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",cutoffMinM:255,cutoffMinF:304,fieldPctM:2.5,fieldPctF:13.5},
+{id:76,name:"IRONMAN 70.3 Pucón",country:"Chile",continent:"namerica",url:"https://www.ironman.com/im703-pucon",starters:1191,slotsM:25,slotsF:25,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:274,cutoffMinF:325,fieldPctM:2.5,fieldPctF:14.5},
+{id:77,name:"IRONMAN 70.3 São Paulo",country:"Brazil",continent:"namerica",url:"https://www.ironman.com/im703-sao-paulo",starters:1454,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:266,cutoffMinF:305,fieldPctM:2.0,fieldPctF:10.8},
+{id:78,name:"IRONMAN 70.3 Florianópolis",country:"Brazil",continent:"namerica",url:"https://www.ironman.com/im703-florianopolis",starters:1391,slotsM:40,slotsF:40,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:250,cutoffMinF:302,fieldPctM:3.3,fieldPctF:22.1},
+{id:79,name:"IRONMAN 70.3 Rio de Janeiro",country:"Brazil",continent:"namerica",url:"https://www.ironman.com/im703-rio-de-janeiro",starters:1417,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:246,cutoffMinF:299,fieldPctM:2.2,fieldPctF:9.0},
+{id:80,name:"IRONMAN 70.3 Brasília",country:"Brazil",continent:"namerica",url:"https://www.ironman.com/im703-brasilia",starters:1379,slotsM:32,slotsF:13,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:252,cutoffMinF:283,fieldPctM:2.9,fieldPctF:4.6},
+{id:81,name:"IRONMAN 70.3 Aracaju",country:"Brazil",continent:"namerica",url:"https://www.ironman.com/im703-aracaju",starters:998,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:275,cutoffMinF:357,fieldPctM:3.1,fieldPctF:13.7},
+{id:82,name:"IRONMAN 70.3 Ecuador",country:"Ecuador",continent:"namerica",url:"https://www.ironman.com/im703-ecuador",starters:673,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:270,cutoffMinF:335,fieldPctM:4.4,fieldPctF:25.3},
+{id:83,name:"IRONMAN 70.3 Peru",country:"Peru",continent:"namerica",url:"https://www.ironman.com/im703-peru",starters:887,slotsM:32,slotsF:13,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:259,cutoffMinF:302,fieldPctM:4.6,fieldPctF:6.8},
+{id:84,name:"IRONMAN 70.3 Cartagena",country:"Colombia",continent:"namerica",url:"https://www.ironman.com/im703-cartagena",starters:1762,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:308,cutoffMinF:306,fieldPctM:2.1,fieldPctF:9.1},
+{id:85,name:"IRONMAN 70.3 San Andrés",country:"Colombia",continent:"namerica",url:"https://www.ironman.com/im703-san-andres",starters:877,slotsM:33,slotsF:12,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:241,cutoffMinF:310,fieldPctM:4.6,fieldPctF:7.2},
+{id:86,name:"IRONMAN 70.3 San Salvador",country:"El Salvador",continent:"namerica",url:"https://www.ironman.com/im703-san-salvador",starters:588,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:332,cutoffMinF:412,fieldPctM:5.0,fieldPctF:29.8},
+{id:87,name:"IRONMAN 70.3 Encarnación",country:"Paraguay",continent:"namerica",url:"https://www.ironman.com/im703-encarnacion",starters:368,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:314,cutoffMinF:350,fieldPctM:8.1,fieldPctF:42.4},
+{id:88,name:"IRONMAN 70.3 Punta del Este",country:"Uruguay",continent:"namerica",url:"https://www.ironman.com/im703-punta-del-este",starters:1137,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"normal",wetsuit:false,wind:"moderate",cutoffMinM:272,cutoffMinF:307,fieldPctM:2.7,fieldPctF:12.0},
+{id:89,name:"IRONMAN 70.3 Durban",country:"South Africa",continent:"africa",url:"https://www.ironman.com/im703-durban",starters:1238,slotsM:31,slotsF:14,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:282,cutoffMinF:311,fieldPctM:3.5,fieldPctF:4.1},
+{id:90,name:"IRONMAN 70.3 Mossel Bay",country:"South Africa",continent:"africa",url:"https://www.ironman.com/im703-mossel-bay",starters:1730,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"strong",cutoffMinM:281,cutoffMinF:324,fieldPctM:2.3,fieldPctF:6.8},
+{id:91,name:"IRONMAN 70.3 Agadir",country:"Morocco",continent:"africa",url:"https://www.ironman.com/im703-agadir",starters:461,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",cutoffMinM:249,cutoffMinF:343,fieldPctM:7.5,fieldPctF:50.8},
+{id:92,name:"IRONMAN 70.3 Oman",country:"Oman",continent:"africa",url:"https://www.ironman.com/im703-oman",starters:691,slotsM:36,slotsF:14,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:258,cutoffMinF:386,fieldPctM:6.3,fieldPctF:11.4},
+{id:93,name:"IRONMAN 70.3 Muscat",country:"Oman",continent:"africa",url:"https://www.ironman.com/im703-muscat",starters:792,slotsM:40,slotsF:40,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:274,cutoffMinF:301,fieldPctM:6.3,fieldPctF:25.0},
+{id:94,name:"IRONMAN 70.3 Salalah",country:"Oman",continent:"africa",url:"https://www.ironman.com/im703-salalah",starters:203,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:310,cutoffMinF:397,fieldPctM:17.6,fieldPctF:90.9},
+{id:95,name:"IRONMAN 70.3 Cairns",country:"Australia",continent:"oceania",url:"https://www.ironman.com/im703-cairns",starters:1048,slotsM:27,slotsF:17,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:273,cutoffMinF:305,fieldPctM:3.8,fieldPctF:5.0},
+{id:96,name:"IRONMAN 70.3 Geelong",country:"Australia",continent:"oceania",url:"https://www.ironman.com/im703-geelong",starters:1190,slotsM:33,slotsF:12,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",cutoffMinM:254,cutoffMinF:307,fieldPctM:3.5,fieldPctF:4.7},
+{id:97,name:"IRONMAN 70.3 Melbourne",country:"Australia",continent:"oceania",url:"https://www.ironman.com/im703-melbourne",starters:1259,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:220,cutoffMinF:272,fieldPctM:3.6,fieldPctF:12.5},
+{id:98,name:"IRONMAN 70.3 Port Macquarie",country:"Australia",continent:"oceania",url:"https://www.ironman.com/im703-port-macquarie",starters:1155,slotsM:30,slotsF:15,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:235,cutoffMinF:286,fieldPctM:3.5,fieldPctF:5.0},
+{id:99,name:"IRONMAN 70.3 Sunshine Coast",country:"Australia",continent:"oceania",url:"https://www.ironman.com/im703-sunshine-coast",starters:1418,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:246,cutoffMinF:295,fieldPctM:3.2,fieldPctF:10.4},
+{id:100,name:"IRONMAN 70.3 Victoria",country:"Canada",continent:"namerica",url:"https://www.ironman.com/im703-victoria",starters:1312,slotsM:28,slotsF:17,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:234,cutoffMinF:276,fieldPctM:3.2,fieldPctF:3.9},
+{id:101,name:"IRONMAN 70.3 Western Australia",country:"Australia",continent:"oceania",url:"https://www.ironman.com/im703-western-australia",starters:1084,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"strong",cutoffMinM:257,cutoffMinF:304,fieldPctM:4.1,fieldPctF:8.7},
+{id:102,name:"IRONMAN 70.3 Western Sydney",country:"Australia",continent:"oceania",url:"https://www.ironman.com/im703-western-sydney",starters:1273,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:261,cutoffMinF:294,fieldPctM:3.0,fieldPctF:10.6},
+{id:103,name:"IRONMAN 70.3 New Zealand",country:"New Zealand",continent:"oceania",url:"https://www.ironman.com/im703-new-zealand",starters:1017,slotsM:35,slotsF:35,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",cutoffMinM:261,cutoffMinF:309,fieldPctM:5.7,fieldPctF:8.8},
+{id:104,name:"IRONMAN 70.3 Colombo",country:"Sri Lanka",continent:"asia",url:"https://www.ironman.com/im703-colombo",starters:358,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:278,cutoffMinF:326,fieldPctM:8.6,fieldPctF:36.8},
+{id:105,name:"IRONMAN 70.3 Desaru Coast",country:"Malaysia",continent:"asia",url:"https://www.ironman.com/im703-desaru-coast",starters:390,slotsM:34,slotsF:11,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:332,cutoffMinF:356,fieldPctM:10.5,fieldPctF:16.4},
+{id:106,name:"IRONMAN 70.3 Goa",country:"India",continent:"asia",url:"https://www.ironman.com/im703-goa",starters:686,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:299,cutoffMinF:411,fieldPctM:4.0,fieldPctF:43.9},
+{id:107,name:"IRONMAN 70.3 Goseong",country:"South Korea",continent:"asia",url:"https://www.ironman.com/im703-goseong",starters:1124,slotsM:35,slotsF:10,bike:"hilly",run:"hilly",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:287,cutoffMinF:369,fieldPctM:3.6,fieldPctF:6.9},
+{id:108,name:"IRONMAN 70.3 Kenting",country:"Taiwan",continent:"asia",url:"https://www.ironman.com/im703-kenting",starters:788,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:311,cutoffMinF:362,fieldPctM:3.8,fieldPctF:20.0},
+{id:109,name:"IRONMAN 70.3 Langkawi",country:"Malaysia",continent:"asia",url:"https://www.ironman.com/im703-langkawi",starters:464,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:309,cutoffMinF:380,fieldPctM:9.0,fieldPctF:46.7},
+{id:110,name:"IRONMAN 70.3 Lapu-Lapu",country:"Philippines",continent:"asia",url:"https://www.ironman.com/im703-lapu-lapu",starters:644,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:289,cutoffMinF:348,fieldPctM:6.5,fieldPctF:32.4},
+{id:111,name:"IRONMAN 70.3 Phú Quốc",country:"Vietnam",continent:"asia",url:"https://www.ironman.com/im703-phu-quoc",starters:723,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:304,cutoffMinF:337,fieldPctM:4.0,fieldPctF:25.8},
+{id:112,name:"IRONMAN 70.3 Puerto Princesa",country:"Philippines",continent:"asia",url:"https://www.ironman.com/im703-puerto-princesa",starters:267,slotsM:34,slotsF:11,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:385,cutoffMinF:357,fieldPctM:15.5,fieldPctF:23.4},
+{id:113,name:"IRONMAN 70.3 Shanghai Chongming",country:"China",continent:"asia",url:"https://www.ironman.com/im703-shanghai",starters:1042,slotsM:36,slotsF:13,bike:"flat",run:"flat",heat:"normal",wetsuit:false,wind:"none",cutoffMinM:265,cutoffMinF:343,fieldPctM:4.2,fieldPctF:6.8},
+{id:114,name:"IRONMAN 70.3 Subic Bay",country:"Philippines",continent:"asia",url:"https://www.ironman.com/im703-subic-bay",starters:299,slotsM:32,slotsF:11,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:330,cutoffMinF:374,fieldPctM:12.7,fieldPctF:23.4},
+{id:115,name:"IRONMAN 70.3 Vietnam",country:"Vietnam",continent:"asia",url:"https://www.ironman.com/im703-vietnam",starters:1476,slotsM:21,slotsF:9,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:297,cutoffMinF:325,fieldPctM:1.7,fieldPctF:3.9}
+];
+
+// ══ 70.3 STATE & TOGGLES ══
+const st703={profile:"balanced",swim:"wetsuit",bike:"flat",wind:"none",run:"flat",heat:"normal",cont:"all"};
+const gMap703={"g703-profile":"profile","g703-swim":"swim","g703-bike":"bike","g703-wind":"wind","g703-run":"run","g703-heat":"heat","g703-cont":"cont"};
+document.querySelectorAll('[id^="g703-"]').forEach(g=>{
+  g.querySelectorAll('.tog').forEach(el=>{
+    el.addEventListener('click',()=>{
+      g.querySelectorAll('.tog').forEach(t=>t.classList.remove('active'));
+      el.classList.add('active');
+      st703[gMap703[g.id]]=el.dataset.v;
+    });
+  });
+});
+
+// ══ 70.3 CALCULATOR ══
+document.getElementById('calcBtn703').addEventListener('click',()=>{
+  const h=parseInt(document.getElementById('th703').value)||0;
+  const m=parseInt(document.getElementById('tm703').value)||0;
+  const s=parseInt(document.getElementById('ts703').value)||0;
+  const raw=h*3600+m*60+s;
+  if(raw<3600||raw>32400){alert('Please enter a finish time between 1:00:00 and 9:00:00');return;}
+  const gender=document.getElementById('gender703').value;
+  const ag=document.getElementById('ag703').value;
+  const factor=KS703[gender][ag];
+
+  // Neutral time for 70.3 (same coefficients scaled for half distance)
+  const C703={bike:{flat:1,hilly:1.04,vhilly:1.07},run:{flat:1,hilly:1.02,vhilly:1.035},noWetsuit:1.006,heat:{normal:1,hot:1.012,extreme:1.02},wind:{none:1,moderate:1.006,strong:1.012}};
+  const PB703={balanced:{b:1,r:1},biker:{b:.6,r:1},runner:{b:1,r:.6},swimmer:{b:1,r:1}};
+
+  let neutral=raw;
+  neutral/=C703.bike[st703.bike];neutral/=C703.run[st703.run];
+  if(st703.swim==='nowetsuit')neutral/=C703.noWetsuit;
+  neutral/=C703.heat[st703.heat];neutral/=C703.wind[st703.wind];
+
+  const pL={balanced:'Balanced',biker:'Strong cyclist',runner:'Strong runner',swimmer:'Strong swimmer'};
+  const wL={none:'no wind',moderate:'moderate wind',strong:'strong wind'};
+  const hL={normal:'normal temp.',hot:'hot',extreme:'extreme heat'};
+  const bL2={flat:'Flat',hilly:'Hilly',vhilly:'Very hilly'};
+
+  let list=RACES703.filter(r=>st703.cont==='all'||r.continent===st703.cont);
+  list=list.map(r=>{
+    const p=PB703[st703.profile];
+    let proj=neutral;
+    proj*=1+(C703.bike[r.bike]-1)*p.b;
+    proj*=1+(C703.run[r.run]-1)*p.r;
+    proj*=1+(C703.heat[r.heat]-1)*p.r;
+    if(!r.wetsuit)proj*=C703.noWetsuit;
+    proj*=C703.wind[r.wind];
+    const projAG=proj*factor;
+    const cutoffMin=gender==='M'?r.cutoffMinM:r.cutoffMinF;
+    const slotsG=gender==='M'?r.slotsM:r.slotsF;
+    const startersG=gender==='M'?Math.round(r.starters*0.82):Math.round(r.starters*0.18);
+    const fieldPct=gender==='M'?r.fieldPctM:r.fieldPctF;
+    const qualifiedCount=Math.round(startersG*fieldPct/100);
+    const cutSec=cutoffMin*60;
+    const diff=(projAG-cutSec)/60;
+    const ratio=(slotsG/startersG*100);
+    const compLevel=ratio>8?'Very High':ratio>5?'High':ratio>3?'Medium':'Low';
+    const compClass=ratio>8?'rg':ratio>5?'rg':ratio>3?'rm':'rl';
+    return{...r,proj,projAG,cutSec,diff,slotsG,startersG,fieldPct,qualifiedCount,ratio:ratio.toFixed(1),compLevel,compClass,qualifiedCount};
+  }).sort((a,b)=>a.diff-b.diff).slice(0,5);
+
+  // Adjustment text for 70.3
+  function adjText703(r){
+    const p=PB703[st703.profile],a=[];
+    if(r.bike==='hilly')a.push(`bike +${(4*p.b).toFixed(1)}%`);
+    if(r.bike==='vhilly')a.push(`bike +${(7*p.b).toFixed(1)}%`);
+    if(r.run==='hilly')a.push(`run +${(2*p.r).toFixed(1)}%`);
+    if(r.run==='vhilly')a.push(`run +${(3.5*p.r).toFixed(1)}%`);
+    if(!r.wetsuit)a.push('no wetsuit +0.6%');
+    if(r.heat==='hot')a.push(`heat +${(1.2*p.r).toFixed(1)}%`);
+    if(r.heat==='extreme')a.push(`extreme heat +${(2*p.r).toFixed(1)}%`);
+    if(r.wind==='moderate')a.push('wind +0.6%');
+    if(r.wind==='strong')a.push('strong wind +1.2%');
+    return a.length?a.join(' · '):'neutral conditions';
+  }
+
+  let html=`<div class="rh">
+    <div class="rt">Results — ${gender==='M'?'Male':'Female'} ${ag} · ${fmt(raw)} · ${pL[st703.profile]}</div>
+    <div class="rs">70.3 age-grading coefficient: <strong>${factor.toFixed(3)}</strong> · Reference: ${bL2[st703.bike]} bike · ${bL2[st703.run]} run · ${st703.swim==='wetsuit'?'wetsuit':'no wetsuit'} · ${wL[st703.wind]} · ${hL[st703.heat]}</div>
+  </div><div class="results-grid">`;
+
+  list.forEach((r,i)=>{
+    const under=r.diff<0,tight=r.diff>=-3&&r.diff<0;
+    const abs=Math.abs(r.diff).toFixed(1);
+    const chC=r.diff<-10?'ch-h':r.diff<0?'ch-m':'ch-l';
+    const chL=r.diff<-10?'Strong chance':r.diff<0?'Realistic chance':'Not there yet';
+    const viC=tight?'via':under?'vig':'vir';
+    const vtC=tight?'vta':under?'vtg':'vtr';
+    const vTxt=under?`${abs} min under cutoff${tight?' — tight':''}`:`${abs} min over cutoff`;
+    const rC=r.compClass,rL2=r.compLevel;
+    const bL3={flat:'Bike: flat',hilly:'Bike: hilly',vhilly:'Bike: v.hilly'};
+    const rL3={flat:'Run: flat',hilly:'Run: hilly',vhilly:'Run: v.hilly'};
+    let badges=[];
+    badges.push(r.wetsuit?`<span class="b bw">Wetsuit</span>`:`<span class="b bh">No wetsuit</span>`);
+    if(r.heat==='hot')badges.push(`<span class="b bh">Hot</span>`);
+    if(r.heat==='extreme')badges.push(`<span class="b bh">Extreme heat</span>`);
+    if(r.wind==='moderate')badges.push(`<span class="b bs">Wind</span>`);
+    if(r.wind==='strong')badges.push(`<span class="b bs">Strong wind</span>`);
+    badges.push(`<span class="b ${r.bike==='flat'?'bf':'bhi'}">${bL3[r.bike]}</span>`);
+    badges.push(`<span class="b ${r.run==='flat'?'bf':'bhi'}">${rL3[r.run]}</span>`);
+
+    html+=`<div class="rc ${i===0?'top':''}">
+      <div class="rtop">
+        <div><div class="rn">${i+1}. <a href="${r.url}" target="_blank" rel="noopener">${r.name}</a></div>
+        <div class="rd">${r.country}</div></div>
+        <span class="rch ${chC}">${chL}</span>
+      </div>
+      <div class="rbadges">${badges.join('')}</div>
+      <div class="sg" style="grid-template-columns:1fr 1fr 1fr">
+        <div class="stb"><div class="stl">70.3 WC slots (${gender==='M'?'men':'women'})</div>
+          <div class="stv">${r.slotsG}</div>
+          <div class="sts" style="color:#aaa">${r.ratio}% of starters</div></div>
+        <div class="stb"><div class="stl">Starters (${gender==='M'?'men':'women'})</div>
+          <div class="stv">${r.startersG.toLocaleString()}</div>
+          <div class="sts" style="color:#aaa">2025 data</div></div>
+        <div class="stb"><div class="stl">Met standard in 2025</div>
+          <div class="stv ${r.qualifiedCount<=r.slotsG?'rg':'rm'}">~${r.qualifiedCount}</div>
+          <div class="sts" style="color:#aaa">${r.fieldPct}% of ${gender==='M'?'men':'women'}</div></div>
+      </div>
+      <div class="cb">
+        <div class="cr"><span class="cl">Projected finish</span>
+          <div><div class="cv">${fmt(r.proj)}</div><div class="adj">${adjText703(r)}</div></div></div>
+        <div class="cr"><span class="cl">Age-graded time</span><span class="cv">${fmt(r.projAG)}</span></div>
+        <div class="cr"><span class="cl">70.3 Standard cutoff (2025)</span><span class="cv">${fmt(r.cutSec)}</span></div>
+        <div class="cr"><span class="cl">Verdict</span>
+          <div class="verd"><div class="vi ${viC}">${under?'✓':'✗'}</div><span class="${vtC}">${vTxt}</span></div></div>
+        <div class="cr"><span class="cl">Slot competition</span>
+          <div class="verd">
+            <span class="${rC}" style="font-weight:600;font-size:12px">${rL2}</span>
+            <span style="font-size:11px;color:#aaa;margin-left:4px">— ${r.qualifiedCount<=r.slotsG?`${r.qualifiedCount} met standard, ${r.slotsG} slots — likely everyone qualifies`:`${r.qualifiedCount} met standard for ${r.slotsG} slots — rolldown likely`}</span>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  });
+
+  html+='</div>';
+  const el703=document.getElementById('results703');
+  el703.innerHTML=html;
+  el703.scrollIntoView({behavior:'smooth',block:'start'});
 });
 </script>
 </body>
