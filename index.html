@@ -239,9 +239,9 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
         <div class="sh"><span class="si iw">W</span> Weather</div>
         <label>Air temperature</label>
         <div class="tg" id="g-heat">
-          <div class="tog active" data-v="normal">Normal (≤28°C / 82°F)</div>
-          <div class="tog" data-v="hot">Hot (29–34°C)</div>
-          <div class="tog" data-v="extreme">Extreme (35°C+)</div>
+          <div class="tog active" data-v="normal">Normal (≤25°C)</div>
+          <div class="tog" data-v="hot">Hot (26–31°C)</div>
+          <div class="tog" data-v="extreme">Extreme (32°C+)</div>
         </div>
       </div>
 
@@ -359,9 +359,9 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
         <div class="sh"><span class="si iw">W</span> Weather</div>
         <label>Air temperature</label>
         <div class="tg" id="g703-heat">
-          <div class="tog active" data-v="normal">Normal (≤28°C / 82°F)</div>
-          <div class="tog" data-v="hot">Hot (29–34°C)</div>
-          <div class="tog" data-v="extreme">Extreme (35°C+)</div>
+          <div class="tog active" data-v="normal">Normal (≤25°C)</div>
+          <div class="tog" data-v="hot">Hot (26–31°C)</div>
+          <div class="tog" data-v="extreme">Extreme (32°C+)</div>
         </div>
       </div>
 
@@ -452,12 +452,12 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
         </div>
       </div>
       <div class="sec">
-        <div class="sh"><span class="si iw">W</span> Weather</div>
-        <label>Air temperature</label>
-        <div class="tg" id="gX-heat">
-          <div class="tog active" data-v="normal">Normal (≤28°C)</div>
-          <div class="tog" data-v="hot">Hot (29–34°C)</div>
-          <div class="tog" data-v="extreme">Extreme (35°C+)</div>
+        <div class="sh"><span class="si ir">R</span> Run</div>
+        <label>Course profile</label>
+        <div class="tg" id="gX-run">
+          <div class="tog active" data-v="moderate">Moderate (~150m D+)</div>
+          <div class="tog" data-v="hilly">Hilly (~250m D+)</div>
+          <div class="tog" data-v="vhilly">Very hilly (400m+)</div>
         </div>
       </div>
 
@@ -471,12 +471,12 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
         </div>
       </div>
       <div class="sec">
-        <div class="sh"><span class="si ir">R</span> Run</div>
-        <label>Course profile</label>
-        <div class="tg" id="gX-run">
-          <div class="tog active" data-v="moderate">Moderate (~150m D+)</div>
-          <div class="tog" data-v="hilly">Hilly (~250m D+)</div>
-          <div class="tog" data-v="vhilly">Very hilly (400m+)</div>
+        <div class="sh"><span class="si iw">W</span> Weather</div>
+        <label>Air temperature</label>
+        <div class="tg" id="gX-heat">
+          <div class="tog active" data-v="normal">Normal (≤25°C)</div>
+          <div class="tog" data-v="hot">Hot (26–31°C)</div>
+          <div class="tog" data-v="extreme">Extreme (32°C+)</div>
         </div>
       </div>
 
@@ -538,7 +538,7 @@ const RACES=[
 {id:6,name:"IRONMAN Copenhagen",date:"August 2026",country:"Denmark",continent:"europe",url:"https://www.ironman.com/im-copenhagen",starters:2399,slotsM:26,slotsF:14,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:511,cutoffMinF:577,fieldPctM:1.3,fieldPctF:3.1},
 {id:7,name:"IRONMAN Barcelona",date:"October 2026",country:"Spain",continent:"europe",url:"https://www.ironman.com/im-barcelona",starters:2429,slotsM:41,slotsF:14,bike:"flat",run:"flat",heat:"normal",wetsuit:false,wind:"moderate",flagship:false,cutoffMinM:519,cutoffMinF:624,fieldPctM:2.0,fieldPctF:4.2},
 {id:9,name:"IRONMAN Austria",date:"July 2026",country:"Austria",continent:"europe",url:"https://www.ironman.com/im-austria",starters:2217,slotsM:84,slotsF:44,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:585,cutoffMinF:702,fieldPctM:4.4,fieldPctF:13.5},
-{id:10,name:"IRONMAN Lanzarote",date:"May 2026",country:"Spain",continent:"europe",url:"https://www.ironman.com/im-lanzarote",starters:843,slotsM:65,slotsF:35,bike:"vhilly",run:"flat",heat:"hot",wetsuit:true,wind:"strong",flagship:false,cutoffMinM:628,cutoffMinF:812,fieldPctM:8.6,fieldPctF:39.8},
+{id:10,name:"IRONMAN Lanzarote",date:"May 2026",country:"Spain",continent:"europe",url:"https://www.ironman.com/im-lanzarote",starters:843,slotsM:65,slotsF:35,bike:"vhilly",run:"flat",heat:"normal",wetsuit:true,wind:"strong",flagship:false,cutoffMinM:628,cutoffMinF:812,fieldPctM:8.6,fieldPctF:39.8},
 {id:11,name:"IRONMAN Leeds",date:"June 2026",country:"United Kingdom",continent:"europe",url:"https://www.ironman.com/im-leeds",starters:1299,slotsM:65,slotsF:35,bike:"hilly",run:"hilly",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:657,cutoffMinF:776,fieldPctM:5.8,fieldPctF:20.7},
 {id:12,name:"IRONMAN Les Sables d'Olonne",date:"June 2026",country:"France",continent:"europe",url:"https://www.ironman.com/im-les-sables",starters:2526,slotsM:85,slotsF:34,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",flagship:false,cutoffMinM:543,cutoffMinF:619,fieldPctM:3.8,fieldPctF:12.4},
 {id:13,name:"IRONMAN Wales",date:"September 2026",country:"United Kingdom",continent:"europe",url:"https://www.ironman.com/im-wales",starters:1637,slotsM:29,slotsF:11,bike:"vhilly",run:"hilly",heat:"normal",wetsuit:true,wind:"moderate",flagship:false,cutoffMinM:615,cutoffMinF:731,fieldPctM:2.0,fieldPctF:7.1},
@@ -553,7 +553,7 @@ const RACES=[
 {id:21,name:"IRONMAN Chattanooga",date:"September 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-chattanooga",starters:1298,slotsM:37,slotsF:18,bike:"hilly",run:"flat",heat:"hot",wetsuit:true,wind:"none",flagship:false,cutoffMinM:559,cutoffMinF:662,fieldPctM:3.6,fieldPctF:6.4},
 {id:22,name:"IRONMAN Wisconsin",date:"September 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-wisconsin",starters:1313,slotsM:26,slotsF:14,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:561,cutoffMinF:687,fieldPctM:2.5,fieldPctF:5.0},
 {id:23,name:"IRONMAN California",date:"October 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-california",starters:2310,slotsM:38,slotsF:17,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",flagship:false,cutoffMinM:510,cutoffMinF:657,fieldPctM:2.0,fieldPctF:3.8},
-{id:24,name:"IRONMAN Florida",date:"November 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-florida",starters:1453,slotsM:39,slotsF:16,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:577,cutoffMinF:644,fieldPctM:3.2,fieldPctF:6.6},
+{id:24,name:"IRONMAN Florida",date:"November 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-florida",starters:1453,slotsM:39,slotsF:16,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"none",flagship:false,cutoffMinM:577,cutoffMinF:644,fieldPctM:3.2,fieldPctF:6.6},
 {id:25,name:"IRONMAN Arizona",date:"November 2026",country:"USA",continent:"namerica",url:"https://www.ironman.com/im-arizona",starters:1611,slotsM:25,slotsF:15,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:531,cutoffMinF:692,fieldPctM:1.9,fieldPctF:4.6},
 {id:26,name:"IRONMAN Ottawa (Canada)",date:"August 2026",country:"Canada",continent:"namerica",url:"https://www.ironman.com/im-canada-ottawa",starters:1894,slotsM:64,slotsF:35,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"none",flagship:false,cutoffMinM:595,cutoffMinF:652,fieldPctM:4.8,fieldPctF:6.2},
 {id:27,name:"IRONMAN Cozumel (Latin Am. Champ.)",date:"November 2026",country:"Mexico",continent:"namerica",url:"https://www.ironman.com/im-cozumel",starters:1402,slotsM:75,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",flagship:true,cutoffMinM:566,cutoffMinF:666,fieldPctM:6.5,fieldPctF:10.2},
@@ -568,7 +568,7 @@ const RACES=[
 {id:33,name:"IRONMAN Japan",date:"August 2026",country:"Japan",continent:"asia",url:"https://www.ironman.com/im-japan",starters:1041,slotsM:28,slotsF:12,bike:"hilly",run:"flat",heat:"hot",wetsuit:true,wind:"none",flagship:false,cutoffMinM:609,cutoffMinF:714,fieldPctM:3.0,fieldPctF:12.9},
 {id:34,name:"IRONMAN Taiwan",date:"November 2026",country:"Taiwan",continent:"asia",url:"https://www.ironman.com/im-taiwan",starters:666,slotsM:65,slotsF:35,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",flagship:false,cutoffMinM:646,cutoffMinF:736,fieldPctM:12.0,fieldPctF:27.8},
 {id:35,name:"IRONMAN Gurye (Korea)",date:"September 2026",country:"South Korea",continent:"asia",url:"https://www.ironman.com/im-korea",starters:893,slotsM:29,slotsF:11,bike:"hilly",run:"hilly",heat:"hot",wetsuit:true,wind:"none",flagship:false,cutoffMinM:576,cutoffMinF:673,fieldPctM:3.6,fieldPctF:11.3},
-{id:36,name:"IRONMAN Malaysia",date:"February 2026",country:"Malaysia",continent:"asia",url:"https://www.ironman.com/im-malaysia",starters:607,slotsM:29,slotsF:11,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",flagship:false,cutoffMinM:598,cutoffMinF:771,fieldPctM:5.3,fieldPctF:20.0},
+{id:36,name:"IRONMAN Malaysia",date:"February 2026",country:"Malaysia",continent:"asia",url:"https://www.ironman.com/im-malaysia",starters:607,slotsM:29,slotsF:11,bike:"flat",run:"flat",heat:"extreme",wetsuit:false,wind:"none",flagship:false,cutoffMinM:598,cutoffMinF:771,fieldPctM:5.3,fieldPctF:20.0},
 ];
 const KS={M:{"18-24":1.000,"25-29":0.999,"30-34":1.000,"35-39":0.993,"40-44":0.968,"45-49":0.939,"50-54":0.898,"55-59":0.853,"60-64":0.796,"65-69":0.738,"70-74":0.678,"75-79":0.613},F:{"18-24":0.873,"25-29":0.889,"30-34":0.898,"35-39":0.892,"40-44":0.871,"45-49":0.843,"50-54":0.804,"55-59":0.748,"60-64":0.689,"65-69":0.625,"70-74":0.568,"75-79":0.509}};
 const C={bike:{flat:1,hilly:1.05,vhilly:1.085},run:{flat:1,hilly:1.025,vhilly:1.045},noWetsuit:1.008,heat:{normal:1,hot:1.015,extreme:1.025},wind:{none:1,moderate:1.008,strong:1.015}};
@@ -789,7 +789,7 @@ const RACES703=[
 {id:37,name:"IRONMAN 70.3 Dallas",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-dallas",starters:1675,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:254,cutoffMinF:279,fieldPctM:2.5,fieldPctF:6.3},
 {id:38,name:"IRONMAN 70.3 Des Moines",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-des-moines",starters:1003,slotsM:30,slotsF:15,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:269,cutoffMinF:301,fieldPctM:4.2,fieldPctF:5.1},
 {id:39,name:"IRONMAN 70.3 Eagleman",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-eagleman",starters:1891,slotsM:29,slotsF:15,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:254,cutoffMinF:290,fieldPctM:2.1,fieldPctF:2.8},
-{id:40,name:"IRONMAN 70.3 Florida",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-florida",starters:880,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:257,cutoffMinF:320,fieldPctM:5.0,fieldPctF:19.3},
+{id:40,name:"IRONMAN 70.3 Florida",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-florida",starters:880,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:257,cutoffMinF:320,fieldPctM:5.0,fieldPctF:19.3},
 {id:41,name:"IRONMAN 70.3 Gulf Coast",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-gulf-coast",starters:1244,slotsM:30,slotsF:14,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:236,cutoffMinF:273,fieldPctM:3.2,fieldPctF:4.8},
 {id:42,name:"IRONMAN 70.3 Happy Valley",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-happy-valley",starters:778,slotsM:35,slotsF:15,bike:"hilly",run:"hilly",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:290,cutoffMinF:323,fieldPctM:6.1,fieldPctF:7.4},
 {id:43,name:"IRONMAN 70.3 Hawaii",country:"USA",continent:"namerica",url:"https://www.ironman.com/im703-hawaii",starters:872,slotsM:29,slotsF:16,bike:"hilly",run:"hilly",heat:"hot",wetsuit:false,wind:"moderate",cutoffMinM:283,cutoffMinF:354,fieldPctM:4.6,fieldPctF:6.8},
@@ -831,14 +831,14 @@ const RACES703=[
 {id:79,name:"IRONMAN 70.3 Rio de Janeiro",country:"Brazil",continent:"namerica",url:"https://www.ironman.com/im703-rio-de-janeiro",starters:1417,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:246,cutoffMinF:299,fieldPctM:2.2,fieldPctF:9.0},
 {id:80,name:"IRONMAN 70.3 Brasília",country:"Brazil",continent:"namerica",url:"https://www.ironman.com/im703-brasilia",starters:1379,slotsM:32,slotsF:13,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:252,cutoffMinF:283,fieldPctM:2.9,fieldPctF:4.6},
 {id:81,name:"IRONMAN 70.3 Aracaju",country:"Brazil",continent:"namerica",url:"https://www.ironman.com/im703-aracaju",starters:998,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:275,cutoffMinF:357,fieldPctM:3.1,fieldPctF:13.7},
-{id:82,name:"IRONMAN 70.3 Ecuador",country:"Ecuador",continent:"namerica",url:"https://www.ironman.com/im703-ecuador",starters:673,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:270,cutoffMinF:335,fieldPctM:4.4,fieldPctF:25.3},
+{id:82,name:"IRONMAN 70.3 Ecuador",country:"Ecuador",continent:"namerica",url:"https://www.ironman.com/im703-ecuador",starters:673,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"normal",wetsuit:false,wind:"none",cutoffMinM:270,cutoffMinF:335,fieldPctM:4.4,fieldPctF:25.3},
 {id:83,name:"IRONMAN 70.3 Peru",country:"Peru",continent:"namerica",url:"https://www.ironman.com/im703-peru",starters:887,slotsM:32,slotsF:13,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:259,cutoffMinF:302,fieldPctM:4.6,fieldPctF:6.8},
 {id:84,name:"IRONMAN 70.3 Cartagena",country:"Colombia",continent:"namerica",url:"https://www.ironman.com/im703-cartagena",starters:1762,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:308,cutoffMinF:306,fieldPctM:2.1,fieldPctF:9.1},
 {id:85,name:"IRONMAN 70.3 San Andrés",country:"Colombia",continent:"namerica",url:"https://www.ironman.com/im703-san-andres",starters:877,slotsM:33,slotsF:12,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:241,cutoffMinF:310,fieldPctM:4.6,fieldPctF:7.2},
 {id:86,name:"IRONMAN 70.3 San Salvador",country:"El Salvador",continent:"namerica",url:"https://www.ironman.com/im703-san-salvador",starters:588,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:332,cutoffMinF:412,fieldPctM:5.0,fieldPctF:29.8},
 {id:87,name:"IRONMAN 70.3 Encarnación",country:"Paraguay",continent:"namerica",url:"https://www.ironman.com/im703-encarnacion",starters:368,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:314,cutoffMinF:350,fieldPctM:8.1,fieldPctF:42.4},
 {id:88,name:"IRONMAN 70.3 Punta del Este",country:"Uruguay",continent:"namerica",url:"https://www.ironman.com/im703-punta-del-este",starters:1137,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"normal",wetsuit:false,wind:"moderate",cutoffMinM:272,cutoffMinF:307,fieldPctM:2.7,fieldPctF:12.0},
-{id:89,name:"IRONMAN 70.3 Durban",country:"South Africa",continent:"africa",url:"https://www.ironman.com/im703-durban",starters:1238,slotsM:31,slotsF:14,bike:"flat",run:"flat",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:282,cutoffMinF:311,fieldPctM:3.5,fieldPctF:4.1},
+{id:89,name:"IRONMAN 70.3 Durban",country:"South Africa",continent:"africa",url:"https://www.ironman.com/im703-durban",starters:1238,slotsM:31,slotsF:14,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:282,cutoffMinF:311,fieldPctM:3.5,fieldPctF:4.1},
 {id:90,name:"IRONMAN 70.3 Mossel Bay",country:"South Africa",continent:"africa",url:"https://www.ironman.com/im703-mossel-bay",starters:1730,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"strong",cutoffMinM:281,cutoffMinF:324,fieldPctM:2.3,fieldPctF:6.8},
 {id:91,name:"IRONMAN 70.3 Agadir",country:"Morocco",continent:"africa",url:"https://www.ironman.com/im703-agadir",starters:461,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",cutoffMinM:249,cutoffMinF:343,fieldPctM:7.5,fieldPctF:50.8},
 {id:92,name:"IRONMAN 70.3 Oman",country:"Oman",continent:"africa",url:"https://www.ironman.com/im703-oman",starters:691,slotsM:36,slotsF:14,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:258,cutoffMinF:386,fieldPctM:6.3,fieldPctF:11.4},
@@ -854,11 +854,11 @@ const RACES703=[
 {id:102,name:"IRONMAN 70.3 Western Sydney",country:"Australia",continent:"oceania",url:"https://www.ironman.com/im703-western-sydney",starters:1273,slotsM:30,slotsF:30,bike:"flat",run:"flat",heat:"normal",wetsuit:true,wind:"none",cutoffMinM:261,cutoffMinF:294,fieldPctM:3.0,fieldPctF:10.6},
 {id:103,name:"IRONMAN 70.3 New Zealand",country:"New Zealand",continent:"oceania",url:"https://www.ironman.com/im703-new-zealand",starters:1017,slotsM:35,slotsF:35,bike:"hilly",run:"flat",heat:"normal",wetsuit:true,wind:"moderate",cutoffMinM:261,cutoffMinF:309,fieldPctM:5.7,fieldPctF:8.8},
 {id:104,name:"IRONMAN 70.3 Colombo",country:"Sri Lanka",continent:"asia",url:"https://www.ironman.com/im703-colombo",starters:358,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:278,cutoffMinF:326,fieldPctM:8.6,fieldPctF:36.8},
-{id:105,name:"IRONMAN 70.3 Desaru Coast",country:"Malaysia",continent:"asia",url:"https://www.ironman.com/im703-desaru-coast",starters:390,slotsM:34,slotsF:11,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:332,cutoffMinF:356,fieldPctM:10.5,fieldPctF:16.4},
-{id:106,name:"IRONMAN 70.3 Goa",country:"India",continent:"asia",url:"https://www.ironman.com/im703-goa",starters:686,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:299,cutoffMinF:411,fieldPctM:4.0,fieldPctF:43.9},
+{id:105,name:"IRONMAN 70.3 Desaru Coast",country:"Malaysia",continent:"asia",url:"https://www.ironman.com/im703-desaru-coast",starters:390,slotsM:34,slotsF:11,bike:"flat",run:"flat",heat:"extreme",wetsuit:false,wind:"none",cutoffMinM:332,cutoffMinF:356,fieldPctM:10.5,fieldPctF:16.4},
+{id:106,name:"IRONMAN 70.3 Goa",country:"India",continent:"asia",url:"https://www.ironman.com/im703-goa",starters:686,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"extreme",wetsuit:false,wind:"none",cutoffMinM:299,cutoffMinF:411,fieldPctM:4.0,fieldPctF:43.9},
 {id:107,name:"IRONMAN 70.3 Goseong",country:"South Korea",continent:"asia",url:"https://www.ironman.com/im703-goseong",starters:1124,slotsM:35,slotsF:10,bike:"hilly",run:"hilly",heat:"hot",wetsuit:true,wind:"none",cutoffMinM:287,cutoffMinF:369,fieldPctM:3.6,fieldPctF:6.9},
 {id:108,name:"IRONMAN 70.3 Kenting",country:"Taiwan",continent:"asia",url:"https://www.ironman.com/im703-kenting",starters:788,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:311,cutoffMinF:362,fieldPctM:3.8,fieldPctF:20.0},
-{id:109,name:"IRONMAN 70.3 Langkawi",country:"Malaysia",continent:"asia",url:"https://www.ironman.com/im703-langkawi",starters:464,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:309,cutoffMinF:380,fieldPctM:9.0,fieldPctF:46.7},
+{id:109,name:"IRONMAN 70.3 Langkawi",country:"Malaysia",continent:"asia",url:"https://www.ironman.com/im703-langkawi",starters:464,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"extreme",wetsuit:false,wind:"none",cutoffMinM:309,cutoffMinF:380,fieldPctM:9.0,fieldPctF:46.7},
 {id:110,name:"IRONMAN 70.3 Lapu-Lapu",country:"Philippines",continent:"asia",url:"https://www.ironman.com/im703-lapu-lapu",starters:644,slotsM:35,slotsF:35,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:289,cutoffMinF:348,fieldPctM:6.5,fieldPctF:32.4},
 {id:111,name:"IRONMAN 70.3 Phú Quốc",country:"Vietnam",continent:"asia",url:"https://www.ironman.com/im703-phu-quoc",starters:723,slotsM:25,slotsF:25,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:304,cutoffMinF:337,fieldPctM:4.0,fieldPctF:25.8},
 {id:112,name:"IRONMAN 70.3 Puerto Princesa",country:"Philippines",continent:"asia",url:"https://www.ironman.com/im703-puerto-princesa",starters:267,slotsM:34,slotsF:11,bike:"flat",run:"flat",heat:"hot",wetsuit:false,wind:"none",cutoffMinM:385,cutoffMinF:357,fieldPctM:15.5,fieldPctF:23.4},
@@ -1010,6 +1010,7 @@ document.getElementById('calcBtn703').addEventListener('click',()=>{
 });
 // ══ XTERRA RACES DATA ══
 // cutoff_norm / winner_norm = normalized to flat 30km bike + flat 10km run
+// heat: normal ≤25°C, hot 26-31°C, extreme 32°C+
 const RACES_X = [
   {
     id:1, name:"XTERRA Rotorua Festival", year:2025, country:"New Zealand", continent:"oceania",
@@ -1052,6 +1053,62 @@ const RACES_X = [
     slots:26, bike_km:28, run_km:10, bike_elev:623, run_elev:190, wetsuit:true, heat:"normal",
     men:{"20-24":{starters:3,winner_norm:8850,cutoff_norm:10527},"25-29":{starters:7,winner_norm:10266,cutoff_norm:10735},"30-34":{starters:6,winner_norm:9804,cutoff_norm:11193},"35-39":{starters:7,winner_norm:11348,cutoff_norm:12100},"40-44":{starters:18,winner_norm:10609,cutoff_norm:10680},"45-49":{starters:17,winner_norm:10584,cutoff_norm:12022},"50-54":{starters:14,winner_norm:11591,cutoff_norm:12397},"55-59":{starters:15,winner_norm:10379,cutoff_norm:10662},"60-64":{starters:2,winner_norm:11475,cutoff_norm:13318},"65-69":{starters:5,winner_norm:12978,cutoff_norm:12984}},
     women:{"25-29":{starters:2,winner_norm:12878,cutoff_norm:14070},"30-34":{starters:1,winner_norm:15273,cutoff_norm:15273},"35-39":{starters:6,winner_norm:11137,cutoff_norm:12030},"40-44":{starters:4,winner_norm:10567,cutoff_norm:11965},"45-49":{starters:4,winner_norm:11409,cutoff_norm:12001},"50-54":{starters:2,winner_norm:12883,cutoff_norm:13434},"55-59":{starters:2,winner_norm:11470,cutoff_norm:12434},"65-69":{starters:1,winner_norm:13512,cutoff_norm:13512}}
+  },
+  {
+    id:7, name:"XTERRA Belgium", year:2025, country:"Belgium", continent:"europe",
+    url:"https://www.xterraplanet.com/event/xterra-belgium",
+    slots:26, bike_km:43, run_km:10.5, bike_elev:1010, run_elev:292, wetsuit:true, heat:"normal",
+    men:{"18-19":{starters:1,winner_norm:12176,cutoff_norm:12176},"20-24":{starters:11,winner_norm:7569,cutoff_norm:7603},"25-29":{starters:26,winner_norm:7627,cutoff_norm:7900},"30-34":{starters:46,winner_norm:7292,cutoff_norm:7432},"35-39":{starters:48,winner_norm:7806,cutoff_norm:7965},"40-44":{starters:53,winner_norm:7828,cutoff_norm:7861},"45-49":{starters:26,winner_norm:7763,cutoff_norm:8468},"50-54":{starters:30,winner_norm:8242,cutoff_norm:8276},"55-59":{starters:15,winner_norm:9337,cutoff_norm:9545},"60-64":{starters:4,winner_norm:8858,cutoff_norm:10693},"65-69":{starters:2,winner_norm:9702,cutoff_norm:11043}},
+    women:{"20-24":{starters:2,winner_norm:8415,cutoff_norm:10192},"25-29":{starters:3,winner_norm:9131,cutoff_norm:11248},"30-34":{starters:2,winner_norm:9293,cutoff_norm:9590},"35-39":{starters:4,winner_norm:10096,cutoff_norm:10449},"40-44":{starters:10,winner_norm:9648,cutoff_norm:10063},"45-49":{starters:4,winner_norm:8976,cutoff_norm:9132},"50-54":{starters:5,winner_norm:11004,cutoff_norm:11604},"55-59":{starters:1,winner_norm:11999,cutoff_norm:11999}}
+  },
+  {
+    id:8, name:"XTERRA Croatia Mali Lošinj", year:2025, country:"Croatia", continent:"europe",
+    url:"https://www.xterraplanet.com/event/xterra-croatia-mali-losinj",
+    slots:26, bike_km:27.5, run_km:9.2, bike_elev:350, run_elev:120, wetsuit:true, heat:"normal",
+    men:{"18-19":{starters:1,winner_norm:9997,cutoff_norm:9997},"20-24":{starters:6,winner_norm:8512,cutoff_norm:8604},"25-29":{starters:4,winner_norm:9519,cutoff_norm:11273},"30-34":{starters:11,winner_norm:8787,cutoff_norm:9175},"35-39":{starters:19,winner_norm:8974,cutoff_norm:9159},"40-44":{starters:19,winner_norm:9232,cutoff_norm:9237},"45-49":{starters:19,winner_norm:8982,cutoff_norm:9346},"50-54":{starters:23,winner_norm:9227,cutoff_norm:9232},"55-59":{starters:13,winner_norm:9811,cutoff_norm:10023},"60-64":{starters:8,winner_norm:9815,cutoff_norm:10155},"70-74":{starters:2,winner_norm:11575,cutoff_norm:13407}},
+    women:{"20-24":{starters:4,winner_norm:9946,cutoff_norm:10306},"25-29":{starters:4,winner_norm:9764,cutoff_norm:10099},"30-34":{starters:2,winner_norm:11565,cutoff_norm:12747},"35-39":{starters:2,winner_norm:10172,cutoff_norm:10752},"40-44":{starters:2,winner_norm:10999,cutoff_norm:13645},"45-49":{starters:3,winner_norm:10849,cutoff_norm:11742},"50-54":{starters:2,winner_norm:11481,cutoff_norm:15292},"55-59":{starters:1,winner_norm:17205,cutoff_norm:17205}}
+  },
+  {
+    id:9, name:"XTERRA European Championship", year:2025, country:"Italy", continent:"europe",
+    url:"https://www.xterraplanet.com/event/xterra-trentino-dolomiti-paganella",
+    slots:56, bike_km:32, run_km:10, bike_elev:1116, run_elev:266, wetsuit:true, heat:"normal",
+    men:{"20-24":{starters:23,winner_norm:10070,cutoff_norm:10230},"25-29":{starters:31,winner_norm:9922,cutoff_norm:10371},"30-34":{starters:36,winner_norm:9792,cutoff_norm:10149},"35-39":{starters:46,winner_norm:9815,cutoff_norm:10582},"40-44":{starters:47,winner_norm:10173,cutoff_norm:10323},"45-49":{starters:58,winner_norm:10191,cutoff_norm:10658},"50-54":{starters:43,winner_norm:10399,cutoff_norm:11031},"55-59":{starters:40,winner_norm:11474,cutoff_norm:12209},"60-64":{starters:28,winner_norm:11144,cutoff_norm:12200},"65-69":{starters:14,winner_norm:13169,cutoff_norm:14480},"70-74":{starters:3,winner_norm:14098,cutoff_norm:15326}},
+    women:{"20-24":{starters:13,winner_norm:11801,cutoff_norm:13296},"25-29":{starters:13,winner_norm:12696,cutoff_norm:13404},"30-34":{starters:15,winner_norm:12541,cutoff_norm:12936},"35-39":{starters:23,winner_norm:12654,cutoff_norm:14078},"40-44":{starters:17,winner_norm:13093,cutoff_norm:14067},"45-49":{starters:28,winner_norm:12305,cutoff_norm:13071},"50-54":{starters:11,winner_norm:13344,cutoff_norm:14076},"55-59":{starters:8,winner_norm:15457,cutoff_norm:16790},"60-64":{starters:3,winner_norm:15753,cutoff_norm:16520},"65-69":{starters:1,winner_norm:21495,cutoff_norm:21495},"70-74":{starters:1,winner_norm:22789,cutoff_norm:22789}}
+  },
+  {
+    id:10, name:"XTERRA New Jersey", year:2025, country:"USA", continent:"namerica",
+    url:"https://www.xterraplanet.com/event/xterra-new-jersey",
+    slots:56, bike_km:25, run_km:9.9, bike_elev:332, run_elev:142, wetsuit:true, heat:"normal",
+    men:{"20-24":{starters:4,winner_norm:11473,cutoff_norm:15918},"25-29":{starters:1,winner_norm:13971,cutoff_norm:13971},"30-34":{starters:7,winner_norm:9875,cutoff_norm:14307},"35-39":{starters:11,winner_norm:10276,cutoff_norm:11552},"40-44":{starters:10,winner_norm:9599,cutoff_norm:12495},"45-49":{starters:8,winner_norm:11129,cutoff_norm:14214},"50-54":{starters:5,winner_norm:10587,cutoff_norm:13458},"55-59":{starters:10,winner_norm:11100,cutoff_norm:13443},"60-64":{starters:3,winner_norm:13149,cutoff_norm:18668},"65-69":{starters:2,winner_norm:13011,cutoff_norm:16939}},
+    women:{"16-17":{starters:1,winner_norm:13809,cutoff_norm:13809},"25-29":{starters:1,winner_norm:15634,cutoff_norm:15634},"30-34":{starters:2,winner_norm:11913,cutoff_norm:15233},"35-39":{starters:3,winner_norm:11600,cutoff_norm:15071},"45-49":{starters:3,winner_norm:12195,cutoff_norm:18660},"60-64":{starters:1,winner_norm:13985,cutoff_norm:13985},"65-69":{starters:1,winner_norm:16120,cutoff_norm:16120}}
+  },
+  {
+    id:11, name:"XTERRA North American Championship", year:2025, country:"USA", continent:"namerica",
+    url:"https://www.xterraplanet.com/event/xterra-oak-mountain",
+    slots:56, bike_km:33, run_km:10, bike_elev:502, run_elev:200, wetsuit:false, heat:"hot",
+    men:{"16-17":{starters:1,winner_norm:12162,cutoff_norm:12162},"18-19":{starters:1,winner_norm:9527,cutoff_norm:9527},"20-24":{starters:2,winner_norm:11774,cutoff_norm:15369},"25-29":{starters:5,winner_norm:9070,cutoff_norm:14983},"30-34":{starters:8,winner_norm:9686,cutoff_norm:11592},"35-39":{starters:7,winner_norm:10401,cutoff_norm:12845},"40-44":{starters:13,winner_norm:9022,cutoff_norm:12408},"45-49":{starters:18,winner_norm:10334,cutoff_norm:11937},"50-54":{starters:8,winner_norm:9750,cutoff_norm:10903},"55-59":{starters:12,winner_norm:10229,cutoff_norm:11229},"60-64":{starters:8,winner_norm:10373,cutoff_norm:12694},"65-69":{starters:8,winner_norm:11968,cutoff_norm:13380},"75-79":{starters:1,winner_norm:13283,cutoff_norm:13283}},
+    women:{"20-24":{starters:2,winner_norm:12076,cutoff_norm:13085},"25-29":{starters:1,winner_norm:11457,cutoff_norm:11457},"30-34":{starters:3,winner_norm:11449,cutoff_norm:14205},"35-39":{starters:3,winner_norm:11716,cutoff_norm:15922},"40-44":{starters:5,winner_norm:10872,cutoff_norm:14535},"45-49":{starters:4,winner_norm:11432,cutoff_norm:15129},"50-54":{starters:1,winner_norm:14817,cutoff_norm:14817},"55-59":{starters:3,winner_norm:13261,cutoff_norm:15297},"60-64":{starters:2,winner_norm:12031,cutoff_norm:13136},"65-69":{starters:1,winner_norm:14467,cutoff_norm:14467}}
+  },
+  {
+    id:12, name:"XTERRA Nouvelle Aquitaine", year:2025, country:"France", continent:"europe",
+    url:"https://www.xterraplanet.com/event/xterra-nouvelle-aquitaine",
+    slots:26, bike_km:33, run_km:10, bike_elev:900, run_elev:200, wetsuit:false, heat:"hot",
+    men:{"18-19":{starters:3,winner_norm:8355,cutoff_norm:8644},"20-24":{starters:6,winner_norm:8856,cutoff_norm:8896},"25-29":{starters:10,winner_norm:8586,cutoff_norm:9439},"30-34":{starters:18,winner_norm:8701,cutoff_norm:8737},"35-39":{starters:16,winner_norm:8678,cutoff_norm:8722},"40-44":{starters:29,winner_norm:8993,cutoff_norm:9176},"45-49":{starters:15,winner_norm:8929,cutoff_norm:9603},"50-54":{starters:20,winner_norm:8633,cutoff_norm:9341},"55-59":{starters:15,winner_norm:9147,cutoff_norm:9812},"60-64":{starters:5,winner_norm:9087,cutoff_norm:10410}},
+    women:{"20-24":{starters:1,winner_norm:13441,cutoff_norm:13441},"25-29":{starters:3,winner_norm:10071,cutoff_norm:12720},"30-34":{starters:1,winner_norm:14143,cutoff_norm:14143},"35-39":{starters:2,winner_norm:10378,cutoff_norm:10757},"40-44":{starters:3,winner_norm:11320,cutoff_norm:12293},"45-49":{starters:2,winner_norm:13934,cutoff_norm:13894},"50-54":{starters:2,winner_norm:10839,cutoff_norm:11587},"55-59":{starters:1,winner_norm:12868,cutoff_norm:12868},"65-69":{starters:1,winner_norm:12291,cutoff_norm:12291}}
+  },
+  {
+    id:13, name:"XTERRA Slovakia", year:2025, country:"Slovakia", continent:"europe",
+    url:"https://www.xterraplanet.com/event/xterra-slovakia",
+    slots:26, bike_km:32, run_km:10, bike_elev:701, run_elev:274, wetsuit:false, heat:"hot",
+    men:{"20-24":{starters:5,winner_norm:8126,cutoff_norm:8426},"25-29":{starters:5,winner_norm:8433,cutoff_norm:9910},"30-34":{starters:8,winner_norm:8914,cutoff_norm:8917},"35-39":{starters:19,winner_norm:8521,cutoff_norm:9537},"40-44":{starters:21,winner_norm:8722,cutoff_norm:9437},"45-49":{starters:17,winner_norm:9550,cutoff_norm:10222},"50-54":{starters:13,winner_norm:9545,cutoff_norm:9935},"55-59":{starters:5,winner_norm:9654,cutoff_norm:11140},"60-64":{starters:5,winner_norm:10710,cutoff_norm:10804}},
+    women:{"20-24":{starters:1,winner_norm:11403,cutoff_norm:11403},"25-29":{starters:2,winner_norm:9796,cutoff_norm:10616},"30-34":{starters:1,winner_norm:11690,cutoff_norm:11690},"35-39":{starters:1,winner_norm:11941,cutoff_norm:11941},"40-44":{starters:4,winner_norm:12193,cutoff_norm:12373},"45-49":{starters:4,winner_norm:11043,cutoff_norm:11474},"50-54":{starters:1,winner_norm:11363,cutoff_norm:11363},"55-59":{starters:1,winner_norm:11879,cutoff_norm:11879}}
+  },
+  {
+    id:14, name:"XTERRA Weston Park", year:2025, country:"United Kingdom", continent:"europe",
+    url:"https://www.xterraplanet.com/event/xterra-weston-park",
+    slots:56, bike_km:30.3, run_km:10, bike_elev:358, run_elev:90, wetsuit:true, heat:"normal",
+    men:{"18-19":{starters:1,winner_norm:9557,cutoff_norm:9557},"20-24":{starters:5,winner_norm:8529,cutoff_norm:15282},"25-29":{starters:15,winner_norm:8454,cutoff_norm:9288},"30-34":{starters:14,winner_norm:8376,cutoff_norm:9223},"35-39":{starters:20,winner_norm:8783,cutoff_norm:9586},"40-44":{starters:20,winner_norm:8491,cutoff_norm:8779},"45-49":{starters:17,winner_norm:9113,cutoff_norm:9487},"50-54":{starters:28,winner_norm:9067,cutoff_norm:9648},"55-59":{starters:8,winner_norm:9820,cutoff_norm:11119},"60-64":{starters:8,winner_norm:10829,cutoff_norm:12493},"65-69":{starters:4,winner_norm:10739,cutoff_norm:14277}},
+    women:{"20-24":{starters:1,winner_norm:9936,cutoff_norm:9936},"25-29":{starters:3,winner_norm:10347,cutoff_norm:15018},"30-34":{starters:2,winner_norm:9600,cutoff_norm:11454},"35-39":{starters:6,winner_norm:10037,cutoff_norm:10781},"40-44":{starters:6,winner_norm:9886,cutoff_norm:12297},"45-49":{starters:6,winner_norm:10348,cutoff_norm:10919},"50-54":{starters:5,winner_norm:11519,cutoff_norm:12164},"55-59":{starters:4,winner_norm:10675,cutoff_norm:13298},"60-64":{starters:6,winner_norm:11560,cutoff_norm:12330}}
   },
 ];
 
