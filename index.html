@@ -48,6 +48,19 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
 .tog.active{background:var(--brand-light);border-color:var(--brand);color:#0F6E56;font-weight:500}
 .blue-card .tog.active{background:var(--blue-light);border-color:var(--blue);color:var(--blue)}
 .orange-card .tog.active{background:var(--orange-light);border-color:var(--orange);color:var(--orange)}
+/* Per-tab card colors */
+.card-s1-full{border-color:#185FA544!important}.card-s1-full .card-title{background:#185FA5}
+.card-s2-full{border-color:#2E7FD444!important}.card-s2-full .card-title{background:#2E7FD4}
+.card-s1-full .tog.active{background:#E6F1FB;border-color:#185FA5;color:#185FA5}
+.card-s2-full .tog.active{background:#D6EBFA;border-color:#2E7FD4;color:#2E7FD4}
+.card-s1-703{border-color:#1D9E7544!important}.card-s1-703 .card-title{background:#1D9E75}
+.card-s2-703{border-color:#2EC48F44!important}.card-s2-703 .card-title{background:#2EC48F}
+.card-s1-703 .tog.active{background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+.card-s2-703 .tog.active{background:#D0F2E6;border-color:#2EC48F;color:#0F6E56}
+.card-s1-xt{border-color:#2d6e2044!important}.card-s1-xt .card-title{background:#2d6e20}
+.card-s2-xt{border-color:#4a7c2f44!important}.card-s2-xt .card-title{background:#4a7c2f}
+.card-s1-xt .tog.active{background:#E6F2E0;border-color:#2d6e20;color:#2d6e20}
+.card-s2-xt .tog.active{background:#DDF0D4;border-color:#4a7c2f;color:#2d6e20}
 .hint{font-size:12px;color:#aaa;margin-top:4px;line-height:1.4}
 .sh{font-size:13px;font-weight:600;color:#555;margin-bottom:.6rem;padding-bottom:5px;border-bottom:.5px solid #f0f0ec;display:flex;align-items:center;gap:6px}
 .si{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0}
@@ -158,8 +171,8 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
 
   <!-- ══ IRONMAN FULL PANE ══ -->
   <div id="pane-full" class="pane active">
-  <div class="card blue-card" style="border-color:#185FA544">
-    <div class="card-title blue">Step 1 — Your reference race <span>Describe the race where you set your reference time</span></div>
+  <div class="card card-s1-full">
+    <div class="card-title">Step 1 — Your reference race <span>Describe the race where you set your reference time</span></div>
     <div class="fgrid">
 
       <div class="sec">
@@ -236,7 +249,7 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
   </div>
 
   <!-- STEP 2 -->
-  <div class="card" style="border-color:#1D9E7544">
+  <div class="card card-s2-full">
     <div class="card-title">Step 2 — About you <span>Used to fine-tune race recommendations</span></div>
     <div class="fgrid">
 
@@ -278,8 +291,8 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
   <div id="pane-703" class="pane">
 
   <!-- STEP 1 70.3 -->
-  <div class="card blue-card" style="border-color:#185FA544">
-    <div class="card-title blue">Step 1 — Your reference race <span>Describe the 70.3 race where you set your reference time</span></div>
+  <div class="card card-s1-703">
+    <div class="card-title">Step 1 — Your reference race <span>Describe the 70.3 race where you set your reference time</span></div>
     <div class="fgrid">
 
       <div class="sec">
@@ -356,7 +369,7 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
   </div>
 
   <!-- STEP 2 70.3 -->
-  <div class="card" style="border-color:#1D9E7544">
+  <div class="card card-s2-703">
     <div class="card-title">Step 2 — About you <span>Used to fine-tune race recommendations</span></div>
     <div class="fgrid">
 
@@ -397,8 +410,8 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
   <!-- ══ XTERRA PANE ══ -->
   <div id="pane-xterra" class="pane">
 
-  <div class="card blue-card" style="border-color:#4a7c2f44">
-    <div class="card-title" style="background:#4a7c2f">Step 1 — Your reference race <span>Standard XTERRA Full distance: 1.5km swim · 30km MTB · 10km run</span></div>
+  <div class="card card-s1-xt">
+    <div class="card-title">Step 1 — Your reference race <span>Standard XTERRA Full distance: 1.5km swim · 30km MTB · 10km run</span></div>
     <div class="fgrid">
 
       <div class="sec">
@@ -470,8 +483,8 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
     </div>
   </div>
 
-  <div class="card" style="border-color:#4a7c2f44">
-    <div class="card-title" style="background:#4a7c2f">Step 2 — About you</div>
+  <div class="card card-s2-xt">
+    <div class="card-title">Step 2 — About you</div>
     <div class="fgrid">
       <div class="sec">
         <div class="sh"><span class="si ia">A</span> Your strengths</div>
@@ -497,7 +510,7 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
         </div>
       </div>
     </div>
-    <button class="btn" id="calcBtnX" style="background:#4a7c2f">Find my best XTERRA qualifying races →</button>
+    <button class="btn" id="calcBtnX">Find my best XTERRA qualifying races →</button>
   </div>
 
   <div id="resultsX"></div>
@@ -1094,8 +1107,8 @@ document.getElementById('calcBtnX').addEventListener('click',()=>{
   const run_neutral  = run_ref  / (1 + (ref_run_elev/100) *0.015*px.r);
   let neutral = swim_ref + bike_neutral + run_neutral + t1t2_ref;
   if(stX.swim==='nowetsuit') neutral /= (1 + 0.006*px.s);
-  if(stX.heat==='hot') neutral /= 1.012;
-  if(stX.heat==='extreme') neutral /= 1.020;
+  if(stX.heat==='hot') neutral /= 1.025;
+  if(stX.heat==='extreme') neutral /= 1.045;
   neutral = Math.round(neutral);
 
   let list=RACES_X.filter(r=>stX.cont==='all'||r.continent===stX.cont)
@@ -1125,7 +1138,7 @@ document.getElementById('calcBtnX').addEventListener('click',()=>{
     const run_proj =run_neutral *(r.run_km/10) *(1+(r.run_elev/100) *0.015*px.r);
     let proj=swim_ref+bike_proj+run_proj+t1t2_ref;
     if(!r.wetsuit) proj*=(1+0.006*px.s);
-    if(r.heat==='hot') proj*=1.012;
+    if(r.heat==='hot') proj*=1.025;
     proj=Math.round(proj);
 
     // Estimate rank: linear interpolation between winner and cutoff
