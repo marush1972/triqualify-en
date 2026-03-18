@@ -3,8 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TriQualify — Kona Qualification Calculator</title>
-  <meta name="description" content="Find the race where you have the best chance of qualifying for the IRONMAN World Championship in Kona, Hawaii.">
+  <title>TriQualify — Triathlon World Championship Qualification Calculator</title>
+  <meta name="description" content="Find the triathlon race where you have the best chance of qualifying for the IRONMAN World Championship in Kona, IRONMAN 70.3 Worlds in Nice, or XTERRA Worlds in Ruidoso. Based on real 2025 race data from 150+ events worldwide.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.triqualify.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="TriQualify — Triathlon World Championship Qualification Calculator">
+  <meta property="og:description" content="Find the race where you have the best chance of qualifying for IRONMAN Kona, 70.3 Worlds, or XTERRA Worlds. Based on real race data from 150+ events.">
+  <meta property="og:url" content="https://www.triqualify.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TriQualify">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "TriQualify",
+    "url": "https://www.triqualify.com",
+    "description": "Triathlon world championship qualification calculator for IRONMAN, IRONMAN 70.3 and XTERRA. Estimates your qualification chances based on your finish time and historical race data.",
+    "applicationCategory": "SportsApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "keywords": "triathlon, IRONMAN, Kona, qualification, age group, XTERRA, 70.3"
+  }
+  </script>
 <style>
 :root{--brand:#1D9E75;--brand-dark:#0F6E56;--brand-light:#E1F5EE;--blue:#185FA5;--blue-light:#E6F1FB;--orange:#854F0B;--orange-dark:#6B3F08;--orange-light:#FAEEDA;--r:8px;--rl:12px}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -137,7 +161,7 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
         </div>
         <div>
           <div class="brand">Tri<span>Qualify</span>.com</div>
-          <div class="tagline">Find the race where you have the best shot at a Kona slot</div>
+          <div class="tagline">Find the race where you have the best shot at a World Championship slot</div>
         </div>
       </a>
     </div>
@@ -522,8 +546,14 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
 
 <footer>
   <div class="wrap">
-    <p>TriQualify.com is an unofficial tool. All data are estimates based on historical results and are provided for informational purposes only.</p>
-    <p style="margin-top:5px">Kona Standard coefficients and cutoff times may change each season. Always verify current requirements at <a href="https://www.ironman.com" target="_blank" rel="noopener">ironman.com</a>.</p>
+    <div style="background:#FEF3C7;border:1px solid #F59E0B;border-radius:8px;padding:12px 16px;margin-bottom:1rem;text-align:left">
+      <p style="font-size:12px;color:#92400E;line-height:1.6">
+        <strong>⚠️ Important disclaimer:</strong> TriQualify is an independent, unofficial tool for informational purposes only. All results are <strong>estimates based on historical race data</strong> and do not guarantee qualification. Actual slot allocation depends on field size, rolldown, and official race rules which change each season. Always verify current qualification requirements directly with <a href="https://www.ironman.com" target="_blank" rel="noopener" style="color:#92400E">IRONMAN</a> or <a href="https://www.xterraplanet.com" target="_blank" rel="noopener" style="color:#92400E">XTERRA</a>. TriQualify is not affiliated with, endorsed by, or in any way officially connected with IRONMAN, the World Triathlon Corporation, or XTERRA.
+      </p>
+    </div>
+    <p>TriQualify.com — IRONMAN Full · IRONMAN 70.3 · XTERRA World Championship qualification calculator for age group triathletes.</p>
+    <p style="margin-top:5px">Data based on 2025 race results. Qualification standards and cutoff times may change each season.</p>
+    <p style="margin-top:8px;font-size:11px;color:#bbb">TriQualify is an independent tool not affiliated with or endorsed by the World Triathlon Corporation (IRONMAN), XTERRA, or any race organizer.</p>
   </div>
 </footer>
 
