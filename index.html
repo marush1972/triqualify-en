@@ -474,6 +474,17 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
     <div class="card-title" style="background:#4a7c2f">Step 2 — About you</div>
     <div class="fgrid">
       <div class="sec">
+        <div class="sh"><span class="si ia">A</span> Your strengths</div>
+        <label>Athlete profile</label>
+        <div class="tg" id="gX-profile">
+          <div class="tog active" data-v="balanced">Balanced</div>
+          <div class="tog" data-v="biker">Strong MTB</div>
+          <div class="tog" data-v="runner">Strong trail runner</div>
+          <div class="tog" data-v="swimmer">Strong swimmer</div>
+        </div>
+        <div class="hint">Strong MTB → loses less on hilly bike courses. Strong runner → loses less on technical trails and heat. Strong swimmer → gains on no-wetsuit swims.</div>
+      </div>
+      <div class="sec">
         <div class="sh">🌍 Continent</div>
         <label>Preferred race region</label>
         <div class="tg" id="gX-cont">
@@ -483,15 +494,6 @@ select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 2px rgba(29,
           <div class="tog" data-v="oceania">Oceania</div>
           <div class="tog" data-v="africa">Africa</div>
           <div class="tog" data-v="asia">Asia</div>
-        </div>
-      </div>
-      <div class="sec">
-        <div class="sh" style="border-bottom:.5px solid #f0f0ec;padding-bottom:5px">ℹ️ How XTERRA slots work</div>
-        <div class="hint" style="color:#555;font-size:12px;line-height:1.7">
-          <strong>Silver races (26 slots)</strong> — base: 1 slot per AG · rolldown to top 3<br>
-          <strong>Gold races (56 slots)</strong> — base: 2–3 slots per AG · rolldown to top 5<br>
-          <strong>+1 bonus slot</strong> per 10 starters in your AG (DNS excluded)<br>
-          Example: Gold race, 40-44, 11 starters → 3+1 = 4 qualify (max 5)
         </div>
       </div>
     </div>
@@ -998,30 +1000,51 @@ document.getElementById('calcBtn703').addEventListener('click',()=>{
 const RACES_X = [
   {
     id:1, name:"XTERRA Rotorua Festival", year:2025, country:"New Zealand", continent:"oceania",
-    url:"https://www.xterraplanet.com/race/xterra-rotorua-full-distance-triathlon",
-    slots:28, slots_per_cat:2, bike_km:26, run_km:11, bike_elev:660, run_elev:100, wetsuit:true, heat:"normal",
+    url:"https://www.xterraplanet.com/event/xterra-rotorua-festival",
+    slots:28, bike_km:26, run_km:11, bike_elev:660, run_elev:100, wetsuit:true, heat:"normal",
     men:{"16-17":{starters:3,winner_norm:8646,cutoff_norm:8885},"18-19":{starters:5,winner_norm:8166,cutoff_norm:8510},"20-24":{starters:7,winner_norm:7822,cutoff_norm:8339},"25-29":{starters:5,winner_norm:9608,cutoff_norm:10185},"30-34":{starters:10,winner_norm:8565,cutoff_norm:8746},"35-39":{starters:9,winner_norm:9263,cutoff_norm:9414},"40-44":{starters:12,winner_norm:9170,cutoff_norm:9220},"45-49":{starters:11,winner_norm:9105,cutoff_norm:9331},"50-54":{starters:16,winner_norm:8463,cutoff_norm:8962},"55-59":{starters:9,winner_norm:8949,cutoff_norm:9791},"60-64":{starters:3,winner_norm:9847,cutoff_norm:9899},"65-69":{starters:2,winner_norm:11656,cutoff_norm:11998}},
-    women:{"18-19":{starters:1,winner_norm:10239,cutoff_norm:10239},"20-24":{starters:5,winner_norm:9820,cutoff_norm:10823},"25-29":{starters:6,winner_norm:10632,cutoff_norm:11158},"30-34":{starters:7,winner_norm:10520,cutoff_norm:10966},"40-44":{starters:3,winner_norm:11996,cutoff_norm:13276},"45-49":{starters:8,winner_norm:11934,cutoff_norm:12007},"50-54":{starters:5,winner_norm:11076,cutoff_norm:11724},"55-59":{starters:3,winner_norm:12475,cutoff_norm:13538},"60-64":{starters:1,winner_norm:11414,cutoff_norm:11414},"65-69":{starters:1,winner_norm:10823,cutoff_norm:10823}}
+    women:{"18-19":{starters:1,winner_norm:10239,cutoff_norm:10239},"20-24":{starters:5,winner_norm:9820,cutoff_norm:10823},"25-29":{starters:6,winner_norm:10632,cutoff_norm:11158},"30-34":{starters:7,winner_norm:10520,cutoff_norm:10966},"35-39":{starters:2,winner_norm:12071,cutoff_norm:16902},"40-44":{starters:3,winner_norm:11996,cutoff_norm:13276},"45-49":{starters:8,winner_norm:11934,cutoff_norm:12007},"50-54":{starters:5,winner_norm:11076,cutoff_norm:11724},"55-59":{starters:3,winner_norm:12475,cutoff_norm:13538},"60-64":{starters:1,winner_norm:11414,cutoff_norm:11414},"65-69":{starters:1,winner_norm:10823,cutoff_norm:10823}}
   },
   {
     id:2, name:"XTERRA Asia-Pacific Championship", year:2025, country:"Australia", continent:"oceania",
-    url:"https://www.xterraplanet.com/race/xterra-australia-full-distance-triathlon",
-    slots:56, slots_per_cat:4, bike_km:30.2, run_km:10.5, bike_elev:598, run_elev:170, wetsuit:false, heat:"normal",
+    url:"https://www.xterraplanet.com/event/xterra-australia",
+    slots:56, bike_km:30.2, run_km:10.5, bike_elev:598, run_elev:170, wetsuit:false, heat:"normal",
     men:{"18-19":{starters:1,winner_norm:9286,cutoff_norm:9286},"20-24":{starters:1,winner_norm:12857,cutoff_norm:12857},"25-29":{starters:6,winner_norm:10046,cutoff_norm:12442},"30-34":{starters:15,winner_norm:9008,cutoff_norm:10650},"35-39":{starters:10,winner_norm:10273,cutoff_norm:11271},"40-44":{starters:12,winner_norm:9849,cutoff_norm:11178},"45-49":{starters:8,winner_norm:10332,cutoff_norm:12286},"50-54":{starters:8,winner_norm:10646,cutoff_norm:12307},"55-59":{starters:4,winner_norm:12310,cutoff_norm:14980},"60-64":{starters:4,winner_norm:12859,cutoff_norm:15320},"65-69":{starters:1,winner_norm:14770,cutoff_norm:14770},"70-74":{starters:1,winner_norm:12553,cutoff_norm:12553}},
     women:{"20-24":{starters:1,winner_norm:11563,cutoff_norm:11563},"30-34":{starters:4,winner_norm:12008,cutoff_norm:16512},"35-39":{starters:2,winner_norm:12549,cutoff_norm:13157},"40-44":{starters:3,winner_norm:11394,cutoff_norm:16114},"45-49":{starters:5,winner_norm:11417,cutoff_norm:14108},"50-54":{starters:3,winner_norm:12645,cutoff_norm:18276},"65-69":{starters:1,winner_norm:14531,cutoff_norm:14531}}
   },
   {
-    id:3, name:"XTERRA South Africa", year:2026, country:"South Africa", continent:"africa",
-    url:"https://www.xterraplanet.com/race/xterra-south-africa-full-distance-triathlon",
-    slots:26, slots_per_cat:2, bike_km:28, run_km:10, bike_elev:623, run_elev:190, wetsuit:true, heat:"normal",
+    id:3, name:"XTERRA Borneo Sarawak", year:2025, country:"Malaysia", continent:"asia",
+    url:"https://www.xterraplanet.com/event/xterra-borneo-sarawak",
+    slots:26, bike_km:32, run_km:10, bike_elev:730, run_elev:322, wetsuit:false, heat:"hot",
+    men:{"20-24":{starters:2,winner_norm:13438,cutoff_norm:22898},"30-34":{starters:6,winner_norm:10485,cutoff_norm:10477},"35-39":{starters:7,winner_norm:11202,cutoff_norm:12935},"40-44":{starters:11,winner_norm:11816,cutoff_norm:12060},"45-49":{starters:5,winner_norm:9946,cutoff_norm:12905},"50-54":{starters:6,winner_norm:12327,cutoff_norm:12447},"55-59":{starters:6,winner_norm:12321,cutoff_norm:13392}},
+    women:{"40-44":{starters:2,winner_norm:16873,cutoff_norm:23985},"45-49":{starters:3,winner_norm:13240,cutoff_norm:14710}}
+  },
+  {
+    id:4, name:"XTERRA Greece Vouliagmeni", year:2025, country:"Greece", continent:"europe",
+    url:"https://www.xterraplanet.com/event/xterra-greece",
+    slots:56, bike_km:30, run_km:11, bike_elev:800, run_elev:360, wetsuit:true, heat:"hot",
+    men:{"18-19":{starters:1,winner_norm:9932,cutoff_norm:9932},"20-24":{starters:7,winner_norm:8640,cutoff_norm:11142},"25-29":{starters:1,winner_norm:11827,cutoff_norm:11827},"30-34":{starters:6,winner_norm:9024,cutoff_norm:11994},"35-39":{starters:8,winner_norm:9145,cutoff_norm:9799},"40-44":{starters:20,winner_norm:8969,cutoff_norm:9528},"45-49":{starters:12,winner_norm:9016,cutoff_norm:10168},"50-54":{starters:8,winner_norm:9826,cutoff_norm:10362},"55-59":{starters:8,winner_norm:9650,cutoff_norm:10854},"60-64":{starters:2,winner_norm:12022,cutoff_norm:13489},"65-69":{starters:4,winner_norm:12601,cutoff_norm:14392},"70-74":{starters:2,winner_norm:13776,cutoff_norm:15294}},
+    women:{"20-24":{starters:1,winner_norm:13448,cutoff_norm:13448},"25-29":{starters:1,winner_norm:12599,cutoff_norm:12599},"30-34":{starters:1,winner_norm:11059,cutoff_norm:11059},"35-39":{starters:3,winner_norm:11108,cutoff_norm:13954},"40-44":{starters:3,winner_norm:11511,cutoff_norm:16499},"45-49":{starters:5,winner_norm:10318,cutoff_norm:13498},"50-54":{starters:1,winner_norm:12325,cutoff_norm:12325},"55-59":{starters:3,winner_norm:11690,cutoff_norm:12820}}
+  },
+  {
+    id:5, name:"XTERRA Puerto Rico", year:2025, country:"Puerto Rico", continent:"namerica",
+    url:"https://www.xterraplanet.com/event/xterra-puerto-rico",
+    slots:56, bike_km:31, run_km:10, bike_elev:200, run_elev:100, wetsuit:false, heat:"hot",
+    men:{"18-19":{starters:1,winner_norm:8604,cutoff_norm:8604},"20-24":{starters:1,winner_norm:10396,cutoff_norm:10396},"30-34":{starters:6,winner_norm:10444,cutoff_norm:12383},"35-39":{starters:6,winner_norm:11202,cutoff_norm:13913},"40-44":{starters:2,winner_norm:10122,cutoff_norm:11629},"45-49":{starters:5,winner_norm:10667,cutoff_norm:13787},"50-54":{starters:5,winner_norm:11460,cutoff_norm:13093},"55-59":{starters:1,winner_norm:15297,cutoff_norm:15297},"60-64":{starters:3,winner_norm:12657,cutoff_norm:14581}},
+    women:{"35-39":{starters:2,winner_norm:12555,cutoff_norm:13075}}
+  },
+  {
+    id:6, name:"XTERRA South Africa", year:2026, country:"South Africa", continent:"africa",
+    url:"https://www.xterraplanet.com/event/xterra-south-africa",
+    slots:26, bike_km:28, run_km:10, bike_elev:623, run_elev:190, wetsuit:true, heat:"normal",
     men:{"20-24":{starters:3,winner_norm:8850,cutoff_norm:10527},"25-29":{starters:7,winner_norm:10266,cutoff_norm:10735},"30-34":{starters:6,winner_norm:9804,cutoff_norm:11193},"35-39":{starters:7,winner_norm:11348,cutoff_norm:12100},"40-44":{starters:18,winner_norm:10609,cutoff_norm:10680},"45-49":{starters:17,winner_norm:10584,cutoff_norm:12022},"50-54":{starters:14,winner_norm:11591,cutoff_norm:12397},"55-59":{starters:15,winner_norm:10379,cutoff_norm:10662},"60-64":{starters:2,winner_norm:11475,cutoff_norm:13318},"65-69":{starters:5,winner_norm:12978,cutoff_norm:12984}},
     women:{"25-29":{starters:2,winner_norm:12878,cutoff_norm:14070},"30-34":{starters:1,winner_norm:15273,cutoff_norm:15273},"35-39":{starters:6,winner_norm:11137,cutoff_norm:12030},"40-44":{starters:4,winner_norm:10567,cutoff_norm:11965},"45-49":{starters:4,winner_norm:11409,cutoff_norm:12001},"50-54":{starters:2,winner_norm:12883,cutoff_norm:13434},"55-59":{starters:2,winner_norm:11470,cutoff_norm:12434},"65-69":{starters:1,winner_norm:13512,cutoff_norm:13512}}
   },
 ];
 
 // ══ XTERRA STATE ══
-const stX={swim:"wetsuit",bike:"moderate",run:"moderate",heat:"normal",cont:"all"};
-const gMapX={"gX-swim":"swim","gX-bike":"bike","gX-run":"run","gX-heat":"heat","gX-cont":"cont"};
+const stX={profile:"balanced",swim:"wetsuit",bike:"moderate",run:"moderate",heat:"normal",cont:"all"};
+const gMapX={"gX-profile":"profile","gX-swim":"swim","gX-bike":"bike","gX-run":"run","gX-heat":"heat","gX-cont":"cont"};
 document.querySelectorAll('[id^="gX-"]').forEach(g=>{
   g.querySelectorAll('.tog').forEach(el=>{
     el.addEventListener('click',()=>{
@@ -1052,6 +1075,10 @@ document.getElementById('calcBtnX').addEventListener('click',()=>{
   const ag=document.getElementById('agX').value;
   const gKey=gender==='M'?'men':'women';
 
+  // Athlete profile — reduces penalty on strong discipline
+  const PX={balanced:{b:1,r:1,s:1},biker:{b:0.6,r:1,s:1},runner:{b:1,r:0.6,s:1},swimmer:{b:1,r:1,s:0.6}};
+  const px=PX[stX.profile];
+
   // Estimate splits from total time (typical XTERRA ratios)
   // swim ~14%, bike ~57%, run ~27%, T1+T2 ~2%
   const swim_ref = Math.round(raw*0.14);
@@ -1059,19 +1086,14 @@ document.getElementById('calcBtnX').addEventListener('click',()=>{
   const run_ref  = Math.round(raw*0.27);
   const t1t2_ref = raw - swim_ref - bike_ref - run_ref;
 
-  // Reference race bike/run distance and elevation from form selections
-  const ref_bike_km = 30; // standard
-  const ref_run_km  = 10;
   const ref_bike_elev = REF_BIKE_ELEV[stX.bike];
   const ref_run_elev  = REF_RUN_ELEV[stX.run];
 
-  // STEP 1: Normalize to flat 30km bike + flat 10km run
-  const bike_neutral = bike_ref * (30/ref_bike_km) / elevBike(ref_bike_elev);
-  const run_neutral  = run_ref  * (10/ref_run_km)  / elevRun(ref_run_elev);
+  // STEP 1: Normalize to flat 30km bike + flat 10km run (apply profile to ref conditions)
+  const bike_neutral = bike_ref / (1 + (ref_bike_elev/100)*0.020*px.b);
+  const run_neutral  = run_ref  / (1 + (ref_run_elev/100) *0.015*px.r);
   let neutral = swim_ref + bike_neutral + run_neutral + t1t2_ref;
-  // Wetsuit correction
-  if(stX.swim==='nowetsuit') neutral /= 1.006;
-  // Heat correction
+  if(stX.swim==='nowetsuit') neutral /= (1 + 0.006*px.s);
   if(stX.heat==='hot') neutral /= 1.012;
   if(stX.heat==='extreme') neutral /= 1.020;
   neutral = Math.round(neutral);
@@ -1098,11 +1120,11 @@ document.getElementById('calcBtnX').addEventListener('click',()=>{
     const maxRolldown = isGold ? 5 : 3;
     const effectiveSlots = Math.min(baseSlots + bonusSlots, maxRolldown);
 
-    // STEP 2: Project neutral time to this race
-    const bike_proj=bike_neutral*(r.bike_km/30)*elevBike(r.bike_elev);
-    const run_proj =run_neutral *(r.run_km/10) *elevRun(r.run_elev);
+    // STEP 2: Project neutral time to this race (apply profile to target conditions)
+    const bike_proj=bike_neutral*(r.bike_km/30)*(1+(r.bike_elev/100)*0.020*px.b);
+    const run_proj =run_neutral *(r.run_km/10) *(1+(r.run_elev/100) *0.015*px.r);
     let proj=swim_ref+bike_proj+run_proj+t1t2_ref;
-    if(!r.wetsuit) proj*=1.006;
+    if(!r.wetsuit) proj*=(1+0.006*px.s);
     if(r.heat==='hot') proj*=1.012;
     proj=Math.round(proj);
 
@@ -1125,13 +1147,14 @@ document.getElementById('calcBtnX').addEventListener('click',()=>{
     return;
   }
 
-  const bL={moderate:'Moderate (~500m)',hilly:'Hilly (~800m)',vhilly:'Very hilly (1100m+)'};
-  const rL={moderate:'Moderate (~150m)',hilly:'Hilly (~250m)',vhilly:'Very hilly (400m+)'};
-  const hL={normal:'normal temp.',hot:'hot',extreme:'extreme heat'};
+  const pLX={balanced:'Balanced',biker:'Strong MTB',runner:'Strong trail runner',swimmer:'Strong swimmer'};
+  const bLX={moderate:'Moderate MTB',hilly:'Hilly MTB',vhilly:'Very hilly MTB'};
+  const rLX={moderate:'Moderate trail',hilly:'Hilly trail',vhilly:'Very hilly trail'};
+  const hLX={normal:'normal temp.',hot:'hot',extreme:'extreme heat'};
 
   let html=`<div class="rh">
-    <div class="rt">XTERRA Results — ${gender==='M'?'Male':'Female'} ${ag} · ${fmt(raw)}</div>
-    <div class="rs">Reference normalized to flat standard (30km bike / 10km run): <strong>${fmt(neutral)}</strong> · ${bL[stX.bike]} bike · ${rL[stX.run]} run · ${stX.swim==='wetsuit'?'wetsuit':'no wetsuit'} · ${hL[stX.heat]}</div>
+    <div class="rt">XTERRA Results — ${gender==='M'?'Male':'Female'} ${ag} · ${fmt(raw)} · ${pLX[stX.profile]}</div>
+    <div class="rs">Normalized to standard (30km flat bike / 10km flat run): <strong>${fmt(neutral)}</strong> · ${bLX[stX.bike]} · ${rLX[stX.run]} · ${stX.swim==='wetsuit'?'wetsuit':'no wetsuit'} · ${hLX[stX.heat]}</div>
   </div><div class="results-grid">`;
 
   list.forEach((r,i)=>{
