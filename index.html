@@ -1245,11 +1245,19 @@ document.getElementById('calcBtnX').addEventListener('click',()=>{
     if(r.heat==='hot') proj*=1.025;
     proj=Math.round(proj);
 
-    // Estimate rank: linear interpolation between winner and cutoff
+    // Rank based on data we actually have: winner_norm and cutoff_norm
+    // If faster than winner → rank 1
+    // If between winner and cutoff → somewhere in between (we don't know exactly)
+    // If slower than cutoff → outside slots
     let estRank;
-    if(neutral<=wn) estRank=1;
-    else if(neutral<=cn) estRank=Math.max(1,Math.round(1+(effectiveSlots-1)*(neutral-wn)/(cn-wn)));
-    else estRank=effectiveSlots+Math.ceil((neutral-cn)/120);
+    if(neutral <= wn) estRank = 1;
+    else if(neutral <= cn) {
+      // We know user is between rank 2 and effectiveSlots — show as range midpoint
+      estRank = Math.max(2, Math.round((2 + effectiveSlots) / 2));
+    } else {
+      estRank = effectiveSlots + Math.ceil((neutral - cn) / 120);
+    }
+    estRank = Math.min(estRank, starters + 1);
 
     const qualifies=estRank<=effectiveSlots;
     const diffMin=Math.round((neutral-cn)/60);
