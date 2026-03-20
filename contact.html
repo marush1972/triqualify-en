@@ -133,12 +133,17 @@ textarea{resize:vertical;min-height:120px}
     <div>
       <div class="card">
         <h2>Send a message</h2>
-        <form id="contactForm">
+        <form action="https://formsubmit.co/info@triqualify.com" method="POST">
 
-          <!-- Honeypot — hidden field, bots fill it, humans don't -->
+          <!-- Honeypot -->
           <div class="honeypot">
-            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off">
           </div>
+          <!-- Disable captcha (we use honeypot) -->
+          <input type="hidden" name="_captcha" value="false">
+          <!-- Redirect back after submit -->
+          <input type="hidden" name="_next" value="https://www.triqualify.com/contact?sent=1">
+          <input type="hidden" name="_subject" value="New message from TriQualify contact form">
 
           <div class="sec">
             <label for="f-email">Your email<span>*</span></label>
@@ -153,12 +158,9 @@ textarea{resize:vertical;min-height:120px}
             <textarea id="f-message" name="message" placeholder="Your message..." required></textarea>
           </div>
 
-          <!-- reCAPTCHA v3 — invisible, token added automatically on submit -->
+          <button type="submit" class="btn">Send message</button>
 
-          <button type="submit" class="btn" id="submitBtn">Send message</button>
-
-          <div class="msg success" id="msgSuccess">✓ Message sent! We'll get back to you soon.</div>
-          <div class="msg error" id="msgError">Something went wrong. Please try again or email us directly at info@triqualify.com.</div>
+          <div class="msg success" id="msgSuccess" style="display:none">✓ Message sent! We'll get back to you soon.</div>
         </form>
       </div>
     </div>
@@ -175,57 +177,11 @@ textarea{resize:vertical;min-height:120px}
 </footer>
 
 <script>
-const form = document.getElementById('contactForm');
-const btn = document.getElementById('submitBtn');
-const msgSuccess = document.getElementById('msgSuccess');
-const msgError = document.getElementById('msgError');
-
-form.addEventListener('submit', async function(e) {
-  e.preventDefault();
-
-  // Honeypot check
-  if (document.querySelector('[name="_gotcha"]').value) return;
-
-  const email = document.getElementById('f-email').value.trim();
-  const subject = document.getElementById('f-subject').value.trim();
-  const message = document.getElementById('f-message').value.trim();
-  if (!email || !subject || !message) return;
-
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
-  msgSuccess.style.display = 'none';
-  msgError.style.display = 'none';
-
-  try {
-    const res = await fetch('https://formsubmit.co/ajax/info@triqualify.com', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        email, subject, message,
-        _captcha: 'false',
-        _template: 'basic'
-      })
-    });
-
-    const data = await res.json();
-    console.log('Formsubmit response:', data);
-
-    if (data.success === 'true' || data.success === true) {
-      msgSuccess.style.display = 'block';
-      form.reset();
-    } else {
-      msgError.textContent = 'Error: ' + (data.message || 'Unknown') + ' — or email info@triqualify.com';
-      msgError.style.display = 'block';
-    }
-  } catch(err) {
-    console.error('Submit error:', err);
-    msgError.textContent = 'Something went wrong. Please email info@triqualify.com directly.';
-    msgError.style.display = 'block';
-  }
-
-  btn.disabled = false;
-  btn.textContent = 'Send message';
-});
+// Show success message if redirected back after form submit
+if (window.location.search.includes('sent=1')) {
+  document.getElementById('msgSuccess').style.display = 'block';
+  window.history.replaceState({}, '', '/contact');
+}
 </script>
 
 </body>
