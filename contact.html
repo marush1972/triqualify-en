@@ -213,10 +213,14 @@ form.addEventListener('submit', async function(e) {
       })
     });
 
-    if (res.ok) {
+    const data = await res.json();
+    console.log('Web3Forms response:', data);
+
+    if (res.ok && data.success) {
       msgSuccess.style.display = 'block';
       form.reset();
     } else {
+      msgError.textContent = 'Error: ' + (data.message || 'Unknown error') + ' — or email info@triqualify.com';
       msgError.style.display = 'block';
     }
   } catch {
