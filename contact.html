@@ -174,8 +174,6 @@ textarea{resize:vertical;min-height:120px}
   </div>
 </footer>
 
-<!-- reCAPTCHA v3 -->
-<script src="https://www.google.com/recaptcha/api.js?render=6Le8748sAAAAAIqo17H8DIgm-DRau5t--AdMujyd"></script>
 <script>
 const form = document.getElementById('contactForm');
 const btn = document.getElementById('submitBtn');
@@ -199,30 +197,20 @@ form.addEventListener('submit', async function(e) {
   msgError.style.display = 'none';
 
   try {
-    // Get reCAPTCHA v3 token
-    const token = await new Promise((resolve, reject) => {
-      grecaptcha.ready(async () => {
-        try {
-          const t = await grecaptcha.execute('6Le8748sAAAAAIqo17H8DIgm-DRau5t--AdMujyd', {action: 'submit'});
-          resolve(t);
-        } catch(err) { reject(err); }
-      });
-    });
-
-    const res = await fetch('https://api.web3forms.com/submit', {
+    const res = await fetch('https://formsubmit.co/ajax/info@triqualify.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
-        access_key: 'b320a843-baf1-4d32-8cee-647963787609',
         email, subject, message,
-        'g-recaptcha-response': token
+        _captcha: 'false',
+        _template: 'basic'
       })
     });
 
     const data = await res.json();
-    console.log('Web3Forms response:', data);
+    console.log('Formsubmit response:', data);
 
-    if (data.success) {
+    if (data.success === 'true' || data.success === true) {
       msgSuccess.style.display = 'block';
       form.reset();
     } else {
