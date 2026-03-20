@@ -188,7 +188,6 @@ form.addEventListener('submit', async function(e) {
   // Honeypot check
   if (document.querySelector('[name="_gotcha"]').value) return;
 
-  // Basic validation
   const email = document.getElementById('f-email').value.trim();
   const subject = document.getElementById('f-subject').value.trim();
   const message = document.getElementById('f-message').value.trim();
@@ -201,7 +200,14 @@ form.addEventListener('submit', async function(e) {
 
   try {
     // Get reCAPTCHA v3 token
-    const token = await grecaptcha.execute('6Le8748sAAAAAIqo17H8DIgm-DRau5t--AdMujyd', {action: 'submit'});
+    const token = await new Promise((resolve, reject) => {
+      grecaptcha.ready(async () => {
+        try {
+          const t = await grecaptcha.execute('6Le8748sAAAAAIqo17H8DIgm-DRau5t--AdMujyd', {action: 'submit'});
+          resolve(t);
+        } catch(err) { reject(err); }
+      });
+    });
 
     const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
@@ -216,14 +222,16 @@ form.addEventListener('submit', async function(e) {
     const data = await res.json();
     console.log('Web3Forms response:', data);
 
-    if (res.ok && data.success) {
+    if (data.success) {
       msgSuccess.style.display = 'block';
       form.reset();
     } else {
-      msgError.textContent = 'Error: ' + (data.message || 'Unknown error') + ' — or email info@triqualify.com';
+      msgError.textContent = 'Error: ' + (data.message || 'Unknown') + ' — or email info@triqualify.com';
       msgError.style.display = 'block';
     }
-  } catch {
+  } catch(err) {
+    console.error('Submit error:', err);
+    msgError.textContent = 'Something went wrong. Please email info@triqualify.com directly.';
     msgError.style.display = 'block';
   }
 
