@@ -56,6 +56,14 @@ textarea{resize:vertical;min-height:120px}
 .about-box a{color:var(--brand)}
 @media(max-width:700px){.page-grid{grid-template-columns:1fr}}
 </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCTH29MHEJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WCTH29MHEJ');
+  </script>
 </head>
 <body>
 
@@ -186,6 +194,7 @@ form.addEventListener('submit', function(e) {
   msgError.style.display = 'none';
 
   emailjs.send('service_8wz8is6', 'template_sjwf1zn', {
+    name: document.getElementById('f-email').value,
     from_name: document.getElementById('f-email').value,
     reply_to: document.getElementById('f-email').value,
     subject: document.getElementById('f-subject').value,
