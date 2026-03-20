@@ -153,8 +153,7 @@ textarea{resize:vertical;min-height:120px}
             <textarea id="f-message" name="message" placeholder="Your message..." required></textarea>
           </div>
 
-          <!-- reCAPTCHA v3 — invisible, no user interaction needed -->
-          <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY" data-callback="onSubmit" data-action="submit"></div>
+          <!-- reCAPTCHA v3 — invisible, token added automatically on submit -->
 
           <button type="submit" class="btn" id="submitBtn">Send message</button>
 
@@ -175,9 +174,8 @@ textarea{resize:vertical;min-height:120px}
   </div>
 </footer>
 
-<!-- Formspree handles form submission — replace YOUR_FORM_ID -->
 <!-- reCAPTCHA v3 -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Le8748sAAAAAIqo17H8DIgm-DRau5t--AdMujyd"></script>
 <script>
 const form = document.getElementById('contactForm');
 const btn = document.getElementById('submitBtn');
@@ -188,7 +186,7 @@ form.addEventListener('submit', async function(e) {
   e.preventDefault();
 
   // Honeypot check
-  if (form._gotcha && form._gotcha.value) return;
+  if (document.querySelector('[name="_gotcha"]').value) return;
 
   // Basic validation
   const email = document.getElementById('f-email').value.trim();
@@ -202,10 +200,17 @@ form.addEventListener('submit', async function(e) {
   msgError.style.display = 'none';
 
   try {
-    const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    // Get reCAPTCHA v3 token
+    const token = await grecaptcha.execute('6Le8748sAAAAAIqo17H8DIgm-DRau5t--AdMujyd', {action: 'submit'});
+
+    const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email, subject, message })
+      body: JSON.stringify({
+        access_key: 'b320a843-baf1-4d32-8cee-647963787609',
+        email, subject, message,
+        'g-recaptcha-response': token
+      })
     });
 
     if (res.ok) {
